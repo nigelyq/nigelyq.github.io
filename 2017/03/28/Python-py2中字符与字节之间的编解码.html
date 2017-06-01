@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <meta charset="utf-8">
+    
+    <title>Python-py2中字符与字节之间的编解码[转载] | Vimiix</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="据说，每个做 Python 开发的都被字符编码的问题搞晕过，最常见的错误就是UnicodeEncodeError、UnicodeDecodeError，你好像知道怎么解决，遗憾的是，错误又出现在其它地方，问题总是重蹈覆辙，str 到 unicode 之间的转换用哪 decode 还是 encode 方法还特不好记，老是混淆，问题究竟出在哪里？">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python-py2中字符与字节之间的编解码[转载]">
+<meta property="og:url" content="http://www.vimiix.com/2017/03/28/Python-py2中字符与字节之间的编解码.html">
+<meta property="og:site_name" content="Vimiix">
+<meta property="og:description" content="据说，每个做 Python 开发的都被字符编码的问题搞晕过，最常见的错误就是UnicodeEncodeError、UnicodeDecodeError，你好像知道怎么解决，遗憾的是，错误又出现在其它地方，问题总是重蹈覆辙，str 到 unicode 之间的转换用哪 decode 还是 encode 方法还特不好记，老是混淆，问题究竟出在哪里？">
+<meta property="og:image" content="http://omfis13un.bkt.clouddn.com/f3c4c96.jpg">
+<meta property="og:updated_time" content="2017-05-25T17:06:53.884Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Python-py2中字符与字节之间的编解码[转载]">
+<meta name="twitter:description" content="据说，每个做 Python 开发的都被字符编码的问题搞晕过，最常见的错误就是UnicodeEncodeError、UnicodeDecodeError，你好像知道怎么解决，遗憾的是，错误又出现在其它地方，问题总是重蹈覆辙，str 到 unicode 之间的转换用哪 decode 还是 encode 方法还特不好记，老是混淆，问题究竟出在哪里？">
+<meta name="twitter:image" content="http://omfis13un.bkt.clouddn.com/f3c4c96.jpg">
+    
+
+    
+
+    
+        <link rel="icon" href="/css/images/favicon.png" />
+    
+
+    <link rel="stylesheet" href="/vendor/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/vendor/open-sans/styles.css">
+    <link rel="stylesheet" href="/vendor/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/vendor/jquery/2.1.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/vendor/lightgallery/css/lightgallery.min.css">
+    
+    
+    
+    
+        <script>
+var _hmt = _hmt || [];
+(function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?6dd417889b493646e8af6f793152b918";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+    
+
+</head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                
+                <span class="site-title">Vimiix</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/.">主页</a>
+                
+                    <a class="main-nav-link" href="/archives">文章</a>
+                
+                    <a class="main-nav-link" href="/categories">分类</a>
+                
+                    <a class="main-nav-link" href="/tags">标签</a>
+                
+                    <a class="main-nav-link" href="/about">作者</a>
+                
+                    <a class="main-nav-link" href="https://github.com/vimiix">Github</a>
+                
+            </nav>
+            
+                
+                <nav id="sub-nav">
+                    <div class="profile" id="profile-nav">
+                        <a id="profile-anchor" href="javascript:;">
+                            <img class="avatar" src="/css/images/avatar.png" />
+                            <i class="fa fa-caret-down"></i>
+                        </a>
+                    </div>
+                </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要查找什么..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/.">主页</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">文章</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">分类</a></td>
+                
+                    <td><a class="main-nav-link" href="/tags">标签</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">作者</a></td>
+                
+                    <td><a class="main-nav-link" href="https://github.com/vimiix">Github</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+                
+
+<aside id="profile">
+    <div class="inner profile-inner">
+        <div class="base-info profile-block">
+            <img id="avatar" src="/css/images/avatar.png" />
+            <h2 id="name">Vimiix</h2>
+            <h3 id="title">程序员&amp;产品运营</h3>
+            <span id="location"><i class="fa fa-map-marker"></i>CSDN, Beijing, China</span>
+            <a id="follow" target="_blank" href="https://github.com/vimiix">关注</a>
+        </div>
+        <div class="article-info profile-block">
+            <div class="article-info-block">
+                18
+                <span>文章</span>
+            </div>
+            <div class="article-info-block">
+                27
+                <span>标签</span>
+            </div>
+        </div>
+        
+        <div class="profile-block social-links">
+            <table>
+                <tr>
+                    
+                    
+                    <td>
+                        <a href="https://github.com/vimiix" target="_blank" title="github" class=tooltip>
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="https://twitter.com/_vimiix" target="_blank" title="twitter" class=tooltip>
+                            <i class="fa fa-twitter"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="http://weibo.com/boynigel" target="_blank" title="weibo" class=tooltip>
+                            <i class="fa fa-weibo"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="http://wpa.qq.com/msgrd?v=3&uin=544472800&site=qq&menu=yes" target="_blank" title="qq" class=tooltip>
+                            <i class="fa fa-qq"></i>
+                        </a>
+                    </td>
+                    
+                </tr>
+            </table>
+        </div>
+        
+    </div>
+</aside>
+
+            
+            <section id="main"><article id="post-Python-py2中字符与字节之间的编解码" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+            Python-py2中字符与字节之间的编解码[转载]
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2017/03/28/Python-py2中字符与字节之间的编解码.html">
+            <time datetime="2017-03-28T05:56:18.000Z" itemprop="datePublished">2017-03-28</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/Python/">Python</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/Python/">Python</a>, <a class="tag-link" href="/tags/SyntaxError/">SyntaxError</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <p>据说，每个做 Python 开发的都被字符编码的问题搞晕过，最常见的错误就是UnicodeEncodeError、UnicodeDecodeError，你好像知道怎么解决，遗憾的是，错误又出现在其它地方，问题总是重蹈覆辙，str 到 unicode 之间的转换用哪 decode 还是 encode 方法还特不好记，老是混淆，问题究竟出在哪里？</p>
+<a id="more"></a>
+<p>为了弄清楚这个问题，我决定从 python 字符串的构成以及字符编码的细节上进行深入浅出的分析</p>
+<p><img src="http://omfis13un.bkt.clouddn.com/f3c4c96.jpg" alt=""></p>
+<h6 id="题图：unsplash-com"><a href="#题图：unsplash-com" class="headerlink" title="题图：unsplash.com"></a>题图：unsplash.com</h6><h6 id="声明：本文转自公众号Python之禅"><a href="#声明：本文转自公众号Python之禅" class="headerlink" title="声明：本文转自公众号Python之禅"></a>声明：本文转自公众号<a href="https://mp.weixin.qq.com/s/LQrPmp2HMlw5C7izJIUHNQ" target="_blank" rel="external">Python之禅</a></h6><h2 id="字节与字符"><a href="#字节与字符" class="headerlink" title="字节与字符"></a>字节与字符</h2><p>计算机存储的一切数据，文本字符、图片、视频、音频、软件都是由一串01的字节序列构成的，一个字节等于8个比特位。</p>
+<p>而字符就是一个符号，比如一个汉字、一个英文字母、一个数字、一个标点都可以称为一个字符。</p>
+<p>字节方便存储和网络传输，而字符用于显示，方便阅读。字符 “p” 保存到硬盘就是一串二进制数据 01110000，占用一个字节的长度</p>
+<h2 id="编码与解码"><a href="#编码与解码" class="headerlink" title="编码与解码"></a>编码与解码</h2><p>我们用编辑器打开的文本，看到的一个个字符，最终保存在磁盘的时候都是以二进制字节序列形式存起来的。那么从字符到字节的转换过程就叫做编码（encode），反过来叫做解码（decode），两者是一个可逆的过程。编码是为了存储传输，解码是为了方便显示阅读。</p>
+<p>例如字符 “p” 保存到硬盘是一串二进制 01110000 ，占用一个字节的长度。字符 “禅” 有可能是以 “11100111 10100110 10000101” 占用3个字节的长度存储，为什么说是有可能呢？这个放到后面再说。</p>
+<p>Python 编码为什么那么蛋疼？当然，这不能怪开发者。</p>
+<p>这是因为 Python2 使用 ASCII 字符编码作为默认编码方式，而 ASCII 不能处理中文，那么为什么不用 UTf-8 呢？因为 Guido 老爹为 Python 编写第一行代码是在1989年的冬天，1991年2月正式开源发布了第一个版本，而 Unicode 是1991年10月发布的，也就是说 Python 这门语言创立的时候 UTF-8 还没诞生，这是其一。</p>
+<p>Python 把字符串的类型还搞成两种，unicode 和 str ，以至于把开发者都弄糊涂了，这是其二。python3 就彻底把 字符串重新改造了，只保留一种类型，这是后话，以后再说。</p>
+<h2 id="str与unicode"><a href="#str与unicode" class="headerlink" title="str与unicode"></a>str与unicode</h2><p>Python2 把字符串分为 unicode 和 str 两种类型。本质上 str 是一串二进制字节序列，下面的示例代码可以看出 str 类型的 “禅” 打印出来是十六进制的 \xec\xf8 ，对应的二进制字节序列就是 ‘11101100 11111000’。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>s = <span class="string">'禅'</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>s</div><div class="line"><span class="string">'\xec\xf8'</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>type(s)</div><div class="line">&lt;type <span class="string">'str'</span>&gt;</div></pre></td></tr></table></figure>
+<p>而 unicode 类型的 u”禅” 对应的 unicode 符号是 u’\u7985’</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>u = <span class="string">u"禅"</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>u</div><div class="line"><span class="string">u'\u7985'</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>type(u)</div><div class="line">&lt;type <span class="string">'unicode'</span>&gt;</div></pre></td></tr></table></figure>
+<p>我们要把 unicode 符号保存到文件或者传输到网络就需要经过编码处理转换成 str 类型，于是 python 提供了 encode 方法，从 unicode 转换到 str，反之亦然。</p>
+<p><img src="http://omfis13un.bkt.clouddn.com/xxx.png" alt=""></p>
+<h5 id="encode"><a href="#encode" class="headerlink" title="encode"></a>encode</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>u = <span class="string">u"禅"</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>u</div><div class="line"><span class="string">u'\u7985'</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>u.encode(<span class="string">"utf-8"</span>)</div><div class="line"><span class="string">'\xe7\xa6\x85'</span></div></pre></td></tr></table></figure>
+<h5 id="decode"><a href="#decode" class="headerlink" title="decode"></a>decode</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>s = <span class="string">"禅"</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>s.decode(<span class="string">"utf-8"</span>)</div><div class="line"><span class="string">u'\u7985'</span></div><div class="line">&gt;&gt;&gt;</div></pre></td></tr></table></figure>
+<p>不少初学者怎么也记不住 str 与 unicode 之间的转换用 encode 还是 decode，如果你记住了 str 本质上其实是一串二进制数据，而 unicode 是字符（符号），编码（encode）就是把字符（符号）转换为 二进制数据的过程，因此 unicode 到 str 的转换要用 encode 方法，反过来就是用 decode 方法。</p>
+<blockquote>
+<p>encoding always takes a Unicode string and returns a bytes sequence, and decoding always takes a bytes sequence and returns a Unicode string”.</p>
+</blockquote>
+<p>清楚了 str 与 unicode 之间的转换关系之后，我们来看看什么时候会出现 UnicodeEncodeError、UnicodeDecodeError 错误。</p>
+<p>##UnicodeEncodeError</p>
+<p>UnicodeEncodeError 发生在 unicode 字符串转换成 str 字节序列的时候，来看一个例子，把一串 unicode 字符串保存到文件</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># -*- coding:utf-8 -*-</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></div><div class="line">    name = <span class="string">u'Python之禅'</span></div><div class="line">    f = open(<span class="string">"output.txt"</span>, <span class="string">"w"</span>)</div><div class="line">    f.write(name)</div></pre></td></tr></table></figure>
+<h5 id="错误日志"><a href="#错误日志" class="headerlink" title="错误日志"></a>错误日志</h5><blockquote>
+<p>UnicodeEncodeError: ‘ascii’ codec can’t encode characters in position 6-7: ordinal not in range(128)</p>
+</blockquote>
+<p>为什么会出现 UnicodeEncodeError？</p>
+<p>因为调用 write 方法时，Python 会先判断字符串是什么类型，如果是 str，就直接写入文件，不需要编码，因为 str 类型的字符串本身就是一串二进制的字节序列了。</p>
+<p>如果字符串是 unicode 类型，那么它会先调用 encode 方法把 unicode 字符串转换成二进制形式的 str 类型，才保存到文件，而 encode 方法会使用 python 默认的 ascii 码来编码</p>
+<p>相当于：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="string">u"Python之禅"</span>.encode(<span class="string">"ascii"</span>)</div></pre></td></tr></table></figure>
+<p>但是，我们知道 ASCII 字符集中只包含了128个拉丁字母，不包括中文字符，因此 出现了 ‘ascii’ codec can’t encode characters 的错误。要正确地使用 encode ，就必须指定一个包含了中文字符的字符集，比如：UTF-8、GBK。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="string">u"Python之禅"</span>.encode(<span class="string">"utf-8"</span>)</div><div class="line"><span class="string">'Python\xe4\xb9\x8b\xe7\xa6\x85'</span></div><div class="line"></div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="string">u"Python之禅"</span>.encode(<span class="string">"gbk"</span>)</div><div class="line"><span class="string">'Python\xd6\xae\xec\xf8'</span></div></pre></td></tr></table></figure>
+<p>所以要把 unicode 字符串正确地写入文件，就应该预先把字符串进行 UTF-8 或 GBK 编码转换。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></div><div class="line">    name = <span class="string">u'Python之禅'</span></div><div class="line">    name = name.encode(<span class="string">'utf-8'</span>)</div><div class="line">    <span class="keyword">with</span> open(<span class="string">"output.txt"</span>, <span class="string">"w"</span>) <span class="keyword">as</span> f:</div><div class="line">        f.write(name)</div></pre></td></tr></table></figure>
+<p>当然，把 unicode 字符串正确地写入文件不止一种方式，但原理是一样的，这里不再介绍，把字符串写入数据库，传输到网络都是同样的原理</p>
+<h2 id="UnicodeDecodeError"><a href="#UnicodeDecodeError" class="headerlink" title="UnicodeDecodeError"></a>UnicodeDecodeError</h2><p>UnicodeDecodeError 发生在 str 类型的字节序列解码成 unicode 类型的字符串时</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>a = <span class="string">u"禅"</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>a</div><div class="line"><span class="string">u'\u7985'</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>b = a.encode(<span class="string">"utf-8"</span>)</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>b</div><div class="line"><span class="string">'\xe7\xa6\x85'</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>b.decode(<span class="string">"gbk"</span>)</div><div class="line">Traceback (most recent call last):</div><div class="line">  File <span class="string">"&lt;stdin&gt;"</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</div><div class="line">UnicodeDecodeError: <span class="string">'gbk'</span> codec can<span class="string">'t decode byte 0x85 in position 2: incomplete multibyte sequence</span></div></pre></td></tr></table></figure>
+<p>把一个经过 UTF-8 编码后生成的字节序列 ‘\xe7\xa6\x85’ 再用 GBK 解码转换成 unicode 字符串时，出现 UnicodeDecodeError，因为 （对于中文字符）GBK 编码只占用两个字节，而 UTF-8 占用3个字节，用 GBK 转换时，还多出一个字节，因此它没法解析。避免 UnicodeDecodeError 的关键是保持 编码和解码时用的编码类型一致。</p>
+<p>这也回答了文章开头说的字符 “禅”，保存到文件中有可能占3个字节，有可能占2个字节，具体处决于 encode 的时候指定的编码格式是什么。</p>
+<p>再举一个 UnicodeDecodeError 的例子</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; x = u"Python"</div><div class="line">&gt;&gt;&gt; y = "之禅"</div><div class="line">&gt;&gt;&gt; x + y</div><div class="line">Traceback (most recent call last):</div><div class="line">  File "&lt;stdin&gt;", line 1, in &lt;module&gt;</div><div class="line">UnicodeDecodeError: 'ascii' codec can't decode byte 0xe4 in position 0: ordinal not in range(128)</div><div class="line">&gt;&gt;&gt;</div></pre></td></tr></table></figure>
+<p>str 与 unicode 字符串 执行 + 操作是，Python 会把 str 类型的字节序列隐式地转换成（解码）成 和 x 一样的 unicode 类型，但Python是使用默认的 ascii 编码来转换的，而 ASCII 中不包含中文，所以报错了。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>y.decode(<span class="string">'ascii'</span>)</div><div class="line">Traceback (most recent call last):</div><div class="line">  File <span class="string">"&lt;stdin&gt;"</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</div><div class="line">UnicodeDecodeError: <span class="string">'ascii'</span> codec can<span class="string">'t decode byte 0xe4 in position 0: ordinal not in range(128)</span></div></pre></td></tr></table></figure>
+<p>正确地方式应该是显示地把 y 用 UTF-8 或者 GBK 进行解码。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>x = <span class="string">u"Python"</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>y = <span class="string">"之禅"</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>y = y.decode(<span class="string">"utf-8"</span>)</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>x + y</div><div class="line"><span class="string">u'Python\u4e4b\u7985'</span></div></pre></td></tr></table></figure>
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+    <div class="jiathis_style">
+    <span class="jiathis_txt">分享到：</span>
+    <!--a class="jiathis_button_qzone">QQ空间</a-->
+    <a class="jiathis_button_tsina">新浪微博</a>
+    <!--a class="jiathis_button_tqq">腾讯微博</a-->
+    <a class="jiathis_button_weixin">微信</a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+    <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<style>
+    .jiathis_style div:first-child:not(.jiadiv_01) {
+        width: auto !important;
+        border: none !important;
+    }
+    .jiathis_style .jiadiv_01 {
+        margin: 10px 0;
+        border-radius: 4px;
+        border: #e1e1e1 solid 1px;
+    }
+    .jiathis_style .jiadiv_01 div:first-child {
+        display: none;
+    }
+    .jiathis_style .jiadiv_02 {
+        padding: 7px 0 !important;
+    }
+    .jiathis_style .jiadiv_02 .jiatitle {
+        width: 85px;
+        border: none;
+        height: auto;
+        margin: 3px 10px;
+        padding: 6px 10px;
+        border-radius: 4px;
+    }
+    .jiathis_style .jiadiv_02 .jiatitle:hover {
+        border: none;
+    }
+    .jiathis_style .jiadiv_02 .jiatitle:nth-child(even) {
+        margin-left: 0;
+    }
+    .jiathis_style .jtico:hover {
+        opacity: 1;
+    }
+    .jiathis_style .ckepopBottom,
+    .jiathis_style .centerBottom {
+        width: auto !important;
+        padding: 5px;
+        background: #f7f7f7;
+    }
+</style>
+
+
+
+</div>
+
+            
+    
+        <a href="http://www.vimiix.com/2017/03/28/Python-py2中字符与字节之间的编解码.html#comments" class="article-comment-link">评论</a>
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2017/03/31/Python-Introduction-of-tuple-and-dict.html" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">上一篇</strong>
+            <div class="article-nav-title">
+                
+                    Python-对于元祖和字典的认识
+                
+            </div>
+        </a>
+    
+    
+        <a href="/2017/03/15/Python-SyntaxError-Non-ASCII-character-e8-in.html" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">下一篇</strong>
+            <div class="article-nav-title">Python-SyntaxError:Non-ASCII character &#39;\e8&#39; in....</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    <section id="comments">
+    
+        
+	<div id="commentContainer"></div>
+
+    
+    </section>
+
+</section>
+            
+                <aside id="sidebar">
+   
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title" style="color:#CD0000">最新文章</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/06/01/Python-Python-multiversion-dev-Anaconda.html" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://omfis13un.bkt.clouddn.com/conda.png)" alt="Python||使用Anaconda完成Python多环境配置" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Python/">Python</a></p>
+                            <p class="item-title"><a href="/2017/06/01/Python-Python-multiversion-dev-Anaconda.html" class="title">Python||使用Anaconda完成Python多环境配置</a></p>
+                            <p class="item-date"><time datetime="2017-06-01T01:53:54.000Z" itemprop="datePublished">2017-06-01</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/05/25/Python-pyCon2017-keynotes.html" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://omfis13un.bkt.clouddn.com/logo-sitemasthead.gif)" alt="[福利]PyCon2017全部演讲视频汇总" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Python/">Python</a></p>
+                            <p class="item-title"><a href="/2017/05/25/Python-pyCon2017-keynotes.html" class="title">[福利]PyCon2017全部演讲视频汇总</a></p>
+                            <p class="item-date"><time datetime="2017-05-25T15:56:55.000Z" itemprop="datePublished">2017-05-25</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/05/12/Python-Print-function.html" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Python/">Python</a></p>
+                            <p class="item-title"><a href="/2017/05/12/Python-Print-function.html" class="title">Python-from __future__ import print_function</a></p>
+                            <p class="item-date"><time datetime="2017-05-12T06:55:03.000Z" itemprop="datePublished">2017-05-12</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/05/11/Product-pyCSDNDailySpider.html" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://omfis13un.bkt.clouddn.com/pyCSDNDailySpider.png)" alt="Product-一个小爬虫pyCSDNDailySpider" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Product/">Product</a></p>
+                            <p class="item-title"><a href="/2017/05/11/Product-pyCSDNDailySpider.html" class="title">Product-一个小爬虫pyCSDNDailySpider</a></p>
+                            <p class="item-date"><time datetime="2017-05-10T16:11:03.000Z" itemprop="datePublished">2017-05-11</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/05/04/Python-How-to-use-eval.html" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://omfis13un.bkt.clouddn.com/python-eval.jpg)" alt="【转】Python中eval的强大与潜在风险" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Python/">Python</a></p>
+                            <p class="item-title"><a href="/2017/05/04/Python-How-to-use-eval.html" class="title">【转】Python中eval的强大与潜在风险</a></p>
+                            <p class="item-date"><time datetime="2017-05-04T15:57:34.000Z" itemprop="datePublished">2017-05-04</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title" style="color:#CD0000">分类</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Product/">Product</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔/">随笔</a><span class="category-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title" style="color:#CD0000">归档</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">6</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title" style="color:#CD0000">标签云</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/Anaconda/" style="font-size: 10px;">Anaconda</a> <a href="/tags/Linux/" style="font-size: 16.67px;">Linux</a> <a href="/tags/MySQL/" style="font-size: 10px;">MySQL</a> <a href="/tags/MySQLdb/" style="font-size: 10px;">MySQLdb</a> <a href="/tags/PyCon2017/" style="font-size: 10px;">PyCon2017</a> <a href="/tags/Python/" style="font-size: 20px;">Python</a> <a href="/tags/SyntaxError/" style="font-size: 13.33px;">SyntaxError</a> <a href="/tags/branch/" style="font-size: 10px;">branch</a> <a href="/tags/close/" style="font-size: 10px;">close</a> <a href="/tags/closure/" style="font-size: 10px;">closure</a> <a href="/tags/dict/" style="font-size: 10px;">dict</a> <a href="/tags/eval/" style="font-size: 10px;">eval</a> <a href="/tags/file/" style="font-size: 10px;">file</a> <a href="/tags/filter/" style="font-size: 10px;">filter</a> <a href="/tags/flow-control/" style="font-size: 10px;">flow control</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/map/" style="font-size: 10px;">map</a> <a href="/tags/open/" style="font-size: 10px;">open</a> <a href="/tags/operators/" style="font-size: 10px;">operators</a> <a href="/tags/reduce/" style="font-size: 10px;">reduce</a> <a href="/tags/rhel7-2/" style="font-size: 10px;">rhel7.2</a> <a href="/tags/rpm/" style="font-size: 10px;">rpm</a> <a href="/tags/source-code/" style="font-size: 13.33px;">source code</a> <a href="/tags/tuple/" style="font-size: 10px;">tuple</a> <a href="/tags/yum/" style="font-size: 10px;">yum</a> <a href="/tags/操作系统/" style="font-size: 10px;">操作系统</a> <a href="/tags/随笔/" style="font-size: 10px;">随笔</a>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title" style="color:#CD0000">友情链接</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="http://soledadmg.com">soledadmg</a>
+                    </li>
+                
+                    <li>
+                        <a href="http://linhut.cn">林小屋博客</a>
+                    </li>
+                
+                    <li>
+                        <a href="http://www.python.org">python官网</a>
+                    </li>
+                
+                    <li>
+                        <a href="http://hexo.io">Hexo</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+            
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2017 Vimiix&nbsp
+            页面基于 <a href="http://hexo.io/" target="_blank">Hexo</a>搭建. 采用<a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>主题。
+<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1261445492'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1261445492%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script>
+
+
+
+        </div>
+    </div>
+</footer>
+        
+    
+	<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+	<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+	<script>
+		var gitment = new Gitment({
+			owner: 'vimiix',
+			repo: 'vimiix.github.io',
+			oauth: {
+				client_id: 'abd8e4f14a1823b2146f',
+				client_secret: '4ffc7b300f732364340dd9fd141938147d8a73e5',
+			},
+		})
+		gitment.render('commentContainer')
+	</script>
+	
+
+
+    
+        <script src="/vendor/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/vendor/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/vendor/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/vendor/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/vendor/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/vendor/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/vendor/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/vendor/lightgallery/js/lg-share.min.js"></script>
+        <script src="/vendor/lightgallery/js/lg-video.min.js"></script>
+    
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>

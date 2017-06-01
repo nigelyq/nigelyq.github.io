@@ -1,0 +1,416 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+
+    
+  <url>
+    <loc>http://www.vimiix.com/2017/06/01/Python-Python-multiversion-dev-Anaconda.html</loc>
+    <lastmod>2017-06-01T04:24:29.222Z</lastmod>
+    <data>
+        <display>
+        <title>Python||使用Anaconda完成Python多环境配置</title>
+        <pubTime>2017-06-01T01:53:54.000Z</pubTime>
+        
+        <tag>Python</tag>
+         
+        <tag>Anaconda</tag>
+         
+         
+           
+             
+              <breadCrumb title="Python" url="http://www.vimiix.com/categories/Python/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.vimiix.com/2017/03/13/Linux-%E8%BD%AF%E4%BB%B6%E5%8C%85%E7%AE%A1%E7%90%86%EF%BC%88rpm%EF%BC%8Cyum%EF%BC%89.html</loc>
+    <lastmod>2017-05-25T17:07:50.417Z</lastmod>
+    <data>
+        <display>
+        <title>Linux-软件包管理</title>
+        <pubTime>2017-03-13T14:41:08.000Z</pubTime>
+        
+        <tag>Linux</tag>
+         
+        <tag>rpm</tag>
+         
+        <tag>yum</tag>
+         
+         
+           
+             
+              <breadCrumb title="Linux" url="http://www.vimiix.com/categories/Linux/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.vimiix.com/2017/03/08/Linux-rhel7-2%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85.html</loc>
+    <lastmod>2017-05-25T17:07:30.257Z</lastmod>
+    <data>
+        <display>
+        <title>Linux-rhel7.2操作系统安装</title>
+        <pubTime>2017-03-08T15:00:31.000Z</pubTime>
+        
+        <tag>Linux</tag>
+         
+        <tag>rhel7.2</tag>
+         
+        <tag>操作系统</tag>
+         
+         
+           
+             
+              <breadCrumb title="Linux" url="http://www.vimiix.com/categories/Linux/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.vimiix.com/2017/03/08/Linux-git-branch%E7%94%A8%E6%B3%95%EF%BC%88%E6%9F%A5%E7%9C%8B%E3%80%81%E6%96%B0%E5%BB%BA%E3%80%81%E5%88%A0%E9%99%A4%E3%80%81%E9%87%8D%E5%91%BD%E5%90%8D%EF%BC%89.html</loc>
+    <lastmod>2017-05-25T17:07:13.438Z</lastmod>
+    <data>
+        <display>
+        <title>Linux-git branch用法（查看、新建、删除、重命名）</title>
+        <pubTime>2017-03-08T02:41:08.000Z</pubTime>
+        
+        <tag>Linux</tag>
+         
+        <tag>git</tag>
+         
+        <tag>branch</tag>
+         
+         
+           
+             
+              <breadCrumb title="Linux" url="http://www.vimiix.com/categories/Linux/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.vimiix.com/2017/03/28/Python-py2%E4%B8%AD%E5%AD%97%E7%AC%A6%E4%B8%8E%E5%AD%97%E8%8A%82%E4%B9%8B%E9%97%B4%E7%9A%84%E7%BC%96%E8%A7%A3%E7%A0%81.html</loc>
+    <lastmod>2017-05-25T17:06:53.884Z</lastmod>
+    <data>
+        <display>
+        <title>Python-py2中字符与字节之间的编解码[转载]</title>
+        <pubTime>2017-03-28T05:56:18.000Z</pubTime>
+        
+        <tag>Python</tag>
+         
+        <tag>SyntaxError</tag>
+         
+         
+           
+             
+              <breadCrumb title="Python" url="http://www.vimiix.com/categories/Python/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.vimiix.com/2017/05/25/Python-pyCon2017-keynotes.html</loc>
+    <lastmod>2017-05-25T17:04:15.431Z</lastmod>
+    <data>
+        <display>
+        <title>[福利]PyCon2017全部演讲视频汇总</title>
+        <pubTime>2017-05-25T15:56:55.000Z</pubTime>
+        
+        <tag>PyCon2017</tag>
+         
+         
+           
+             
+              <breadCrumb title="Python" url="http://www.vimiix.com/categories/Python/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.vimiix.com/2017/05/12/Python-Print-function.html</loc>
+    <lastmod>2017-05-12T07:25:01.882Z</lastmod>
+    <data>
+        <display>
+        <title>Python-from __future__ import print_function</title>
+        <pubTime>2017-05-12T06:55:03.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="Python" url="http://www.vimiix.com/categories/Python/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.vimiix.com/2017/05/11/Product-pyCSDNDailySpider.html</loc>
+    <lastmod>2017-05-10T16:57:46.500Z</lastmod>
+    <data>
+        <display>
+        <title>Product-一个小爬虫pyCSDNDailySpider</title>
+        <pubTime>2017-05-10T16:11:03.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="Product" url="http://www.vimiix.com/categories/Product/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.vimiix.com/2017/05/04/Python-How-to-use-eval.html</loc>
+    <lastmod>2017-05-05T02:43:09.854Z</lastmod>
+    <data>
+        <display>
+        <title>【转】Python中eval的强大与潜在风险</title>
+        <pubTime>2017-05-04T15:57:34.000Z</pubTime>
+        
+        <tag>Python</tag>
+         
+        <tag>eval</tag>
+         
+         
+           
+             
+              <breadCrumb title="Python" url="http://www.vimiix.com/categories/Python/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.vimiix.com/2017/04/26/Better-than-yesterday.html</loc>
+    <lastmod>2017-04-26T03:17:57.046Z</lastmod>
+    <data>
+        <display>
+        <title>【随笔】做一个比昨天的自己更优秀的人</title>
+        <pubTime>2017-04-26T02:17:49.000Z</pubTime>
+        
+        <tag>随笔</tag>
+         
+         
+           
+             
+              <breadCrumb title="随笔" url="http://www.vimiix.com/categories/%E9%9A%8F%E7%AC%94/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.vimiix.com/2017/04/20/Python-use-python-to-operate-MySQL.html</loc>
+    <lastmod>2017-04-21T01:56:59.096Z</lastmod>
+    <data>
+        <display>
+        <title>Python操作MySQL数据库</title>
+        <pubTime>2017-04-20T15:57:34.000Z</pubTime>
+        
+        <tag>Python</tag>
+         
+        <tag>source code</tag>
+         
+        <tag>MySQL</tag>
+         
+        <tag>MySQLdb</tag>
+         
+         
+           
+             
+              <breadCrumb title="Python" url="http://www.vimiix.com/categories/Python/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+    
+  <url>
+    <loc>http://www.vimiix.com/2017/04/13/Python-File-operation.html</loc>
+    <lastmod>2017-04-14T02:19:05.115Z</lastmod>
+    <data>
+        <display>
+        <title>Python-文件操作</title>
+        <pubTime>2017-04-13T07:50:34.000Z</pubTime>
+        
+        <tag>Python</tag>
+         
+        <tag>file</tag>
+         
+        <tag>open</tag>
+         
+        <tag>close</tag>
+         
+         
+           
+             
+              <breadCrumb title="Python" url="http://www.vimiix.com/categories/Python/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.vimiix.com/2017/04/09/Python-About-closure.html</loc>
+    <lastmod>2017-04-09T10:05:46.335Z</lastmod>
+    <data>
+        <display>
+        <title>Python-关于Python中闭包的一些理解</title>
+        <pubTime>2017-04-09T09:07:34.000Z</pubTime>
+        
+        <tag>closure</tag>
+         
+        <tag>Python</tag>
+         
+         
+           
+             
+              <breadCrumb title="Python" url="http://www.vimiix.com/categories/Python/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.vimiix.com/2017/04/05/Python-Self-service-shopping-machine.html</loc>
+    <lastmod>2017-04-09T09:42:43.084Z</lastmod>
+    <data>
+        <display>
+        <title>自助购物机交易源码</title>
+        <pubTime>2017-04-05T10:57:34.000Z</pubTime>
+        
+        <tag>Python</tag>
+         
+        <tag>source code</tag>
+         
+         
+           
+             
+              <breadCrumb title="Python" url="http://www.vimiix.com/categories/Python/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.vimiix.com/2017/04/01/Python-operators-and-flow-control.html</loc>
+    <lastmod>2017-04-09T09:42:27.602Z</lastmod>
+    <data>
+        <display>
+        <title>Python-运算符和流程控制</title>
+        <pubTime>2017-04-01T06:34:20.000Z</pubTime>
+        
+        <tag>Python</tag>
+         
+        <tag>flow control</tag>
+         
+        <tag>operators</tag>
+         
+         
+           
+             
+              <breadCrumb title="Python" url="http://www.vimiix.com/categories/Python/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.vimiix.com/2017/03/31/Python-Introduction-of-tuple-and-dict.html</loc>
+    <lastmod>2017-04-09T09:42:17.591Z</lastmod>
+    <data>
+        <display>
+        <title>Python-对于元祖和字典的认识</title>
+        <pubTime>2017-03-31T07:00:06.000Z</pubTime>
+        
+        <tag>Python</tag>
+         
+        <tag>tuple</tag>
+         
+        <tag>dict</tag>
+         
+         
+           
+             
+              <breadCrumb title="Python" url="http://www.vimiix.com/categories/Python/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.vimiix.com/2017/04/08/Python-Practice-by-using-higher-order-functions.html</loc>
+    <lastmod>2017-04-09T09:41:42.926Z</lastmod>
+    <data>
+        <display>
+        <title>Python-高阶函数习题练习</title>
+        <pubTime>2017-04-08T07:50:34.000Z</pubTime>
+        
+        <tag>Python</tag>
+         
+        <tag>map</tag>
+         
+        <tag>reduce</tag>
+         
+        <tag>filter</tag>
+         
+         
+           
+             
+              <breadCrumb title="Python" url="http://www.vimiix.com/categories/Python/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.vimiix.com/2017/03/15/Python-SyntaxError-Non-ASCII-character-e8-in.html</loc>
+    <lastmod>2017-03-28T06:02:26.861Z</lastmod>
+    <data>
+        <display>
+        <title>Python-SyntaxError:Non-ASCII character '\e8' in....</title>
+        <pubTime>2017-03-15T14:53:51.000Z</pubTime>
+        
+        <tag>Python</tag>
+         
+        <tag>SyntaxError</tag>
+         
+         
+           
+             
+              <breadCrumb title="Python" url="http://www.vimiix.com/categories/Python/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+    
+    
+    
+</urlset>

@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <meta charset="utf-8">
+    
+    <title>Python-文件操作 | Vimiix</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="打开文件在Pyhton中，使用open()函数打开文件，并返回文件对象，拿到这个文件对象，就可以读取或修改这个文件。open()是一个python内建函数，可以直接调用。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python-文件操作">
+<meta property="og:url" content="http://www.vimiix.com/2017/04/13/Python-File-operation.html">
+<meta property="og:site_name" content="Vimiix">
+<meta property="og:description" content="打开文件在Pyhton中，使用open()函数打开文件，并返回文件对象，拿到这个文件对象，就可以读取或修改这个文件。open()是一个python内建函数，可以直接调用。">
+<meta property="og:image" content="http://omfis13un.bkt.clouddn.com/file-operator.jpg">
+<meta property="og:updated_time" content="2017-04-14T02:19:05.115Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Python-文件操作">
+<meta name="twitter:description" content="打开文件在Pyhton中，使用open()函数打开文件，并返回文件对象，拿到这个文件对象，就可以读取或修改这个文件。open()是一个python内建函数，可以直接调用。">
+<meta name="twitter:image" content="http://omfis13un.bkt.clouddn.com/file-operator.jpg">
+    
+
+    
+
+    
+        <link rel="icon" href="/css/images/favicon.png" />
+    
+
+    <link rel="stylesheet" href="/vendor/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/vendor/open-sans/styles.css">
+    <link rel="stylesheet" href="/vendor/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/vendor/jquery/2.1.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/vendor/lightgallery/css/lightgallery.min.css">
+    
+    
+    
+    
+        <script>
+var _hmt = _hmt || [];
+(function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?6dd417889b493646e8af6f793152b918";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+    
+
+</head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                
+                <span class="site-title">Vimiix</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/.">主页</a>
+                
+                    <a class="main-nav-link" href="/archives">文章</a>
+                
+                    <a class="main-nav-link" href="/categories">分类</a>
+                
+                    <a class="main-nav-link" href="/tags">标签</a>
+                
+                    <a class="main-nav-link" href="/about">作者</a>
+                
+                    <a class="main-nav-link" href="https://github.com/vimiix">Github</a>
+                
+            </nav>
+            
+                
+                <nav id="sub-nav">
+                    <div class="profile" id="profile-nav">
+                        <a id="profile-anchor" href="javascript:;">
+                            <img class="avatar" src="/css/images/avatar.png" />
+                            <i class="fa fa-caret-down"></i>
+                        </a>
+                    </div>
+                </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要查找什么..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/.">主页</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">文章</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">分类</a></td>
+                
+                    <td><a class="main-nav-link" href="/tags">标签</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">作者</a></td>
+                
+                    <td><a class="main-nav-link" href="https://github.com/vimiix">Github</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+                
+
+<aside id="profile">
+    <div class="inner profile-inner">
+        <div class="base-info profile-block">
+            <img id="avatar" src="/css/images/avatar.png" />
+            <h2 id="name">Vimiix</h2>
+            <h3 id="title">程序员&amp;产品运营</h3>
+            <span id="location"><i class="fa fa-map-marker"></i>CSDN, Beijing, China</span>
+            <a id="follow" target="_blank" href="https://github.com/vimiix">关注</a>
+        </div>
+        <div class="article-info profile-block">
+            <div class="article-info-block">
+                18
+                <span>文章</span>
+            </div>
+            <div class="article-info-block">
+                27
+                <span>标签</span>
+            </div>
+        </div>
+        
+        <div class="profile-block social-links">
+            <table>
+                <tr>
+                    
+                    
+                    <td>
+                        <a href="https://github.com/vimiix" target="_blank" title="github" class=tooltip>
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="https://twitter.com/_vimiix" target="_blank" title="twitter" class=tooltip>
+                            <i class="fa fa-twitter"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="http://weibo.com/boynigel" target="_blank" title="weibo" class=tooltip>
+                            <i class="fa fa-weibo"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="http://wpa.qq.com/msgrd?v=3&uin=544472800&site=qq&menu=yes" target="_blank" title="qq" class=tooltip>
+                            <i class="fa fa-qq"></i>
+                        </a>
+                    </td>
+                    
+                </tr>
+            </table>
+        </div>
+        
+    </div>
+</aside>
+
+            
+            <section id="main"><article id="post-Python-File-operation" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+            Python-文件操作
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2017/04/13/Python-File-operation.html">
+            <time datetime="2017-04-13T07:50:34.000Z" itemprop="datePublished">2017-04-13</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/Python/">Python</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/Python/">Python</a>, <a class="tag-link" href="/tags/close/">close</a>, <a class="tag-link" href="/tags/file/">file</a>, <a class="tag-link" href="/tags/open/">open</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <p><img src="http://omfis13un.bkt.clouddn.com/file-operator.jpg" alt=""></p>
+<h2 id="打开文件"><a href="#打开文件" class="headerlink" title="打开文件"></a>打开文件</h2><p>在Pyhton中，使用<font color="red">open()</font>函数打开文件，并返回文件对象，拿到这个文件对象，就可以读取或修改这个文件。<font color="red">open()</font>是一个python内建函数，可以直接调用。</p>
+<a id="more"></a>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">#open()函数在python2.7的介绍</div><div class="line">Help on built-in function open in module __builtin__:</div><div class="line"></div><div class="line">open(...)</div><div class="line">    open(name[, mode[, buffering]]) -&gt; file object</div><div class="line">    </div><div class="line">    Open a file using the file() type, returns a file object.  This is the</div><div class="line">    preferred way to open a file.  See file.__doc__ for further information.</div></pre></td></tr></table></figure>
+<p>上面的介绍是在Python2.7中的介绍，python3中新增了很多参数，暂不需要了解。目前只需要关注前两个参数。</p>
+<p>第一个参数<font color="blue">name</font>：是传入的文件名，如果只是文件名，不带路径的话，Python会在当前文件夹中去寻找该文件并打开。</p>
+<p>第二个参数<font color="blue">mode</font>：指定文件打开的模式，默认为’r’</p>
+<center>文件的打开模式</center>
+
+<table>
+<thead>
+<tr>
+<th style="text-align:center">打开模式</th>
+<th style="text-align:center">对应操作</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">‘r’</td>
+<td style="text-align:center">只读方式打开文件，文件的指针将会放在文件的开头（默认）</td>
+</tr>
+<tr>
+<td style="text-align:center">‘w’</td>
+<td style="text-align:center">只写方式打开文件，如果该文件已存在则将其覆盖，如果该文件不存在，创建新文件</td>
+</tr>
+<tr>
+<td style="text-align:center">‘a’</td>
+<td style="text-align:center">追加方式打开文件。如果该文件已存在，文件指针将会放在文件的结尾，新的内容将会被写入到已有内容之后。如果该文件不存在，创建新文件并写入</td>
+</tr>
+<tr>
+<td style="text-align:center">‘r+’</td>
+<td style="text-align:center">打开一个文件用于读写,文件指针将会放在文件的开头</td>
+</tr>
+<tr>
+<td style="text-align:center">‘w+’</td>
+<td style="text-align:center">打开一个文件用于读写,如果该文件已存在则将其覆盖,如果该文件不存在，创建新文件</td>
+</tr>
+<tr>
+<td style="text-align:center">‘a+’</td>
+<td style="text-align:center">打开一个文件用于读写,如果该文件已存在，文件指针将会放在文件的结尾，文件打开时会是追加模式，如果该文件不存在，创建新文件用于读写</td>
+</tr>
+<tr>
+<td style="text-align:center">‘b’</td>
+<td style="text-align:center">以二进制模式打开文件</td>
+</tr>
+</tbody>
+</table>
+<p>示例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">f=open(<span class="string">'test.txt'</span>,<span class="string">'w'</span>)<span class="comment">#以只写方式打开文件test.txt</span></div><div class="line">f.close() <span class="comment">#关闭文件</span></div></pre></td></tr></table></figure>
+<p>1、执行open语句后没有报错，就说明文件被成功的打开了。</p>
+<p>2、调用close()方法关闭文件。文件使用完毕后必须关闭，因为文件对象会占用操作系统的资源，并且操作系统同一时间能打开的文件数量也是有限的</p>
+<h2 id="文件对象的方法"><a href="#文件对象的方法" class="headerlink" title="文件对象的方法"></a>文件对象的方法</h2><center> 常用的几个文件对象方法</center>
+
+<table>
+<thead>
+<tr>
+<th style="text-align:center">文件对象方法</th>
+<th style="text-align:center">对应操作</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">close()</td>
+<td style="text-align:center">关闭文件</td>
+</tr>
+<tr>
+<td style="text-align:center">read([size])</td>
+<td style="text-align:center">从文件中读取size个字符，没有给定size时，读取文件所有字符，并返回一个字符串</td>
+</tr>
+<tr>
+<td style="text-align:center">readline()</td>
+<td style="text-align:center">读取一行，遇到’\n’停止</td>
+</tr>
+<tr>
+<td style="text-align:center">readlines（）</td>
+<td style="text-align:center">一次读取所有内容，并按行返回list</td>
+</tr>
+<tr>
+<td style="text-align:center">write(str)</td>
+<td style="text-align:center">将字符串str写入文件</td>
+</tr>
+<tr>
+<td style="text-align:center">writelines(seq)</td>
+<td style="text-align:center">向文件写入字符串序列seq，seq应该是一个返回字符串的可迭代对象</td>
+</tr>
+<tr>
+<td style="text-align:center">seek(offset[, whence])</td>
+<td style="text-align:center">在文件中移动文件指针，从whence(0:文件起始位置，1:当前位置，2:文件末尾)偏移offset个字节</td>
+</tr>
+</tbody>
+</table>
+<h2 id="读文件操作优化（本段摘自廖雪峰教程-文件读写）"><a href="#读文件操作优化（本段摘自廖雪峰教程-文件读写）" class="headerlink" title="读文件操作优化（本段摘自廖雪峰教程-文件读写）"></a>读文件操作优化（本段摘自<a href="http://www.liaoxuefeng.com/wiki/001374738125095c955c1e6d8bb493182103fac9270762a000/001386820066616a77f826d876b46b9ac34cb5f34374f7a000" target="_blank" rel="external">廖雪峰教程-文件读写</a>）</h2><p>由于文件读写时都有可能产生<strong>IOError</strong>，一旦出错，后面的<strong>f.close()</strong>就不会调用。</p>
+<p>所以，为了保证无论是否出错都能正确地关闭文件，我们可以使用<strong>try … finally</strong>来实现：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">try</span>:</div><div class="line">    f = open(<span class="string">'/path/to/file'</span>, <span class="string">'r'</span>)</div><div class="line">    <span class="keyword">print</span> f.read()</div><div class="line"><span class="keyword">finally</span>:</div><div class="line">    <span class="keyword">if</span> f:</div><div class="line">        f.close()</div></pre></td></tr></table></figure>
+<p>但是每次都这么写实在太繁琐，所以，Python引入了<font color="red"><strong>with</strong></font>语句来自动帮我们调用close()方法：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">with</span> open(<span class="string">'/path/to/file'</span>, <span class="string">'r'</span>) <span class="keyword">as</span> f:</div><div class="line">    <span class="keyword">print</span> f.read()</div></pre></td></tr></table></figure>
+<p>这和前面的try … finally是一样的，但是代码更佳简洁，并且不必调用f.close()方法。</p>
+<p>调用read()会一次性读取文件的全部内容，如果文件有10G，内存就爆了，所以，要保险起见，可以反复调用read(size)方法，每次最多读取size个字节的内容。另外，调用readline()可以每次读取一行内容，调用readlines()一次读取所有内容并按行返回list。因此，要根据需要决定怎么调用。</p>
+<p>如果文件很小，read()一次性读取最方便；如果不能确定文件大小，反复调用read(size)比较保险；如果是配置文件，调用readlines()最方便：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> line <span class="keyword">in</span> f.readlines():</div><div class="line">    print(line.strip()) <span class="comment"># 把末尾的'\n'删掉</span></div></pre></td></tr></table></figure>
+<h2 id="文件的定位-seek-offset-whence"><a href="#文件的定位-seek-offset-whence" class="headerlink" title="文件的定位 seek(offset[, whence])"></a>文件的定位 seek(offset[, whence])</h2><p>当以不同的方式打开文件的时候，文件指针存在的位置是不同的，比如以’w’方式打开文件，文件指针是在文件起始位置，如果以’a’方式打开，文件指针是在文件末尾的。</p>
+<p>通过seek(offset[, whence])方法，就可以控制文件指针的位置，定位在我们需要的地方。</p>
+<p>参数offset表示从文件中移动offset个操作标记（文件指针），正往结束方向移动，负往开始方向移动。whence，就以whence设定的起始位为准，0代表从头开始，1代表当前位置，2代表文件最末尾位置。  </p>
+<p>实例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">#coding=utf-8</div><div class="line"></div><div class="line"># 打开一个foo.txt文件</div><div class="line">f = open(&quot;foo.txt&quot;, &quot;r+&quot;)</div><div class="line">print &quot;Name of the file: &quot;, f.name</div><div class="line"> </div><div class="line"># 假设文件中包含下面5行内容</div><div class="line"># This is 1st line</div><div class="line"># This is 2nd line</div><div class="line"># This is 3rd line</div><div class="line"># This is 4th line</div><div class="line"># This is 5th line</div><div class="line"> </div><div class="line">line = f.readline()</div><div class="line">print &quot;Read Line: %s&quot; % (line)</div><div class="line"> </div><div class="line"># 将文件指针移回起始位置</div><div class="line">f.seek(0, 0)</div><div class="line">line = f.readline()</div><div class="line">print &quot;Read Line: %s&quot; % (line)</div><div class="line"> </div><div class="line"># 关闭文件</div><div class="line">f.close()</div></pre></td></tr></table></figure>
+<p>执行结果：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">================== RESTART: C:/Users/vimiix/Desktop/test.py ==================</div><div class="line">Name of the file:  foo.txt</div><div class="line">Read Line: This <span class="keyword">is</span> <span class="number">1</span>st line</div><div class="line"></div><div class="line">Read Line: This <span class="keyword">is</span> <span class="number">1</span>st line</div><div class="line"></div><div class="line">&gt;&gt;&gt;</div></pre></td></tr></table></figure>
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+    <div class="jiathis_style">
+    <span class="jiathis_txt">分享到：</span>
+    <!--a class="jiathis_button_qzone">QQ空间</a-->
+    <a class="jiathis_button_tsina">新浪微博</a>
+    <!--a class="jiathis_button_tqq">腾讯微博</a-->
+    <a class="jiathis_button_weixin">微信</a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+    <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<style>
+    .jiathis_style div:first-child:not(.jiadiv_01) {
+        width: auto !important;
+        border: none !important;
+    }
+    .jiathis_style .jiadiv_01 {
+        margin: 10px 0;
+        border-radius: 4px;
+        border: #e1e1e1 solid 1px;
+    }
+    .jiathis_style .jiadiv_01 div:first-child {
+        display: none;
+    }
+    .jiathis_style .jiadiv_02 {
+        padding: 7px 0 !important;
+    }
+    .jiathis_style .jiadiv_02 .jiatitle {
+        width: 85px;
+        border: none;
+        height: auto;
+        margin: 3px 10px;
+        padding: 6px 10px;
+        border-radius: 4px;
+    }
+    .jiathis_style .jiadiv_02 .jiatitle:hover {
+        border: none;
+    }
+    .jiathis_style .jiadiv_02 .jiatitle:nth-child(even) {
+        margin-left: 0;
+    }
+    .jiathis_style .jtico:hover {
+        opacity: 1;
+    }
+    .jiathis_style .ckepopBottom,
+    .jiathis_style .centerBottom {
+        width: auto !important;
+        padding: 5px;
+        background: #f7f7f7;
+    }
+</style>
+
+
+
+</div>
+
+            
+    
+        <a href="http://www.vimiix.com/2017/04/13/Python-File-operation.html#comments" class="article-comment-link">评论</a>
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2017/04/20/Python-use-python-to-operate-MySQL.html" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">上一篇</strong>
+            <div class="article-nav-title">
+                
+                    Python操作MySQL数据库
+                
+            </div>
+        </a>
+    
+    
+        <a href="/2017/04/09/Python-About-closure.html" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">下一篇</strong>
+            <div class="article-nav-title">Python-关于Python中闭包的一些理解</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    <section id="comments">
+    
+        
+	<div id="commentContainer"></div>
+
+    
+    </section>
+
+</section>
+            
+                <aside id="sidebar">
+   
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title" style="color:#CD0000">最新文章</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/06/01/Python-Python-multiversion-dev-Anaconda.html" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://omfis13un.bkt.clouddn.com/conda.png)" alt="Python||使用Anaconda完成Python多环境配置" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Python/">Python</a></p>
+                            <p class="item-title"><a href="/2017/06/01/Python-Python-multiversion-dev-Anaconda.html" class="title">Python||使用Anaconda完成Python多环境配置</a></p>
+                            <p class="item-date"><time datetime="2017-06-01T01:53:54.000Z" itemprop="datePublished">2017-06-01</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/05/25/Python-pyCon2017-keynotes.html" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://omfis13un.bkt.clouddn.com/logo-sitemasthead.gif)" alt="[福利]PyCon2017全部演讲视频汇总" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Python/">Python</a></p>
+                            <p class="item-title"><a href="/2017/05/25/Python-pyCon2017-keynotes.html" class="title">[福利]PyCon2017全部演讲视频汇总</a></p>
+                            <p class="item-date"><time datetime="2017-05-25T15:56:55.000Z" itemprop="datePublished">2017-05-25</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/05/12/Python-Print-function.html" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Python/">Python</a></p>
+                            <p class="item-title"><a href="/2017/05/12/Python-Print-function.html" class="title">Python-from __future__ import print_function</a></p>
+                            <p class="item-date"><time datetime="2017-05-12T06:55:03.000Z" itemprop="datePublished">2017-05-12</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/05/11/Product-pyCSDNDailySpider.html" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://omfis13un.bkt.clouddn.com/pyCSDNDailySpider.png)" alt="Product-一个小爬虫pyCSDNDailySpider" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Product/">Product</a></p>
+                            <p class="item-title"><a href="/2017/05/11/Product-pyCSDNDailySpider.html" class="title">Product-一个小爬虫pyCSDNDailySpider</a></p>
+                            <p class="item-date"><time datetime="2017-05-10T16:11:03.000Z" itemprop="datePublished">2017-05-11</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/05/04/Python-How-to-use-eval.html" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://omfis13un.bkt.clouddn.com/python-eval.jpg)" alt="【转】Python中eval的强大与潜在风险" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Python/">Python</a></p>
+                            <p class="item-title"><a href="/2017/05/04/Python-How-to-use-eval.html" class="title">【转】Python中eval的强大与潜在风险</a></p>
+                            <p class="item-date"><time datetime="2017-05-04T15:57:34.000Z" itemprop="datePublished">2017-05-04</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title" style="color:#CD0000">分类</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Product/">Product</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔/">随笔</a><span class="category-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title" style="color:#CD0000">归档</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">6</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title" style="color:#CD0000">标签云</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/Anaconda/" style="font-size: 10px;">Anaconda</a> <a href="/tags/Linux/" style="font-size: 16.67px;">Linux</a> <a href="/tags/MySQL/" style="font-size: 10px;">MySQL</a> <a href="/tags/MySQLdb/" style="font-size: 10px;">MySQLdb</a> <a href="/tags/PyCon2017/" style="font-size: 10px;">PyCon2017</a> <a href="/tags/Python/" style="font-size: 20px;">Python</a> <a href="/tags/SyntaxError/" style="font-size: 13.33px;">SyntaxError</a> <a href="/tags/branch/" style="font-size: 10px;">branch</a> <a href="/tags/close/" style="font-size: 10px;">close</a> <a href="/tags/closure/" style="font-size: 10px;">closure</a> <a href="/tags/dict/" style="font-size: 10px;">dict</a> <a href="/tags/eval/" style="font-size: 10px;">eval</a> <a href="/tags/file/" style="font-size: 10px;">file</a> <a href="/tags/filter/" style="font-size: 10px;">filter</a> <a href="/tags/flow-control/" style="font-size: 10px;">flow control</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/map/" style="font-size: 10px;">map</a> <a href="/tags/open/" style="font-size: 10px;">open</a> <a href="/tags/operators/" style="font-size: 10px;">operators</a> <a href="/tags/reduce/" style="font-size: 10px;">reduce</a> <a href="/tags/rhel7-2/" style="font-size: 10px;">rhel7.2</a> <a href="/tags/rpm/" style="font-size: 10px;">rpm</a> <a href="/tags/source-code/" style="font-size: 13.33px;">source code</a> <a href="/tags/tuple/" style="font-size: 10px;">tuple</a> <a href="/tags/yum/" style="font-size: 10px;">yum</a> <a href="/tags/操作系统/" style="font-size: 10px;">操作系统</a> <a href="/tags/随笔/" style="font-size: 10px;">随笔</a>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title" style="color:#CD0000">友情链接</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="http://soledadmg.com">soledadmg</a>
+                    </li>
+                
+                    <li>
+                        <a href="http://linhut.cn">林小屋博客</a>
+                    </li>
+                
+                    <li>
+                        <a href="http://www.python.org">python官网</a>
+                    </li>
+                
+                    <li>
+                        <a href="http://hexo.io">Hexo</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+            
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2017 Vimiix&nbsp
+            页面基于 <a href="http://hexo.io/" target="_blank">Hexo</a>搭建. 采用<a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>主题。
+<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1261445492'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1261445492%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script>
+
+
+
+        </div>
+    </div>
+</footer>
+        
+    
+	<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+	<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+	<script>
+		var gitment = new Gitment({
+			owner: 'vimiix',
+			repo: 'vimiix.github.io',
+			oauth: {
+				client_id: 'abd8e4f14a1823b2146f',
+				client_secret: '4ffc7b300f732364340dd9fd141938147d8a73e5',
+			},
+		})
+		gitment.render('commentContainer')
+	</script>
+	
+
+
+    
+        <script src="/vendor/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/vendor/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/vendor/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/vendor/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/vendor/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/vendor/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/vendor/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/vendor/lightgallery/js/lg-share.min.js"></script>
+        <script src="/vendor/lightgallery/js/lg-video.min.js"></script>
+    
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>

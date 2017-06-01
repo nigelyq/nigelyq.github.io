@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <meta charset="utf-8">
+    
+    <title>Python-运算符和流程控制 | Vimiix</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="随手笔记，本篇介绍了python中的各种运算符以及2种流程控制语句。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python-运算符和流程控制">
+<meta property="og:url" content="http://www.vimiix.com/2017/04/01/Python-operators-and-flow-control.html">
+<meta property="og:site_name" content="Vimiix">
+<meta property="og:description" content="随手笔记，本篇介绍了python中的各种运算符以及2种流程控制语句。">
+<meta property="og:image" content="http://omfis13un.bkt.clouddn.com/operator-flow-control.jpg">
+<meta property="og:updated_time" content="2017-04-09T09:42:27.602Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Python-运算符和流程控制">
+<meta name="twitter:description" content="随手笔记，本篇介绍了python中的各种运算符以及2种流程控制语句。">
+<meta name="twitter:image" content="http://omfis13un.bkt.clouddn.com/operator-flow-control.jpg">
+    
+
+    
+
+    
+        <link rel="icon" href="/css/images/favicon.png" />
+    
+
+    <link rel="stylesheet" href="/vendor/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/vendor/open-sans/styles.css">
+    <link rel="stylesheet" href="/vendor/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/vendor/jquery/2.1.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/vendor/lightgallery/css/lightgallery.min.css">
+    
+    
+    
+    
+        <script>
+var _hmt = _hmt || [];
+(function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?6dd417889b493646e8af6f793152b918";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+    
+
+</head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                
+                <span class="site-title">Vimiix</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/.">主页</a>
+                
+                    <a class="main-nav-link" href="/archives">文章</a>
+                
+                    <a class="main-nav-link" href="/categories">分类</a>
+                
+                    <a class="main-nav-link" href="/tags">标签</a>
+                
+                    <a class="main-nav-link" href="/about">作者</a>
+                
+                    <a class="main-nav-link" href="https://github.com/vimiix">Github</a>
+                
+            </nav>
+            
+                
+                <nav id="sub-nav">
+                    <div class="profile" id="profile-nav">
+                        <a id="profile-anchor" href="javascript:;">
+                            <img class="avatar" src="/css/images/avatar.png" />
+                            <i class="fa fa-caret-down"></i>
+                        </a>
+                    </div>
+                </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要查找什么..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/.">主页</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">文章</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">分类</a></td>
+                
+                    <td><a class="main-nav-link" href="/tags">标签</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">作者</a></td>
+                
+                    <td><a class="main-nav-link" href="https://github.com/vimiix">Github</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+                
+
+<aside id="profile">
+    <div class="inner profile-inner">
+        <div class="base-info profile-block">
+            <img id="avatar" src="/css/images/avatar.png" />
+            <h2 id="name">Vimiix</h2>
+            <h3 id="title">程序员&amp;产品运营</h3>
+            <span id="location"><i class="fa fa-map-marker"></i>CSDN, Beijing, China</span>
+            <a id="follow" target="_blank" href="https://github.com/vimiix">关注</a>
+        </div>
+        <div class="article-info profile-block">
+            <div class="article-info-block">
+                18
+                <span>文章</span>
+            </div>
+            <div class="article-info-block">
+                27
+                <span>标签</span>
+            </div>
+        </div>
+        
+        <div class="profile-block social-links">
+            <table>
+                <tr>
+                    
+                    
+                    <td>
+                        <a href="https://github.com/vimiix" target="_blank" title="github" class=tooltip>
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="https://twitter.com/_vimiix" target="_blank" title="twitter" class=tooltip>
+                            <i class="fa fa-twitter"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="http://weibo.com/boynigel" target="_blank" title="weibo" class=tooltip>
+                            <i class="fa fa-weibo"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="http://wpa.qq.com/msgrd?v=3&uin=544472800&site=qq&menu=yes" target="_blank" title="qq" class=tooltip>
+                            <i class="fa fa-qq"></i>
+                        </a>
+                    </td>
+                    
+                </tr>
+            </table>
+        </div>
+        
+    </div>
+</aside>
+
+            
+            <section id="main"><article id="post-Python-operators-and-flow-control" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+            Python-运算符和流程控制
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2017/04/01/Python-operators-and-flow-control.html">
+            <time datetime="2017-04-01T06:34:20.000Z" itemprop="datePublished">2017-04-01</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/Python/">Python</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/Python/">Python</a>, <a class="tag-link" href="/tags/flow-control/">flow control</a>, <a class="tag-link" href="/tags/operators/">operators</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <p><img src="http://omfis13un.bkt.clouddn.com/operator-flow-control.jpg" alt=""></p>
+<p>随手笔记，本篇介绍了python中的各种运算符以及2种流程控制语句。</p>
+<a id="more"></a>
+<h2 id="Python中的运算符"><a href="#Python中的运算符" class="headerlink" title="Python中的运算符"></a>Python中的运算符</h2><h3 id="算术运算符"><a href="#算术运算符" class="headerlink" title="算术运算符"></a>算术运算符</h3><table>
+<thead>
+<tr>
+<th style="text-align:center">运算符</th>
+<th style="text-align:center">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">+</td>
+<td style="text-align:center">加</td>
+</tr>
+<tr>
+<td style="text-align:center">-</td>
+<td style="text-align:center">减</td>
+</tr>
+<tr>
+<td style="text-align:center">*</td>
+<td style="text-align:center">乘</td>
+</tr>
+<tr>
+<td style="text-align:center">/</td>
+<td style="text-align:center">除-Py2中9/2输出4,Py3中9/2输出4.5</td>
+</tr>
+<tr>
+<td style="text-align:center">%</td>
+<td style="text-align:center">取余（或者叫取模），返回除法的余数</td>
+</tr>
+<tr>
+<td style="text-align:center">**</td>
+<td style="text-align:center">幂-x**y，x的y次幂</td>
+</tr>
+<tr>
+<td style="text-align:center">//</td>
+<td style="text-align:center">取整（地板除）-返回商的整数部分，<br><font color="red">注意负数的取整，向左取整</font></td>
+</tr>
+</tbody>
+</table>
+<h3 id="比较（关系）运算符，运算结果为布尔值"><a href="#比较（关系）运算符，运算结果为布尔值" class="headerlink" title="比较（关系）运算符，运算结果为布尔值"></a>比较（关系）运算符，运算结果为布尔值</h3><table>
+<thead>
+<tr>
+<th style="text-align:center">运算符</th>
+<th style="text-align:center">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">==</td>
+<td style="text-align:center">等于-比较对象是否相等</td>
+</tr>
+<tr>
+<td style="text-align:center">!=</td>
+<td style="text-align:center">不等于</td>
+</tr>
+<tr>
+<td style="text-align:center">&gt;</td>
+<td style="text-align:center">大于</td>
+</tr>
+<tr>
+<td style="text-align:center">&lt;</td>
+<td style="text-align:center">小于</td>
+</tr>
+<tr>
+<td style="text-align:center">&gt;=</td>
+<td style="text-align:center">大于等于</td>
+</tr>
+<tr>
+<td style="text-align:center">&lt;=</td>
+<td style="text-align:center">小于等于</td>
+</tr>
+</tbody>
+</table>
+<h3 id="赋值运算符"><a href="#赋值运算符" class="headerlink" title="赋值运算符"></a>赋值运算符</h3><table>
+<thead>
+<tr>
+<th style="text-align:center">运算符</th>
+<th style="text-align:center">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">=</td>
+<td style="text-align:center">赋值</td>
+</tr>
+<tr>
+<td style="text-align:center">+=</td>
+<td style="text-align:center">a+=b 等效于 a=a+b</td>
+</tr>
+<tr>
+<td style="text-align:center">-=</td>
+<td style="text-align:center">a-=b 等效于 a=a-b</td>
+</tr>
+<tr>
+<td style="text-align:center">*=</td>
+<td style="text-align:center">a<em>=b 等效于 a=a</em>b</td>
+</tr>
+<tr>
+<td style="text-align:center">/=</td>
+<td style="text-align:center">a/=b 等效于 a=a/b</td>
+</tr>
+<tr>
+<td style="text-align:center">%=</td>
+<td style="text-align:center">a%=b 等效于 a=a%b</td>
+</tr>
+<tr>
+<td style="text-align:center">&#42;&#42;=</td>
+<td style="text-align:center">a&#42;&#42;=b 等效于 a=a&#42;&#42;b</td>
+</tr>
+<tr>
+<td style="text-align:center">//=</td>
+<td style="text-align:center">a//=b 等效于 a=a//b</td>
+</tr>
+</tbody>
+</table>
+<h3 id="逻辑运算符"><a href="#逻辑运算符" class="headerlink" title="逻辑运算符"></a>逻辑运算符</h3><table>
+<thead>
+<tr>
+<th style="text-align:center">运算符</th>
+<th style="text-align:center">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">and</td>
+<td style="text-align:center">逻辑与（同真为真，输出后值，有假即假，输出第一个假值）</td>
+</tr>
+<tr>
+<td style="text-align:center">or</td>
+<td style="text-align:center">逻辑或（同假为假，输出前值，有真即真，输出第一个真值）</td>
+</tr>
+<tr>
+<td style="text-align:center">not</td>
+<td style="text-align:center">逻辑非，取反</td>
+</tr>
+</tbody>
+</table>
+<h3 id="位运算符"><a href="#位运算符" class="headerlink" title="位运算符"></a>位运算符</h3><table>
+<thead>
+<tr>
+<th style="text-align:center">运算符</th>
+<th style="text-align:center">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">&amp;</td>
+<td style="text-align:center">按位与</td>
+</tr>
+</tbody>
+</table>
+<p>说明：参与预算的两个值，转换为二进制，如果两个相应位都为1，则该位结果为1，否则为0</p>
+<p>栗子：计算 60 &amp; 13</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">十进制</th>
+<th style="text-align:center">二进制</th>
+<th style="text-align:center">十进制结果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">60</td>
+<td style="text-align:center">111100</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">13</td>
+<td style="text-align:center">001101</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center">001100</td>
+<td style="text-align:center">12</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">运算符</th>
+<th style="text-align:center">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">&#124;</td>
+<td style="text-align:center">按位或</td>
+</tr>
+</tbody>
+</table>
+<p>说明：转换为二进制，只要对应的两个位有一个1，则该位结果为1，否则为0</p>
+<p>栗子：计算 60 | 13</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">十进制</th>
+<th style="text-align:center">二进制</th>
+<th style="text-align:center">十进制结果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">60</td>
+<td style="text-align:center">111100</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">13</td>
+<td style="text-align:center">001101</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center">111101</td>
+<td style="text-align:center">61</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">运算符</th>
+<th style="text-align:center">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">^</td>
+<td style="text-align:center">按位异或：位相异结果为1</td>
+</tr>
+<tr>
+<td style="text-align:center">~</td>
+<td style="text-align:center">按位取反</td>
+</tr>
+<tr>
+<td style="text-align:center">&lt;&lt;</td>
+<td style="text-align:center">按位左移</td>
+</tr>
+<tr>
+<td style="text-align:center">&gt;&gt;</td>
+<td style="text-align:center">按位右移</td>
+</tr>
+</tbody>
+</table>
+<h3 id="成员运算符"><a href="#成员运算符" class="headerlink" title="成员运算符"></a>成员运算符</h3><table>
+<thead>
+<tr>
+<th style="text-align:center">运算符</th>
+<th style="text-align:center">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">in</td>
+<td style="text-align:center">如果在in后面的对象中找的到in前面的对象返回True,否则返回False</td>
+</tr>
+<tr>
+<td style="text-align:center">not in</td>
+<td style="text-align:center">找不到该成员返回True，否则返回False</td>
+</tr>
+</tbody>
+</table>
+<h3 id="身份运算符"><a href="#身份运算符" class="headerlink" title="身份运算符"></a>身份运算符</h3><table>
+<thead>
+<tr>
+<th style="text-align:center">运算符</th>
+<th style="text-align:center">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">is</td>
+<td style="text-align:center">is是判断两个标识符是不是引用自同一个对象（<font color="blue">理解：是否标记在同一块内存地址</font>）</td>
+</tr>
+<tr>
+<td style="text-align:center">is not</td>
+<td style="text-align:center">和is相反</td>
+</tr>
+</tbody>
+</table>
+<h5 id="python内存管理机制，对于创建变量的时候，是否重新malloc内存的临界点为-5-256-看下面的栗子："><a href="#python内存管理机制，对于创建变量的时候，是否重新malloc内存的临界点为-5-256-看下面的栗子：" class="headerlink" title="python内存管理机制，对于创建变量的时候，是否重新malloc内存的临界点为 -5~256 看下面的栗子："></a>python内存管理机制，对于创建变量的时候，是否重新malloc内存的临界点为 -5~256 看下面的栗子：</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>a=<span class="number">256</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>b=<span class="number">256</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>a <span class="keyword">is</span> b</div><div class="line"><span class="keyword">True</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>a=<span class="number">257</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>b=<span class="number">257</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>a <span class="keyword">is</span> b</div><div class="line"><span class="keyword">False</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>a=<span class="number">-5</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>b=<span class="number">-5</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>a <span class="keyword">is</span> b</div><div class="line"><span class="keyword">True</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>a = <span class="number">-6</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>b= <span class="number">-6</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>a <span class="keyword">is</span> b</div><div class="line"><span class="keyword">False</span></div></pre></td></tr></table></figure>
+<hr>
+
+<h2 id="流程控制"><a href="#流程控制" class="headerlink" title="流程控制"></a>流程控制</h2><h3 id="理解"><a href="#理解" class="headerlink" title="理解"></a>理解</h3><p>if判断语句：什么条件下干什么事</p>
+<p>for,while循环语句:在什么条件下，一直做某事</p>
+<h3 id="if流程语句"><a href="#if流程语句" class="headerlink" title="if流程语句"></a>if流程语句</h3><h5 id="语法："><a href="#语法：" class="headerlink" title="语法："></a>语法：</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> 条件语句：</div><div class="line">	执行代码<span class="number">1</span></div><div class="line"><span class="keyword">else</span>:</div><div class="line">	执行代码<span class="number">2</span></div></pre></td></tr></table></figure>
+<p>条件语句：必须是一个可以用bool值判断的</p>
+<h5 id="流程图："><a href="#流程图：" class="headerlink" title="流程图："></a>流程图：</h5><p><img src="http://omfis13un.bkt.clouddn.com/if-else.png" alt=""></p>
+<h5 id="用户登录实例："><a href="#用户登录实例：" class="headerlink" title="用户登录实例："></a>用户登录实例：</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#coding=utf-8</span></div><div class="line">username = <span class="string">'admin'</span> <span class="comment">#设置默认用户名</span></div><div class="line">password = <span class="string">'123'</span> <span class="comment">#设置默认密码</span></div><div class="line">user_input = raw_input(<span class="string">'Please input your name:'</span>) <span class="comment">#提示用户输入用户名</span></div><div class="line">passwd_input = raw_input(<span class="string">'Please input your password:'</span>) <span class="comment">#提示用户输入密码</span></div><div class="line"><span class="keyword">if</span> user_input == username <span class="keyword">and</span> passwd_input ==password: <span class="comment">#验证用户名和密码是否和默认值相同</span></div><div class="line">	<span class="keyword">print</span> <span class="string">'welcome %s login.'</span>%user_input</div><div class="line"><span class="keyword">else</span>:</div><div class="line">	<span class="keyword">print</span> <span class="string">'your name or password is wrong!'</span></div></pre></td></tr></table></figure>
+<h5 id="改进："><a href="#改进：" class="headerlink" title="改进："></a>改进：</h5><p>现在需要实现访客输入‘guest’后不需要输入密码，直接就可以登录进去；正常输入用户名的情况下还需要输入密码才能输入</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#coding=utf-8</span></div><div class="line">username = <span class="string">'admin'</span> <span class="comment">#设置默认用户名</span></div><div class="line">password = <span class="string">'123'</span> <span class="comment">#设置默认密码</span></div><div class="line">guest_name = <span class="string">'guest'</span></div><div class="line">user_input = raw_input(<span class="string">'Please input your name:'</span>) <span class="comment">#提示用户输入用户名</span></div><div class="line"><span class="keyword">if</span> user_input == guest_name:</div><div class="line">      <span class="keyword">print</span> <span class="string">'welcome %s login.'</span>%guest_name</div><div class="line"><span class="keyword">elif</span> user_input == username:</div><div class="line">      passwd_input = raw_input(<span class="string">'Please input your password:'</span>) <span class="comment">#提示用户输入密码</span></div><div class="line">      <span class="keyword">if</span> passwd_input ==password: <span class="comment">#验证用户名和密码是否和默认值相同</span></div><div class="line">            <span class="keyword">print</span> <span class="string">'welcome %s login.'</span>%user_input</div><div class="line"><span class="keyword">else</span>:</div><div class="line">      <span class="keyword">print</span> <span class="string">'your name or password is wrong!'</span></div></pre></td></tr></table></figure>
+<p>运行结果：<br><img src="http://omfis13un.bkt.clouddn.com/login.png" alt=""></p>
+<h3 id="while循环"><a href="#while循环" class="headerlink" title="while循环"></a>while循环</h3><h5 id="语法：-1"><a href="#语法：-1" class="headerlink" title="语法："></a>语法：</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">while</span> 判断条件：</div><div class="line">	循环语句</div></pre></td></tr></table></figure>
+<h5 id="实例1：计算1到100的和"><a href="#实例1：计算1到100的和" class="headerlink" title="实例1：计算1到100的和"></a>实例1：计算1到100的和</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#coding=utf-8</span></div><div class="line">i = <span class="number">1</span></div><div class="line">sum = <span class="number">0</span></div><div class="line"><span class="keyword">while</span> i&lt;=<span class="number">100</span>:</div><div class="line">	sum += i</div><div class="line">	i+=<span class="number">1</span></div><div class="line"><span class="keyword">print</span> sum</div></pre></td></tr></table></figure>
+<h5 id="实例2：打印九九乘法表（while实现）"><a href="#实例2：打印九九乘法表（while实现）" class="headerlink" title="实例2：打印九九乘法表（while实现）"></a>实例2：打印九九乘法表（while实现）</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#coding=utf-8</span></div><div class="line">i = <span class="number">1</span></div><div class="line">j = <span class="number">1</span></div><div class="line"><span class="keyword">while</span> i &lt; <span class="number">10</span>:</div><div class="line">      <span class="keyword">while</span> j &lt;= i:</div><div class="line">            <span class="keyword">if</span>( j == i):</div><div class="line">                  <span class="keyword">print</span> i,<span class="string">'x'</span>,j,<span class="string">'='</span>,i*j</div><div class="line">            <span class="keyword">else</span>:</div><div class="line">                  <span class="keyword">print</span> i,<span class="string">'x'</span>,j,<span class="string">'='</span>,i*j,<span class="string">' '</span>,</div><div class="line">            j += <span class="number">1</span></div><div class="line">      i += <span class="number">1</span></div><div class="line">      j = <span class="number">1</span></div></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<p><img src="http://omfis13un.bkt.clouddn.com/9x9.png" alt=""></p>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+    <div class="jiathis_style">
+    <span class="jiathis_txt">分享到：</span>
+    <!--a class="jiathis_button_qzone">QQ空间</a-->
+    <a class="jiathis_button_tsina">新浪微博</a>
+    <!--a class="jiathis_button_tqq">腾讯微博</a-->
+    <a class="jiathis_button_weixin">微信</a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+    <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<style>
+    .jiathis_style div:first-child:not(.jiadiv_01) {
+        width: auto !important;
+        border: none !important;
+    }
+    .jiathis_style .jiadiv_01 {
+        margin: 10px 0;
+        border-radius: 4px;
+        border: #e1e1e1 solid 1px;
+    }
+    .jiathis_style .jiadiv_01 div:first-child {
+        display: none;
+    }
+    .jiathis_style .jiadiv_02 {
+        padding: 7px 0 !important;
+    }
+    .jiathis_style .jiadiv_02 .jiatitle {
+        width: 85px;
+        border: none;
+        height: auto;
+        margin: 3px 10px;
+        padding: 6px 10px;
+        border-radius: 4px;
+    }
+    .jiathis_style .jiadiv_02 .jiatitle:hover {
+        border: none;
+    }
+    .jiathis_style .jiadiv_02 .jiatitle:nth-child(even) {
+        margin-left: 0;
+    }
+    .jiathis_style .jtico:hover {
+        opacity: 1;
+    }
+    .jiathis_style .ckepopBottom,
+    .jiathis_style .centerBottom {
+        width: auto !important;
+        padding: 5px;
+        background: #f7f7f7;
+    }
+</style>
+
+
+
+</div>
+
+            
+    
+        <a href="http://www.vimiix.com/2017/04/01/Python-operators-and-flow-control.html#comments" class="article-comment-link">评论</a>
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2017/04/05/Python-Self-service-shopping-machine.html" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">上一篇</strong>
+            <div class="article-nav-title">
+                
+                    自助购物机交易源码
+                
+            </div>
+        </a>
+    
+    
+        <a href="/2017/03/31/Python-Introduction-of-tuple-and-dict.html" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">下一篇</strong>
+            <div class="article-nav-title">Python-对于元祖和字典的认识</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    <section id="comments">
+    
+        
+	<div id="commentContainer"></div>
+
+    
+    </section>
+
+</section>
+            
+                <aside id="sidebar">
+   
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title" style="color:#CD0000">最新文章</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/06/01/Python-Python-multiversion-dev-Anaconda.html" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://omfis13un.bkt.clouddn.com/conda.png)" alt="Python||使用Anaconda完成Python多环境配置" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Python/">Python</a></p>
+                            <p class="item-title"><a href="/2017/06/01/Python-Python-multiversion-dev-Anaconda.html" class="title">Python||使用Anaconda完成Python多环境配置</a></p>
+                            <p class="item-date"><time datetime="2017-06-01T01:53:54.000Z" itemprop="datePublished">2017-06-01</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/05/25/Python-pyCon2017-keynotes.html" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://omfis13un.bkt.clouddn.com/logo-sitemasthead.gif)" alt="[福利]PyCon2017全部演讲视频汇总" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Python/">Python</a></p>
+                            <p class="item-title"><a href="/2017/05/25/Python-pyCon2017-keynotes.html" class="title">[福利]PyCon2017全部演讲视频汇总</a></p>
+                            <p class="item-date"><time datetime="2017-05-25T15:56:55.000Z" itemprop="datePublished">2017-05-25</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/05/12/Python-Print-function.html" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Python/">Python</a></p>
+                            <p class="item-title"><a href="/2017/05/12/Python-Print-function.html" class="title">Python-from __future__ import print_function</a></p>
+                            <p class="item-date"><time datetime="2017-05-12T06:55:03.000Z" itemprop="datePublished">2017-05-12</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/05/11/Product-pyCSDNDailySpider.html" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://omfis13un.bkt.clouddn.com/pyCSDNDailySpider.png)" alt="Product-一个小爬虫pyCSDNDailySpider" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Product/">Product</a></p>
+                            <p class="item-title"><a href="/2017/05/11/Product-pyCSDNDailySpider.html" class="title">Product-一个小爬虫pyCSDNDailySpider</a></p>
+                            <p class="item-date"><time datetime="2017-05-10T16:11:03.000Z" itemprop="datePublished">2017-05-11</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/05/04/Python-How-to-use-eval.html" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://omfis13un.bkt.clouddn.com/python-eval.jpg)" alt="【转】Python中eval的强大与潜在风险" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Python/">Python</a></p>
+                            <p class="item-title"><a href="/2017/05/04/Python-How-to-use-eval.html" class="title">【转】Python中eval的强大与潜在风险</a></p>
+                            <p class="item-date"><time datetime="2017-05-04T15:57:34.000Z" itemprop="datePublished">2017-05-04</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title" style="color:#CD0000">分类</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Product/">Product</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔/">随笔</a><span class="category-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title" style="color:#CD0000">归档</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">6</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title" style="color:#CD0000">标签云</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/Anaconda/" style="font-size: 10px;">Anaconda</a> <a href="/tags/Linux/" style="font-size: 16.67px;">Linux</a> <a href="/tags/MySQL/" style="font-size: 10px;">MySQL</a> <a href="/tags/MySQLdb/" style="font-size: 10px;">MySQLdb</a> <a href="/tags/PyCon2017/" style="font-size: 10px;">PyCon2017</a> <a href="/tags/Python/" style="font-size: 20px;">Python</a> <a href="/tags/SyntaxError/" style="font-size: 13.33px;">SyntaxError</a> <a href="/tags/branch/" style="font-size: 10px;">branch</a> <a href="/tags/close/" style="font-size: 10px;">close</a> <a href="/tags/closure/" style="font-size: 10px;">closure</a> <a href="/tags/dict/" style="font-size: 10px;">dict</a> <a href="/tags/eval/" style="font-size: 10px;">eval</a> <a href="/tags/file/" style="font-size: 10px;">file</a> <a href="/tags/filter/" style="font-size: 10px;">filter</a> <a href="/tags/flow-control/" style="font-size: 10px;">flow control</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/map/" style="font-size: 10px;">map</a> <a href="/tags/open/" style="font-size: 10px;">open</a> <a href="/tags/operators/" style="font-size: 10px;">operators</a> <a href="/tags/reduce/" style="font-size: 10px;">reduce</a> <a href="/tags/rhel7-2/" style="font-size: 10px;">rhel7.2</a> <a href="/tags/rpm/" style="font-size: 10px;">rpm</a> <a href="/tags/source-code/" style="font-size: 13.33px;">source code</a> <a href="/tags/tuple/" style="font-size: 10px;">tuple</a> <a href="/tags/yum/" style="font-size: 10px;">yum</a> <a href="/tags/操作系统/" style="font-size: 10px;">操作系统</a> <a href="/tags/随笔/" style="font-size: 10px;">随笔</a>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title" style="color:#CD0000">友情链接</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="http://soledadmg.com">soledadmg</a>
+                    </li>
+                
+                    <li>
+                        <a href="http://linhut.cn">林小屋博客</a>
+                    </li>
+                
+                    <li>
+                        <a href="http://www.python.org">python官网</a>
+                    </li>
+                
+                    <li>
+                        <a href="http://hexo.io">Hexo</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+            
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2017 Vimiix&nbsp
+            页面基于 <a href="http://hexo.io/" target="_blank">Hexo</a>搭建. 采用<a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>主题。
+<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1261445492'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1261445492%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script>
+
+
+
+        </div>
+    </div>
+</footer>
+        
+    
+	<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+	<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+	<script>
+		var gitment = new Gitment({
+			owner: 'vimiix',
+			repo: 'vimiix.github.io',
+			oauth: {
+				client_id: 'abd8e4f14a1823b2146f',
+				client_secret: '4ffc7b300f732364340dd9fd141938147d8a73e5',
+			},
+		})
+		gitment.render('commentContainer')
+	</script>
+	
+
+
+    
+        <script src="/vendor/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/vendor/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/vendor/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/vendor/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/vendor/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/vendor/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/vendor/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/vendor/lightgallery/js/lg-share.min.js"></script>
+        <script src="/vendor/lightgallery/js/lg-video.min.js"></script>
+    
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>

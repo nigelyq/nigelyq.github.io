@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <meta charset="utf-8">
+    
+    <title>Python-高阶函数习题练习 | Vimiix</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="本文是针对map()，reduce()和filter()三个高阶函数的程序练习。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python-高阶函数习题练习">
+<meta property="og:url" content="http://www.vimiix.com/2017/04/08/Python-Practice-by-using-higher-order-functions.html">
+<meta property="og:site_name" content="Vimiix">
+<meta property="og:description" content="本文是针对map()，reduce()和filter()三个高阶函数的程序练习。">
+<meta property="og:image" content="http://omfis13un.bkt.clouddn.com/map-reduce-filter.jpg">
+<meta property="og:updated_time" content="2017-04-09T09:41:42.926Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Python-高阶函数习题练习">
+<meta name="twitter:description" content="本文是针对map()，reduce()和filter()三个高阶函数的程序练习。">
+<meta name="twitter:image" content="http://omfis13un.bkt.clouddn.com/map-reduce-filter.jpg">
+    
+
+    
+
+    
+        <link rel="icon" href="/css/images/favicon.png" />
+    
+
+    <link rel="stylesheet" href="/vendor/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/vendor/open-sans/styles.css">
+    <link rel="stylesheet" href="/vendor/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/vendor/jquery/2.1.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/vendor/lightgallery/css/lightgallery.min.css">
+    
+    
+    
+    
+        <script>
+var _hmt = _hmt || [];
+(function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?6dd417889b493646e8af6f793152b918";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+    
+
+</head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                
+                <span class="site-title">Vimiix</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/.">主页</a>
+                
+                    <a class="main-nav-link" href="/archives">文章</a>
+                
+                    <a class="main-nav-link" href="/categories">分类</a>
+                
+                    <a class="main-nav-link" href="/tags">标签</a>
+                
+                    <a class="main-nav-link" href="/about">作者</a>
+                
+                    <a class="main-nav-link" href="https://github.com/vimiix">Github</a>
+                
+            </nav>
+            
+                
+                <nav id="sub-nav">
+                    <div class="profile" id="profile-nav">
+                        <a id="profile-anchor" href="javascript:;">
+                            <img class="avatar" src="/css/images/avatar.png" />
+                            <i class="fa fa-caret-down"></i>
+                        </a>
+                    </div>
+                </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要查找什么..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/.">主页</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">文章</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">分类</a></td>
+                
+                    <td><a class="main-nav-link" href="/tags">标签</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">作者</a></td>
+                
+                    <td><a class="main-nav-link" href="https://github.com/vimiix">Github</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+                
+
+<aside id="profile">
+    <div class="inner profile-inner">
+        <div class="base-info profile-block">
+            <img id="avatar" src="/css/images/avatar.png" />
+            <h2 id="name">Vimiix</h2>
+            <h3 id="title">程序员&amp;产品运营</h3>
+            <span id="location"><i class="fa fa-map-marker"></i>CSDN, Beijing, China</span>
+            <a id="follow" target="_blank" href="https://github.com/vimiix">关注</a>
+        </div>
+        <div class="article-info profile-block">
+            <div class="article-info-block">
+                18
+                <span>文章</span>
+            </div>
+            <div class="article-info-block">
+                27
+                <span>标签</span>
+            </div>
+        </div>
+        
+        <div class="profile-block social-links">
+            <table>
+                <tr>
+                    
+                    
+                    <td>
+                        <a href="https://github.com/vimiix" target="_blank" title="github" class=tooltip>
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="https://twitter.com/_vimiix" target="_blank" title="twitter" class=tooltip>
+                            <i class="fa fa-twitter"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="http://weibo.com/boynigel" target="_blank" title="weibo" class=tooltip>
+                            <i class="fa fa-weibo"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="http://wpa.qq.com/msgrd?v=3&uin=544472800&site=qq&menu=yes" target="_blank" title="qq" class=tooltip>
+                            <i class="fa fa-qq"></i>
+                        </a>
+                    </td>
+                    
+                </tr>
+            </table>
+        </div>
+        
+    </div>
+</aside>
+
+            
+            <section id="main"><article id="post-Python-Practice-by-using-higher-order-functions" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+            Python-高阶函数习题练习
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2017/04/08/Python-Practice-by-using-higher-order-functions.html">
+            <time datetime="2017-04-08T07:50:34.000Z" itemprop="datePublished">2017-04-08</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/Python/">Python</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/Python/">Python</a>, <a class="tag-link" href="/tags/filter/">filter</a>, <a class="tag-link" href="/tags/map/">map</a>, <a class="tag-link" href="/tags/reduce/">reduce</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <p><img src="http://omfis13un.bkt.clouddn.com/map-reduce-filter.jpg" alt=""></p>
+<h5 id="本文是针对map-，reduce-和filter-三个高阶函数的程序练习。"><a href="#本文是针对map-，reduce-和filter-三个高阶函数的程序练习。" class="headerlink" title="本文是针对map()，reduce()和filter()三个高阶函数的程序练习。"></a>本文是针对map()，reduce()和filter()三个高阶函数的程序练习。</h5><a id="more"></a>
+<p>习题来自：<a href="http://www.liaoxuefeng.com/wiki/001374738125095c955c1e6d8bb493182103fac9270762a000/001386819873910807d8c322ca74d269c9f80f747330a52000" target="_blank" rel="external">廖雪峰的python2.7教程 - map/reduce</a></p>
+<h3 id="map-概念"><a href="#map-概念" class="headerlink" title="map()概念"></a>map()概念</h3><font color="red">map()</font>函数接收两个参数，一个是函数，一个是序列，map将传入的函数依次作用到序列的每个元素，并把结果作为新的列表返回。<br><br>##### 题目<br><br>&gt; 利用<font color="red">map()</font>函数，把用户输入的不规范的英文名字，变为首字母大写，其他小写的规范名字。<br>&gt; 例如输入：<font color="red">[‘adam’, ‘LISA’, ‘barT’]</font>，输出：<font color="red">[‘Adam’, ‘Lisa’, ‘Bart’]</font>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="function"><span class="keyword">def</span> <span class="title">test</span><span class="params">(name_list)</span>:</span></div><div class="line">	    print(map(<span class="keyword">lambda</span> name: name[<span class="number">0</span>].upper()+name[<span class="number">1</span>:].lower(), name_list))</div><div class="line">	</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>test([<span class="string">'adam'</span>,<span class="string">'LISA'</span>,<span class="string">'barT'</span>])</div><div class="line">[<span class="string">'Adam'</span>, <span class="string">'Lisa'</span>, <span class="string">'Bart'</span>]</div><div class="line">&gt;&gt;&gt;</div></pre></td></tr></table></figure>
+<h3 id="reduce-概念"><a href="#reduce-概念" class="headerlink" title="reduce()概念"></a>reduce()概念</h3><p><font color="red">reduce()</font>把一个函数作用在一个序列[x1, x2, x3…]上，这个函数必须接收两个参数，reduce把结果继续和序列的下一个元素做累积计算</p>
+<h5 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h5><blockquote>
+<p>Python提供的<font color="red">sum()</font>函数可以接受一个<strong>list</strong>并求和，请编写一个<font color="red">prod()</font>函数，可以接受一个list并利用<font color="red">reduce()</font>求积</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="function"><span class="keyword">def</span> <span class="title">prod</span><span class="params">(num_list)</span>:</span></div><div class="line">	    <span class="keyword">print</span> reduce(<span class="keyword">lambda</span> a,b : a*b , num_list)</div><div class="line"></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>prod([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>])</div><div class="line"><span class="number">24</span></div></pre></td></tr></table></figure>
+<h3 id="filter概念"><a href="#filter概念" class="headerlink" title="filter概念"></a>filter概念</h3><p><font color="red">filter()</font>接收一个函数和一个序列，filter()把传入的函数依次作用于每个元素，然后根据返回值是True还是False决定保留还是丢弃该元素</p>
+<h5 id="题目-1"><a href="#题目-1" class="headerlink" title="题目"></a>题目</h5><blockquote>
+<p>请尝试用<font color="red">filter()</font>删除1~100的素数</p>
+</blockquote>
+<p>概念补充： 素数，又称质数（prime number），有无限个。素数定义为在大于1的自然数中，除了1和它本身以外不再有其他因数的数称为质数</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#coding=utf-8</span></div><div class="line"></div><div class="line"><span class="comment">#判断是不是素数，不是返回True，是返回False</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">not_prime</span><span class="params">(num)</span>:</span></div><div class="line">      <span class="keyword">if</span>(num &lt; <span class="number">2</span>):</div><div class="line">            <span class="keyword">return</span> <span class="keyword">True</span></div><div class="line">      judge = <span class="number">2</span></div><div class="line">      <span class="keyword">while</span>(judge &lt; num):</div><div class="line">            <span class="keyword">if</span> num%judge == <span class="number">0</span>:</div><div class="line">                  <span class="keyword">return</span> <span class="keyword">True</span></div><div class="line">            judge += <span class="number">1</span></div><div class="line">      <span class="keyword">return</span> <span class="keyword">False</span></div><div class="line"></div><div class="line"><span class="comment">#将一个数字列表中所有的素数过滤删除掉</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">prime_number</span><span class="params">(num_list)</span>:</span></div><div class="line">      <span class="keyword">print</span> filter(not_prime,num_list)</div><div class="line"></div><div class="line"><span class="comment">#删除1~100以内的素数</span></div><div class="line">prime_number(range(<span class="number">100</span>))</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">运行结果：</div><div class="line">==================== RESTART: E:\Python\practices\test.py ====================</div><div class="line">[<span class="number">0</span>, <span class="number">1</span>, <span class="number">4</span>, <span class="number">6</span>, <span class="number">8</span>, <span class="number">9</span>, <span class="number">10</span>, <span class="number">12</span>, <span class="number">14</span>, <span class="number">15</span>, <span class="number">16</span>, <span class="number">18</span>, <span class="number">20</span>, <span class="number">21</span>, <span class="number">22</span>, <span class="number">24</span>, <span class="number">25</span>, <span class="number">26</span>, <span class="number">27</span>, <span class="number">28</span>, <span class="number">30</span>, <span class="number">32</span>, <span class="number">33</span>, <span class="number">34</span>, <span class="number">35</span>, <span class="number">36</span>, <span class="number">38</span>, <span class="number">39</span>, <span class="number">40</span>, <span class="number">42</span>, <span class="number">44</span>, <span class="number">45</span>, <span class="number">46</span>, <span class="number">48</span>, <span class="number">49</span>, <span class="number">50</span>, <span class="number">51</span>, <span class="number">52</span>, <span class="number">54</span>, <span class="number">55</span>, <span class="number">56</span>, <span class="number">57</span>, <span class="number">58</span>, <span class="number">60</span>, <span class="number">62</span>, <span class="number">63</span>, <span class="number">64</span>, <span class="number">65</span>, <span class="number">66</span>, <span class="number">68</span>, <span class="number">69</span>, <span class="number">70</span>, <span class="number">72</span>, <span class="number">74</span>, <span class="number">75</span>, <span class="number">76</span>, <span class="number">77</span>, <span class="number">78</span>, <span class="number">80</span>, <span class="number">81</span>, <span class="number">82</span>, <span class="number">84</span>, <span class="number">85</span>, <span class="number">86</span>, <span class="number">87</span>, <span class="number">88</span>, <span class="number">90</span>, <span class="number">91</span>, <span class="number">92</span>, <span class="number">93</span>, <span class="number">94</span>, <span class="number">95</span>, <span class="number">96</span>, <span class="number">98</span>, <span class="number">99</span>]</div></pre></td></tr></table></figure>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+    <div class="jiathis_style">
+    <span class="jiathis_txt">分享到：</span>
+    <!--a class="jiathis_button_qzone">QQ空间</a-->
+    <a class="jiathis_button_tsina">新浪微博</a>
+    <!--a class="jiathis_button_tqq">腾讯微博</a-->
+    <a class="jiathis_button_weixin">微信</a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+    <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<style>
+    .jiathis_style div:first-child:not(.jiadiv_01) {
+        width: auto !important;
+        border: none !important;
+    }
+    .jiathis_style .jiadiv_01 {
+        margin: 10px 0;
+        border-radius: 4px;
+        border: #e1e1e1 solid 1px;
+    }
+    .jiathis_style .jiadiv_01 div:first-child {
+        display: none;
+    }
+    .jiathis_style .jiadiv_02 {
+        padding: 7px 0 !important;
+    }
+    .jiathis_style .jiadiv_02 .jiatitle {
+        width: 85px;
+        border: none;
+        height: auto;
+        margin: 3px 10px;
+        padding: 6px 10px;
+        border-radius: 4px;
+    }
+    .jiathis_style .jiadiv_02 .jiatitle:hover {
+        border: none;
+    }
+    .jiathis_style .jiadiv_02 .jiatitle:nth-child(even) {
+        margin-left: 0;
+    }
+    .jiathis_style .jtico:hover {
+        opacity: 1;
+    }
+    .jiathis_style .ckepopBottom,
+    .jiathis_style .centerBottom {
+        width: auto !important;
+        padding: 5px;
+        background: #f7f7f7;
+    }
+</style>
+
+
+
+</div>
+
+            
+    
+        <a href="http://www.vimiix.com/2017/04/08/Python-Practice-by-using-higher-order-functions.html#comments" class="article-comment-link">评论</a>
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2017/04/09/Python-About-closure.html" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">上一篇</strong>
+            <div class="article-nav-title">
+                
+                    Python-关于Python中闭包的一些理解
+                
+            </div>
+        </a>
+    
+    
+        <a href="/2017/04/05/Python-Self-service-shopping-machine.html" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">下一篇</strong>
+            <div class="article-nav-title">自助购物机交易源码</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    <section id="comments">
+    
+        
+	<div id="commentContainer"></div>
+
+    
+    </section>
+
+</section>
+            
+                <aside id="sidebar">
+   
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title" style="color:#CD0000">最新文章</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/06/01/Python-Python-multiversion-dev-Anaconda.html" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://omfis13un.bkt.clouddn.com/conda.png)" alt="Python||使用Anaconda完成Python多环境配置" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Python/">Python</a></p>
+                            <p class="item-title"><a href="/2017/06/01/Python-Python-multiversion-dev-Anaconda.html" class="title">Python||使用Anaconda完成Python多环境配置</a></p>
+                            <p class="item-date"><time datetime="2017-06-01T01:53:54.000Z" itemprop="datePublished">2017-06-01</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/05/25/Python-pyCon2017-keynotes.html" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://omfis13un.bkt.clouddn.com/logo-sitemasthead.gif)" alt="[福利]PyCon2017全部演讲视频汇总" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Python/">Python</a></p>
+                            <p class="item-title"><a href="/2017/05/25/Python-pyCon2017-keynotes.html" class="title">[福利]PyCon2017全部演讲视频汇总</a></p>
+                            <p class="item-date"><time datetime="2017-05-25T15:56:55.000Z" itemprop="datePublished">2017-05-25</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/05/12/Python-Print-function.html" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Python/">Python</a></p>
+                            <p class="item-title"><a href="/2017/05/12/Python-Print-function.html" class="title">Python-from __future__ import print_function</a></p>
+                            <p class="item-date"><time datetime="2017-05-12T06:55:03.000Z" itemprop="datePublished">2017-05-12</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/05/11/Product-pyCSDNDailySpider.html" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://omfis13un.bkt.clouddn.com/pyCSDNDailySpider.png)" alt="Product-一个小爬虫pyCSDNDailySpider" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Product/">Product</a></p>
+                            <p class="item-title"><a href="/2017/05/11/Product-pyCSDNDailySpider.html" class="title">Product-一个小爬虫pyCSDNDailySpider</a></p>
+                            <p class="item-date"><time datetime="2017-05-10T16:11:03.000Z" itemprop="datePublished">2017-05-11</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/05/04/Python-How-to-use-eval.html" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://omfis13un.bkt.clouddn.com/python-eval.jpg)" alt="【转】Python中eval的强大与潜在风险" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Python/">Python</a></p>
+                            <p class="item-title"><a href="/2017/05/04/Python-How-to-use-eval.html" class="title">【转】Python中eval的强大与潜在风险</a></p>
+                            <p class="item-date"><time datetime="2017-05-04T15:57:34.000Z" itemprop="datePublished">2017-05-04</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title" style="color:#CD0000">分类</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Product/">Product</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔/">随笔</a><span class="category-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title" style="color:#CD0000">归档</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">6</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title" style="color:#CD0000">标签云</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/Anaconda/" style="font-size: 10px;">Anaconda</a> <a href="/tags/Linux/" style="font-size: 16.67px;">Linux</a> <a href="/tags/MySQL/" style="font-size: 10px;">MySQL</a> <a href="/tags/MySQLdb/" style="font-size: 10px;">MySQLdb</a> <a href="/tags/PyCon2017/" style="font-size: 10px;">PyCon2017</a> <a href="/tags/Python/" style="font-size: 20px;">Python</a> <a href="/tags/SyntaxError/" style="font-size: 13.33px;">SyntaxError</a> <a href="/tags/branch/" style="font-size: 10px;">branch</a> <a href="/tags/close/" style="font-size: 10px;">close</a> <a href="/tags/closure/" style="font-size: 10px;">closure</a> <a href="/tags/dict/" style="font-size: 10px;">dict</a> <a href="/tags/eval/" style="font-size: 10px;">eval</a> <a href="/tags/file/" style="font-size: 10px;">file</a> <a href="/tags/filter/" style="font-size: 10px;">filter</a> <a href="/tags/flow-control/" style="font-size: 10px;">flow control</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/map/" style="font-size: 10px;">map</a> <a href="/tags/open/" style="font-size: 10px;">open</a> <a href="/tags/operators/" style="font-size: 10px;">operators</a> <a href="/tags/reduce/" style="font-size: 10px;">reduce</a> <a href="/tags/rhel7-2/" style="font-size: 10px;">rhel7.2</a> <a href="/tags/rpm/" style="font-size: 10px;">rpm</a> <a href="/tags/source-code/" style="font-size: 13.33px;">source code</a> <a href="/tags/tuple/" style="font-size: 10px;">tuple</a> <a href="/tags/yum/" style="font-size: 10px;">yum</a> <a href="/tags/操作系统/" style="font-size: 10px;">操作系统</a> <a href="/tags/随笔/" style="font-size: 10px;">随笔</a>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title" style="color:#CD0000">友情链接</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="http://soledadmg.com">soledadmg</a>
+                    </li>
+                
+                    <li>
+                        <a href="http://linhut.cn">林小屋博客</a>
+                    </li>
+                
+                    <li>
+                        <a href="http://www.python.org">python官网</a>
+                    </li>
+                
+                    <li>
+                        <a href="http://hexo.io">Hexo</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+            
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2017 Vimiix&nbsp
+            页面基于 <a href="http://hexo.io/" target="_blank">Hexo</a>搭建. 采用<a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>主题。
+<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1261445492'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1261445492%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script>
+
+
+
+        </div>
+    </div>
+</footer>
+        
+    
+	<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+	<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+	<script>
+		var gitment = new Gitment({
+			owner: 'vimiix',
+			repo: 'vimiix.github.io',
+			oauth: {
+				client_id: 'abd8e4f14a1823b2146f',
+				client_secret: '4ffc7b300f732364340dd9fd141938147d8a73e5',
+			},
+		})
+		gitment.render('commentContainer')
+	</script>
+	
+
+
+    
+        <script src="/vendor/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/vendor/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/vendor/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/vendor/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/vendor/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/vendor/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/vendor/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/vendor/lightgallery/js/lg-share.min.js"></script>
+        <script src="/vendor/lightgallery/js/lg-video.min.js"></script>
+    
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>

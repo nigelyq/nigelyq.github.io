@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <meta charset="utf-8">
+    
+    <title>Linux-rhel7.2操作系统安装 | Vimiix</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta property="og:type" content="article">
+<meta property="og:title" content="Linux-rhel7.2操作系统安装">
+<meta property="og:url" content="http://www.vimiix.com/2017/03/08/Linux-rhel7-2操作系统安装.html">
+<meta property="og:site_name" content="Vimiix">
+<meta property="og:image" content="http://omfis13un.bkt.clouddn.com/rhel7.jpg">
+<meta property="og:updated_time" content="2017-05-25T17:07:30.257Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Linux-rhel7.2操作系统安装">
+<meta name="twitter:image" content="http://omfis13un.bkt.clouddn.com/rhel7.jpg">
+    
+
+    
+
+    
+        <link rel="icon" href="/css/images/favicon.png" />
+    
+
+    <link rel="stylesheet" href="/vendor/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/vendor/open-sans/styles.css">
+    <link rel="stylesheet" href="/vendor/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/vendor/jquery/2.1.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/vendor/lightgallery/css/lightgallery.min.css">
+    
+    
+    
+    
+        <script>
+var _hmt = _hmt || [];
+(function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?6dd417889b493646e8af6f793152b918";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+    
+
+</head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                
+                <span class="site-title">Vimiix</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/.">主页</a>
+                
+                    <a class="main-nav-link" href="/archives">文章</a>
+                
+                    <a class="main-nav-link" href="/categories">分类</a>
+                
+                    <a class="main-nav-link" href="/tags">标签</a>
+                
+                    <a class="main-nav-link" href="/about">作者</a>
+                
+                    <a class="main-nav-link" href="https://github.com/vimiix">Github</a>
+                
+            </nav>
+            
+                
+                <nav id="sub-nav">
+                    <div class="profile" id="profile-nav">
+                        <a id="profile-anchor" href="javascript:;">
+                            <img class="avatar" src="/css/images/avatar.png" />
+                            <i class="fa fa-caret-down"></i>
+                        </a>
+                    </div>
+                </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要查找什么..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/.">主页</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">文章</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">分类</a></td>
+                
+                    <td><a class="main-nav-link" href="/tags">标签</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">作者</a></td>
+                
+                    <td><a class="main-nav-link" href="https://github.com/vimiix">Github</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+                
+
+<aside id="profile">
+    <div class="inner profile-inner">
+        <div class="base-info profile-block">
+            <img id="avatar" src="/css/images/avatar.png" />
+            <h2 id="name">Vimiix</h2>
+            <h3 id="title">程序员&amp;产品运营</h3>
+            <span id="location"><i class="fa fa-map-marker"></i>CSDN, Beijing, China</span>
+            <a id="follow" target="_blank" href="https://github.com/vimiix">关注</a>
+        </div>
+        <div class="article-info profile-block">
+            <div class="article-info-block">
+                18
+                <span>文章</span>
+            </div>
+            <div class="article-info-block">
+                27
+                <span>标签</span>
+            </div>
+        </div>
+        
+        <div class="profile-block social-links">
+            <table>
+                <tr>
+                    
+                    
+                    <td>
+                        <a href="https://github.com/vimiix" target="_blank" title="github" class=tooltip>
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="https://twitter.com/_vimiix" target="_blank" title="twitter" class=tooltip>
+                            <i class="fa fa-twitter"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="http://weibo.com/boynigel" target="_blank" title="weibo" class=tooltip>
+                            <i class="fa fa-weibo"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="http://wpa.qq.com/msgrd?v=3&uin=544472800&site=qq&menu=yes" target="_blank" title="qq" class=tooltip>
+                            <i class="fa fa-qq"></i>
+                        </a>
+                    </td>
+                    
+                </tr>
+            </table>
+        </div>
+        
+    </div>
+</aside>
+
+            
+            <section id="main"><article id="post-Linux-rhel7-2操作系统安装" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+            Linux-rhel7.2操作系统安装
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2017/03/08/Linux-rhel7-2操作系统安装.html">
+            <time datetime="2017-03-08T15:00:31.000Z" itemprop="datePublished">2017-03-08</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/Linux/">Linux</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/Linux/">Linux</a>, <a class="tag-link" href="/tags/rhel7-2/">rhel7.2</a>, <a class="tag-link" href="/tags/操作系统/">操作系统</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <p><img src="http://omfis13un.bkt.clouddn.com/rhel7.jpg" alt=""></p>
+<a id="more"></a>
+<h2 id="RHEL7"><a href="#RHEL7" class="headerlink" title="RHEL7"></a>RHEL7</h2><p>红帽公司发布的企业Linux7版本。</p>
+<h4 id="RHEL6与RHEL7的关键区别："><a href="#RHEL6与RHEL7的关键区别：" class="headerlink" title="RHEL6与RHEL7的关键区别："></a>RHEL6与RHEL7的关键区别：</h4><ol>
+<li><p>显著提升 Docker 的兼容性  （Docker容器级虚拟化技术）</p>
+</li>
+<li><p>默认文件系统从 EXT4 改为 XFS</p>
+</li>
+<li><p>系统管理的进一步简化</p>
+</li>
+<li><p>新版本内核 3.10 提供更多文件系统的支持</p>
+</li>
+</ol>
+<h2 id="RHEL7的安装"><a href="#RHEL7的安装" class="headerlink" title="RHEL7的安装"></a>RHEL7的安装</h2><p><strong>启动画面</strong></p>
+<p><img src="http://omfis13un.bkt.clouddn.com/%E5%9B%BE%E7%89%871.png" alt=""></p>
+<p>界面说明：</p>
+<p><strong> Install Red Hat Enterprise Linux 7.2 </strong>                           #安装RHEL 7.2</p>
+<p><strong> Test this media &amp; install Red Hat Enterprise Linux 7.2</strong>          #测试安装文件并安装RHEL 7.2</p>
+<p><strong> Troubleshooting</strong>                                                #修复故障</p>
+<p>一般选择第一项就可以了</p>
+<p><em>注：在Trobleshooting模式下，界面如下：</em></p>
+<p><img src="http://omfis13un.bkt.clouddn.com/%E5%9B%BE%E7%89%872.png" alt=""></p>
+<p>界面说明：</p>
+<p>Install Red Hat Enterprise Linux 7.2 in basic graphics mod    #基本图形化安装</p>
+<p>Rescue a Red Hat Enterprise Linux system                    #修复系统</p>
+<p>Run a memory test                                            #运行内存测试系统</p>
+<p>Boot from local drive                                        #本地设备启动</p>
+<p>Return to main menu                                        #返回主菜单</p>
+<p>这里选择第一项，安装RHEL 7.1，回车</p>
+<p><strong>进入下面的界面，按回车开始安装</strong></p>
+<p><img src="http://omfis13un.bkt.clouddn.com/%E5%9B%BE%E7%89%873.png" alt=""></p>
+<p><strong>选择语言</strong>：中文-简体中文（中国）  #正式生产服务器建议安装英文版本，单击继续按钮</p>
+<p><img src="http://omfis13un.bkt.clouddn.com/%E5%9B%BE%E7%89%874.png" alt=""></p>
+<p>进入一站式安装界面，在此界面，只需把所有带”!”内容的感叹号全部消除，便可进行安装</p>
+<p><img src="http://omfis13un.bkt.clouddn.com/%E5%9B%BE%E7%89%876.png" alt=""></p>
+<p><strong>时区选择</strong>，设置完成，单击完成按钮</p>
+<p><img src="http://omfis13un.bkt.clouddn.com/%E5%9B%BE%E7%89%877.png" alt=""></p>
+<p><strong>键盘选择</strong>，单击 + 按钮，添加新的键盘布局方式，选中要添加的语言，然后单击添加即可，添加完成后，单击完成按钮</p>
+<p><img src="http://omfis13un.bkt.clouddn.com/%E5%9B%BE%E7%89%878.png" alt=""></p>
+<p><img src="http://omfis13un.bkt.clouddn.com/%E5%9B%BE%E7%89%879.png" alt=""></p>
+<p><img src="http://omfis13un.bkt.clouddn.com/%E5%9B%BE%E7%89%8710.png" alt=""></p>
+<p><strong>验证光盘完整性</strong>，单击验证，验证光盘或镜像是否完整，防止安装过程出现软件包不完整</p>
+<p><img src="http://omfis13un.bkt.clouddn.com/%E5%9B%BE%E7%89%8711.png" alt=""></p>
+<p><strong>额外软件仓库</strong>，可以不用选择，单击完成按钮</p>
+<p><strong>软件包选择</strong>，初学者建议选择带GUI的服务器，同时把开发工具相关的软件包也安装上，然后单击完成</p>
+<p><img src="http://omfis13un.bkt.clouddn.com/%E5%9B%BE%E7%89%8713.png" alt=""></p>
+<p><strong>选择-系统-安装位置</strong>，进入磁盘分区界面</p>
+<p><img src="http://omfis13un.bkt.clouddn.com/%E5%9B%BE%E7%89%8714.png" alt=""></p>
+<p>选择-其它存储选项-分区-我要配置分区，点左上角的“完成”，进入下面的界面，在分区方案有标准分区，btrfs，LVM，LVM简单配置，这里默认<strong>LVM</strong>就可以，然后单击创建新的分区，分区提前规划好，一般swap分区为物理内存的1.5~2倍（物理内存2G的话，swap可以设置4G），<strong>/boot</strong>分区500M，<strong>/</strong>分区10G，实际工作中可以创建数据分区，一般把数据和系统分开</p>
+<p><img src="http://omfis13un.bkt.clouddn.com/%E5%9B%BE%E7%89%8715.png" alt=""></p>
+<p><strong>创建/boot分区</strong></p>
+<p><img src="http://omfis13un.bkt.clouddn.com/%E5%9B%BE%E7%89%8716.png" alt=""></p>
+<p>设备类型选择默认的标准分区，文件系统类型为xfs，RHEL7支持brtfs，生产环境不建议选择，btrfs文件系统目前技术尚未成熟，只是作为一种前瞻技术</p>
+<p><img src="http://omfis13un.bkt.clouddn.com/%E5%9B%BE%E7%89%8717.png" alt=""></p>
+<p><strong>创建swap分区</strong></p>
+<p><img src="http://omfis13un.bkt.clouddn.com/%E5%9B%BE%E7%89%8718.png" alt=""></p>
+<p><strong>创建/分区（根分区）</strong></p>
+<p><img src="http://omfis13un.bkt.clouddn.com/%E5%9B%BE%E7%89%8719.png" alt=""></p>
+<p><strong>必须创建的分区</strong></p>
+<ul>
+<li>/boot</li>
+<li>/</li>
+<li>swap交换分区，虚拟内存</li>
+</ul>
+<p>swap创建标准：物理内存1.5~2倍<br>如果物理内存超过4G，一般直接把swap创建4G就够了</p>
+<p>Swap分区的应用场景： 当物理内存不够用的时候 使用交换分区。</p>
+<p><strong>必须与根目录放在同一分区的目录：</strong></p>
+<ul>
+<li>/bin</li>
+<li>/sbin</li>
+<li>/lib</li>
+<li>/etc</li>
+<li>/dev </li>
+</ul>
+<p>这五个目录。绝对不可与/所在的分区分开，因为这五个目录，包含必要的系统工具与资料。当根目录开机被挂载进来时，需要这些工具与资料来维持正常的运作。若是把这五个目录放到其它分区中，系统就不能正常引导。</p>
+<p><strong>可以与根目录放在不同分区的目录（不建议）：</strong></p>
+<ul>
+<li>/cdrom</li>
+<li>/mnt</li>
+<li>/media</li>
+<li>/proc</li>
+<li>/run</li>
+<li>/sys</li>
+<li>/srv等</li>
+</ul>
+<p>这些目录虽然可以放到其它的分区，但不需要这么做。因为这些目录只是为了维持运行所需，且大多不会占用空间，放到其它分区，也无益于系统的性能。如/mnt,/media, /cdrom 只是为实体存储媒体提供挂载点而已；又如/proc，/sys其实是内存上的数据，上面所有的数据完全不会占用硬盘的空间。所以这些目录不需要额外的分区存放。</p>
+<p>分区创建完成，单击完成按钮，弹出下图，点击<strong>接受更改</strong></p>
+<p><img src="http://omfis13un.bkt.clouddn.com/%E5%9B%BE%E7%89%8720.png" alt=""></p>
+<p><strong>KDUMP选项配置</strong>，本选项普通用户去掉勾选，关闭即可</p>
+<p><img src="http://omfis13un.bkt.clouddn.com/%E5%9B%BE%E7%89%8721.png" alt=""></p>
+<p><strong>网络配置</strong>，开启以太网连接，将会自动获取IP地址，如果要手动配置，单击“配置(O)…”按钮</p>
+<p><img src="http://omfis13un.bkt.clouddn.com/%E5%9B%BE%E7%89%8722.png" alt=""></p>
+<p>全部配置完成之后，单击开始安装，进行系统安装</p>
+<p>进入安装界面，这里需要配置用户密码</p>
+<p><img src="http://omfis13un.bkt.clouddn.com/%E5%9B%BE%E7%89%8723.png" alt=""></p>
+<p><strong>安装过程</strong>（然后就是漫长等待…可以去抽根烟了）</p>
+<p><strong>进入启动界面</strong></p>
+<p><img src="http://omfis13un.bkt.clouddn.com/%E5%9B%BE%E7%89%8724.png" alt=""></p>
+<p><strong>首次启动配置，许可认证-&gt;同意许可-&gt;完成配置</strong></p>
+<p><img src="http://omfis13un.bkt.clouddn.com/%E5%9B%BE%E7%89%8725.png" alt=""></p>
+<p><strong>登录系统</strong>，选择未列出，输入用户名root</p>
+<p><img src="http://omfis13un.bkt.clouddn.com/%E5%9B%BE%E7%89%8726.png" alt=""></p>
+<p><strong>搞定！</strong></p>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+    <div class="jiathis_style">
+    <span class="jiathis_txt">分享到：</span>
+    <!--a class="jiathis_button_qzone">QQ空间</a-->
+    <a class="jiathis_button_tsina">新浪微博</a>
+    <!--a class="jiathis_button_tqq">腾讯微博</a-->
+    <a class="jiathis_button_weixin">微信</a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+    <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<style>
+    .jiathis_style div:first-child:not(.jiadiv_01) {
+        width: auto !important;
+        border: none !important;
+    }
+    .jiathis_style .jiadiv_01 {
+        margin: 10px 0;
+        border-radius: 4px;
+        border: #e1e1e1 solid 1px;
+    }
+    .jiathis_style .jiadiv_01 div:first-child {
+        display: none;
+    }
+    .jiathis_style .jiadiv_02 {
+        padding: 7px 0 !important;
+    }
+    .jiathis_style .jiadiv_02 .jiatitle {
+        width: 85px;
+        border: none;
+        height: auto;
+        margin: 3px 10px;
+        padding: 6px 10px;
+        border-radius: 4px;
+    }
+    .jiathis_style .jiadiv_02 .jiatitle:hover {
+        border: none;
+    }
+    .jiathis_style .jiadiv_02 .jiatitle:nth-child(even) {
+        margin-left: 0;
+    }
+    .jiathis_style .jtico:hover {
+        opacity: 1;
+    }
+    .jiathis_style .ckepopBottom,
+    .jiathis_style .centerBottom {
+        width: auto !important;
+        padding: 5px;
+        background: #f7f7f7;
+    }
+</style>
+
+
+
+</div>
+
+            
+    
+        <a href="http://www.vimiix.com/2017/03/08/Linux-rhel7-2操作系统安装.html#comments" class="article-comment-link">评论</a>
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2017/03/13/Linux-软件包管理（rpm，yum）.html" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">上一篇</strong>
+            <div class="article-nav-title">
+                
+                    Linux-软件包管理
+                
+            </div>
+        </a>
+    
+    
+        <a href="/2017/03/08/Linux-git-branch用法（查看、新建、删除、重命名）.html" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">下一篇</strong>
+            <div class="article-nav-title">Linux-git branch用法（查看、新建、删除、重命名）</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    <section id="comments">
+    
+        
+	<div id="commentContainer"></div>
+
+    
+    </section>
+
+</section>
+            
+                <aside id="sidebar">
+   
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title" style="color:#CD0000">最新文章</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/06/01/Python-Python-multiversion-dev-Anaconda.html" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://omfis13un.bkt.clouddn.com/conda.png)" alt="Python||使用Anaconda完成Python多环境配置" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Python/">Python</a></p>
+                            <p class="item-title"><a href="/2017/06/01/Python-Python-multiversion-dev-Anaconda.html" class="title">Python||使用Anaconda完成Python多环境配置</a></p>
+                            <p class="item-date"><time datetime="2017-06-01T01:53:54.000Z" itemprop="datePublished">2017-06-01</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/05/25/Python-pyCon2017-keynotes.html" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://omfis13un.bkt.clouddn.com/logo-sitemasthead.gif)" alt="[福利]PyCon2017全部演讲视频汇总" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Python/">Python</a></p>
+                            <p class="item-title"><a href="/2017/05/25/Python-pyCon2017-keynotes.html" class="title">[福利]PyCon2017全部演讲视频汇总</a></p>
+                            <p class="item-date"><time datetime="2017-05-25T15:56:55.000Z" itemprop="datePublished">2017-05-25</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/05/12/Python-Print-function.html" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Python/">Python</a></p>
+                            <p class="item-title"><a href="/2017/05/12/Python-Print-function.html" class="title">Python-from __future__ import print_function</a></p>
+                            <p class="item-date"><time datetime="2017-05-12T06:55:03.000Z" itemprop="datePublished">2017-05-12</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/05/11/Product-pyCSDNDailySpider.html" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://omfis13un.bkt.clouddn.com/pyCSDNDailySpider.png)" alt="Product-一个小爬虫pyCSDNDailySpider" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Product/">Product</a></p>
+                            <p class="item-title"><a href="/2017/05/11/Product-pyCSDNDailySpider.html" class="title">Product-一个小爬虫pyCSDNDailySpider</a></p>
+                            <p class="item-date"><time datetime="2017-05-10T16:11:03.000Z" itemprop="datePublished">2017-05-11</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/05/04/Python-How-to-use-eval.html" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://omfis13un.bkt.clouddn.com/python-eval.jpg)" alt="【转】Python中eval的强大与潜在风险" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Python/">Python</a></p>
+                            <p class="item-title"><a href="/2017/05/04/Python-How-to-use-eval.html" class="title">【转】Python中eval的强大与潜在风险</a></p>
+                            <p class="item-date"><time datetime="2017-05-04T15:57:34.000Z" itemprop="datePublished">2017-05-04</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title" style="color:#CD0000">分类</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Product/">Product</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔/">随笔</a><span class="category-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title" style="color:#CD0000">归档</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">6</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title" style="color:#CD0000">标签云</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/Anaconda/" style="font-size: 10px;">Anaconda</a> <a href="/tags/Linux/" style="font-size: 16.67px;">Linux</a> <a href="/tags/MySQL/" style="font-size: 10px;">MySQL</a> <a href="/tags/MySQLdb/" style="font-size: 10px;">MySQLdb</a> <a href="/tags/PyCon2017/" style="font-size: 10px;">PyCon2017</a> <a href="/tags/Python/" style="font-size: 20px;">Python</a> <a href="/tags/SyntaxError/" style="font-size: 13.33px;">SyntaxError</a> <a href="/tags/branch/" style="font-size: 10px;">branch</a> <a href="/tags/close/" style="font-size: 10px;">close</a> <a href="/tags/closure/" style="font-size: 10px;">closure</a> <a href="/tags/dict/" style="font-size: 10px;">dict</a> <a href="/tags/eval/" style="font-size: 10px;">eval</a> <a href="/tags/file/" style="font-size: 10px;">file</a> <a href="/tags/filter/" style="font-size: 10px;">filter</a> <a href="/tags/flow-control/" style="font-size: 10px;">flow control</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/map/" style="font-size: 10px;">map</a> <a href="/tags/open/" style="font-size: 10px;">open</a> <a href="/tags/operators/" style="font-size: 10px;">operators</a> <a href="/tags/reduce/" style="font-size: 10px;">reduce</a> <a href="/tags/rhel7-2/" style="font-size: 10px;">rhel7.2</a> <a href="/tags/rpm/" style="font-size: 10px;">rpm</a> <a href="/tags/source-code/" style="font-size: 13.33px;">source code</a> <a href="/tags/tuple/" style="font-size: 10px;">tuple</a> <a href="/tags/yum/" style="font-size: 10px;">yum</a> <a href="/tags/操作系统/" style="font-size: 10px;">操作系统</a> <a href="/tags/随笔/" style="font-size: 10px;">随笔</a>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title" style="color:#CD0000">友情链接</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="http://soledadmg.com">soledadmg</a>
+                    </li>
+                
+                    <li>
+                        <a href="http://linhut.cn">林小屋博客</a>
+                    </li>
+                
+                    <li>
+                        <a href="http://www.python.org">python官网</a>
+                    </li>
+                
+                    <li>
+                        <a href="http://hexo.io">Hexo</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+            
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2017 Vimiix&nbsp
+            页面基于 <a href="http://hexo.io/" target="_blank">Hexo</a>搭建. 采用<a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>主题。
+<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1261445492'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1261445492%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script>
+
+
+
+        </div>
+    </div>
+</footer>
+        
+    
+	<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+	<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+	<script>
+		var gitment = new Gitment({
+			owner: 'vimiix',
+			repo: 'vimiix.github.io',
+			oauth: {
+				client_id: 'abd8e4f14a1823b2146f',
+				client_secret: '4ffc7b300f732364340dd9fd141938147d8a73e5',
+			},
+		})
+		gitment.render('commentContainer')
+	</script>
+	
+
+
+    
+        <script src="/vendor/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/vendor/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/vendor/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/vendor/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/vendor/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/vendor/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/vendor/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/vendor/lightgallery/js/lg-share.min.js"></script>
+        <script src="/vendor/lightgallery/js/lg-video.min.js"></script>
+    
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>
