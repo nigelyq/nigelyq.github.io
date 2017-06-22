@@ -4,6 +4,32 @@
 
     
   <url>
+    <loc>http://www.vimiix.com/2017/06/22/web-cookie-and-session.html</loc>
+    <lastmod>2017-06-22T08:19:27.335Z</lastmod>
+    <data>
+        <display>
+        <title>Web||关于cookie和session一点知识</title>
+        <pubTime>2017-06-22T08:03:54.000Z</pubTime>
+        
+        <tag>Python</tag>
+         
+        <tag>django</tag>
+         
+        <tag>cookie</tag>
+         
+        <tag>session</tag>
+         
+         
+           
+             
+              <breadCrumb title="Web" url="http://www.vimiix.com/categories/Web/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://www.vimiix.com/2017/06/01/Python-Python-multiversion-dev-Anaconda.html</loc>
     <lastmod>2017-06-01T04:24:29.222Z</lastmod>
     <data>
@@ -252,13 +278,13 @@
         <title>Python-文件操作</title>
         <pubTime>2017-04-13T07:50:34.000Z</pubTime>
         
+        <tag>Python</tag>
+         
         <tag>file</tag>
          
         <tag>open</tag>
          
         <tag>close</tag>
-         
-        <tag>Python</tag>
          
          
            
