@@ -3,20 +3,20 @@
 <head>
     <meta charset="utf-8">
     
-    <title>Linux-软件包管理 | Vimiix</title>
+    <title>[SaltStack]SaltStack的部署和基本指令 | Vimiix</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="来一首歌当背景音乐">
+    <meta name="description" content="SaltStack是一个服务器基础架构集中化管理平台，具备配置管理、远程执行、监控等功能，。SaltStack基于Python语言实现，结合轻量级消息队列（ZeroMQ）与python第三方模块（Pyzmq、PyCrypto、Pyjinjia2、python-msgpack和PyYAML等）构建。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Linux-软件包管理">
-<meta property="og:url" content="http://www.vimiix.com/2017/03/13/Linux-软件包管理（rpm，yum）.html">
+<meta property="og:title" content="[SaltStack]SaltStack的部署和基本指令">
+<meta property="og:url" content="http://www.vimiix.com/2017/06/27/SaltStack-Note-1-setup-and-simple-cmds.html">
 <meta property="og:site_name" content="Vimiix">
-<meta property="og:description" content="来一首歌当背景音乐">
-<meta property="og:image" content="http://omfis13un.bkt.clouddn.com/rpm-Uvh.png">
-<meta property="og:updated_time" content="2017-05-25T17:07:50.417Z">
+<meta property="og:description" content="SaltStack是一个服务器基础架构集中化管理平台，具备配置管理、远程执行、监控等功能，。SaltStack基于Python语言实现，结合轻量级消息队列（ZeroMQ）与python第三方模块（Pyzmq、PyCrypto、Pyjinjia2、python-msgpack和PyYAML等）构建。">
+<meta property="og:image" content="http://omfis13un.bkt.clouddn.com/SaltStack.png">
+<meta property="og:updated_time" content="2017-06-27T12:22:35.448Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Linux-软件包管理">
-<meta name="twitter:description" content="来一首歌当背景音乐">
-<meta name="twitter:image" content="http://omfis13un.bkt.clouddn.com/rpm-Uvh.png">
+<meta name="twitter:title" content="[SaltStack]SaltStack的部署和基本指令">
+<meta name="twitter:description" content="SaltStack是一个服务器基础架构集中化管理平台，具备配置管理、远程执行、监控等功能，。SaltStack基于Python语言实现，结合轻量级消息队列（ZeroMQ）与python第三方模块（Pyzmq、PyCrypto、Pyjinjia2、python-msgpack和PyYAML等）构建。">
+<meta name="twitter:image" content="http://omfis13un.bkt.clouddn.com/SaltStack.png">
     
 
     
@@ -227,7 +227,7 @@ var _hmt = _hmt || [];
 </aside>
 
             
-            <section id="main"><article id="post-Linux-软件包管理（rpm，yum）" class="article article-type-post" itemscope itemprop="blogPost">
+            <section id="main"><article id="post-SaltStack-Note-1-setup-and-simple-cmds" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
         
@@ -235,7 +235,7 @@ var _hmt = _hmt || [];
                 
     
         <h1 class="article-title" itemprop="name">
-            Linux-软件包管理
+            [SaltStack]SaltStack的部署和基本指令
         </h1>
     
 
@@ -244,8 +244,8 @@ var _hmt = _hmt || [];
                         
     <div class="article-date">
         <i class="fa fa-calendar"></i>
-        <a href="/2017/03/13/Linux-软件包管理（rpm，yum）.html">
-            <time datetime="2017-03-13T14:41:08.000Z" itemprop="datePublished">2017-03-13</time>
+        <a href="/2017/06/27/SaltStack-Note-1-setup-and-simple-cmds.html">
+            <time datetime="2017-06-27T12:08:03.000Z" itemprop="datePublished">2017-06-27</time>
         </a>
     </div>
 
@@ -253,13 +253,13 @@ var _hmt = _hmt || [];
                         
     <div class="article-category">
     	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/Linux/">Linux</a>
+        <a class="article-category-link" href="/categories/SaltStack/">SaltStack</a>
     </div>
 
                         
     <div class="article-tag">
         <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/Linux/">Linux</a>, <a class="tag-link" href="/tags/rpm/">rpm</a>, <a class="tag-link" href="/tags/yum/">yum</a>
+        <a class="tag-link" href="/tags/Python/">Python</a>, <a class="tag-link" href="/tags/SaltStack/">SaltStack</a>
     </div>
 
                     </div>
@@ -270,88 +270,83 @@ var _hmt = _hmt || [];
         <div class="article-entry" itemprop="articleBody">
         
             
-            <h6 id="来一首歌当背景音乐"><a href="#来一首歌当背景音乐" class="headerlink" title="来一首歌当背景音乐"></a>来一首歌当背景音乐</h6><iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=30854966&auto=0&height=66"></iframe>
-
-<a id="more"></a>
-<h2 id="rpm软件包管理"><a href="#rpm软件包管理" class="headerlink" title="rpm软件包管理"></a>rpm软件包管理</h2><p>简称: Redhat Package Manager</p>
-<h5 id="挂载光盘"><a href="#挂载光盘" class="headerlink" title="挂载光盘"></a>挂载光盘</h5><p>[root@localhost ~]# umount /dev/sr0   卸载<br>[root@localhost ~]# mount /dev/sr0 /mnt/   挂载</p>
-<h5 id="rpm包名结构"><a href="#rpm包名结构" class="headerlink" title="rpm包名结构"></a>rpm包名结构</h5><p>zsh-5.0.2-14.el7.x86_64.rpm</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">zsh</th>
-<th style="text-align:center">-5</th>
-<th style="text-align:center">.0</th>
-<th style="text-align:center">.2</th>
-<th style="text-align:center">-el7</th>
-<th style="text-align:center">x86</th>
-<th style="text-align:center">64</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">软件名</td>
-<td style="text-align:center">主版本号</td>
-<td style="text-align:center">次版本号</td>
-<td style="text-align:center">修订号</td>
-<td style="text-align:center">RHEL7</td>
-<td style="text-align:center">CPU架构平台</td>
-<td style="text-align:center">支持系统位数</td>
-</tr>
-</tbody>
-</table>
-<h5 id="安装rpm软件"><a href="#安装rpm软件" class="headerlink" title="安装rpm软件"></a>安装rpm软件</h5><ul>
-<li>-i, –install           安装软件包</li>
-<li>–nodeps                不验证软件包依赖</li>
-<li>-v, –verbose           提供更多的详细信息输出</li>
-<li>-h, –hash              软件包安装的时候列出哈希标记</li>
-</ul>
-<h5 id="rpm查询功能"><a href="#rpm查询功能" class="headerlink" title="rpm查询功能"></a>rpm查询功能</h5><p>rpm -qa…</p>
+            <p>SaltStack是一个服务器基础架构集中化管理平台，具备配置管理、远程执行、监控等功能，。SaltStack基于Python语言实现，结合轻量级消息队列（ZeroMQ）与python第三方模块（Pyzmq、PyCrypto、Pyjinjia2、python-msgpack和PyYAML等）构建。<br><a id="more"></a></p>
+<p>通过部署SaltStack环境，可以在成千上万台服务器上做到批量执行命令，根据不同业务特性进行配置集中化管理、分发文件、采集服务器数据、操作系统基础及软件包管理等，SaltStack是运维人员提高工作效率、规范业务配置与操作的利器。</p>
+<p><img src="http://omfis13un.bkt.clouddn.com/SaltStack.png" alt=""></p>
+<h1 id="部署与基本配置"><a href="#部署与基本配置" class="headerlink" title="部署与基本配置"></a>部署与基本配置</h1><p><strong>我的系统环境</strong>：</p>
 <ul>
-<li>-a  查询所有已安装的软件包</li>
-<li>-f  查询 文件所属软件包</li>
-<li>-p  查询软件包（通常用来看下还未安装的软件包）</li>
-<li>-i  显示软件包信息</li>
-<li>-l  显示软件包中的文件列表</li>
-<li>-d  显示被标注为文档的文件列表</li>
-<li>-c  显示被标注为配置文件的文件列表</li>
+<li>系统：CentOS-7-x64</li>
+<li>yum源:网易163yum源</li>
+<li>python：2.7.13</li>
+<li>masterIP：192.168.1.107</li>
+<li>minionIP：192.168.1.107(我直接在一个虚拟机内安装minion)</li>
 </ul>
-<p>通常可以配合管道 | more 来使用，使得结果更易读。</p>
-<h5 id="rpm包-升级"><a href="#rpm包-升级" class="headerlink" title="rpm包 升级"></a>rpm包 升级</h5><ul>
-<li>rpm -Uvh [包名]</li>
-</ul>
-<p><img src="http://omfis13un.bkt.clouddn.com/rpm-Uvh.png" alt=""></p>
-<h5 id="rpm包-卸载"><a href="#rpm包-卸载" class="headerlink" title="rpm包 卸载"></a>rpm包 卸载</h5><ul>
-<li>rpm -e [包名]</li>
-</ul>
-<p><img src="http://omfis13un.bkt.clouddn.com/rpm-e.png" alt=""></p>
-<h2 id="yum软件包管理"><a href="#yum软件包管理" class="headerlink" title="yum软件包管理"></a>yum软件包管理</h2><p>YUM 自动装软件包（软件包管理）</p>
-<p>解决依赖关系问题、自动下载软件包，基于C/S架构。</p>
-<h5 id="配置本地yum源的配置文件"><a href="#配置本地yum源的配置文件" class="headerlink" title="配置本地yum源的配置文件"></a>配置本地yum源的配置文件</h5><pre><code>[root@localhost ~]#monut /dev/sr0 /mnt      #挂载光盘    
-[root@localhost ~]# rm -rf /etc/yum.repos.d/*
-[root@localhost ~]# vim /etc/yum.repos.d/rhel7.repo
-[rhel7-yum]                    #yum源名称，唯一的，用来区分不同的yum源
-name=rhel7-source            #对yum源描述信息
-baseurl=file:///mnt            #yum源的路径（repodata目录所在的目录）
-#或baseurl=http://mirrors.aliyun.com/help/epel
-#或baseurl=ftp://192.168.1.63/pub
-enabled=1                    #为1，表示启用yum源
-gpgcheck=0                    #为1，使用公钥检验rpm的正确性
-</code></pre><h5 id="主要操作"><a href="#主要操作" class="headerlink" title="主要操作"></a>主要操作</h5><ul>
-<li>安装 yum  install    -y</li>
-<li>检测升级 yum  check-update</li>
-<li>升级 yum  update</li>
-<li>软件包查询 yum  list</li>
-<li>软件包信息 yum  info</li>
-<li>卸载 yum  remove</li>
-<li>帮助 yum  -help 或 man  yum</li>
-</ul>
-<h4 id="安装一组软件包"><a href="#安装一组软件包" class="headerlink" title="安装一组软件包"></a>安装一组软件包</h4><ul>
-<li>yum grouplist    查看包组</li>
-<li>yum groupinstall “Security Tools”</li>
-<li>yum groupinstall “安全性工具” -y</li>
-</ul>
+<h2 id="step-0：安装epel-yum源"><a href="#step-0：安装epel-yum源" class="headerlink" title="step 0：安装epel yum源"></a>step 0：安装epel yum源</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">yum install -y epel-release</div><div class="line">yum clean all</div><div class="line">yum makecache</div></pre></td></tr></table></figure>
+<h2 id="step-1：安装master和minion"><a href="#step-1：安装master和minion" class="headerlink" title="step 1：安装master和minion"></a>step 1：安装master和minion</h2><p><strong>master</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum install -y salt-master</div></pre></td></tr></table></figure>
+<p><strong>minion</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum install -y salt-minion</div></pre></td></tr></table></figure>
+<blockquote>
+<p>安装的同时:<br>  1、关闭防火墙<br>    <code>service iptables stop</code><br>  2、关闭SELinux<br>    <code>setenforce 0</code></p>
+</blockquote>
+<h2 id="step-2：基本配置"><a href="#step-2：基本配置" class="headerlink" title="step 2：基本配置"></a>step 2：基本配置</h2><blockquote>
+<font color="red">注意：下面的配置文件均严格遵循yaml文件格式，冒号后面必须有空格</font>
 
+</blockquote>
+<p><strong>master</strong></p>
+<p><code>vim</code>打开<code>/etc/salt</code>目录下面的<code>mater</code>文件</p>
+<p>1、在命令模式下搜索关键词<code>interface</code>，找到下面段落，复制一行在下面打开注释并指定master的主机IP地址</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"># The address of the interface to bind to:</div><div class="line">#interface: 0.0.0.0</div><div class="line">interface: 192.168.1.107</div></pre></td></tr></table></figure>
+<p>2、同样，搜索关键词<code>auto_accept</code>，指定是否自动接收minion端，这里设置为<code>true</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"># Enable auto_accept, this setting will automatically accept all incoming</div><div class="line"># public keys from the minions. Note that this is insecure.</div><div class="line">#auto_accept: False</div><div class="line">auto_accept: True</div></pre></td></tr></table></figure>
+<p>3、最后搜索关键词<code>file_root</code>,设置配置文件的根目录，只需打开下面段落的最后三行注释即可</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"># The file server works on environments passed to the master, each environment</div><div class="line"># can have multiple root directories, the subdirectories in the multiple file</div><div class="line"># roots cannot match, otherwise the downloaded files will not be able to be</div><div class="line"># reliably ensured. A base environment is required to house the top file.</div><div class="line"># Example:</div><div class="line"># file_roots:</div><div class="line">#   base:</div><div class="line">#     - /srv/salt/</div><div class="line">#   dev:</div><div class="line">#     - /srv/salt/dev/services</div><div class="line">#     - /srv/salt/dev/states</div><div class="line">#   prod:</div><div class="line">#     - /srv/salt/prod/services</div><div class="line">#     - /srv/salt/prod/states</div><div class="line">#</div><div class="line">file_roots:</div><div class="line">  base:</div><div class="line">    - /srv/salt</div></pre></td></tr></table></figure>
+<p><strong>minion</strong></p>
+<p><code>vim</code>打开<code>/etc/salt/</code>目录下面的<code>minion</code>文件</p>
+<p>1、搜索<code>master:</code>关键词,配置所有连接的服务器IP(<em>没有修改过的话在第16行</em>)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"># Set the location of the salt master server. If the master server cannot be</div><div class="line"># resolved, then the minion will fail to start.</div><div class="line">#master: salt</div><div class="line">master: 192.168.1.107</div></pre></td></tr></table></figure>
+<p>2、搜索<code>id:</code>关键词，设置minion在master端的名称</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"># Explicitly declare the id for this minion to use, if left commented the id</div><div class="line"># will be the hostname as returned by the python call: socket.getfqdn()</div><div class="line"># Since salt uses detached ids it is possible to run multiple minions on the</div><div class="line"># same machine but with different ids, this can be useful for salt compute</div><div class="line"># clusters.</div><div class="line">#id:</div><div class="line">id: local-minion</div></pre></td></tr></table></figure>
+<h2 id="step-3：重启master和minion"><a href="#step-3：重启master和minion" class="headerlink" title="step 3：重启master和minion"></a>step 3：重启master和minion</h2><p><strong>重启master</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">systemctl restart salt-master.service</div></pre></td></tr></table></figure>
+<p>重启以后可以查看一下master服务当前状态,显示<code>active</code>即启动成功</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">[root@localhost vimiix]# systemctl status salt-master.service</div><div class="line">● salt-master.service - The Salt Master Server</div><div class="line">   Loaded: loaded (/usr/lib/systemd/system/salt-master.service; disabled; vendor preset: disabled)</div><div class="line">   Active: **active** (running) since Tue 2017-06-27 19:19:28 CST; 1min 22s ago</div><div class="line"> Main PID: 49362 (salt-master)</div><div class="line">   CGroup: /system.slice/salt-master.service</div><div class="line">           ├─49362 /usr/bin/python /usr/bin/salt-master</div><div class="line">           ├─49377 /usr/bin/python /usr/bin/salt-master</div><div class="line">           ├─49378 /usr/bin/python /usr/bin/salt-master</div><div class="line">           ├─49379 /usr/bin/python /usr/bin/salt-master</div><div class="line">           ├─49380 /usr/bin/python /usr/bin/salt-master</div><div class="line">           ├─49382 /usr/bin/python /usr/bin/salt-master</div><div class="line">           ├─49383 /usr/bin/python /usr/bin/salt-master</div><div class="line">           ├─49384 /usr/bin/python /usr/bin/salt-master</div><div class="line">           ├─49396 /usr/bin/python /usr/bin/salt-master</div><div class="line">           ├─49399 /usr/bin/python /usr/bin/salt-master</div><div class="line">           └─49400 /usr/bin/python /usr/bin/salt-master</div><div class="line"></div><div class="line">Jun 27 19:19:26 localhost.localdomain systemd[1]: Starting The Salt Master Se...</div><div class="line">Jun 27 19:19:28 localhost.localdomain systemd[1]: Started The Salt Master Ser...</div><div class="line">Hint: Some lines were ellipsized, use -l to show in full.</div></pre></td></tr></table></figure>
+<p><strong>重启minion</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">systemctl restart salt-minion.service</div></pre></td></tr></table></figure>
+<p><em>补充：</em></p>
+<p>centOS-7以前的版本重启服务的命令是<code>service restart xxxxxx(服务名)</code></p>
+<h2 id="step-4：master同步所有主机"><a href="#step-4：master同步所有主机" class="headerlink" title="step 4：master同步所有主机"></a>step 4：master同步所有主机</h2><p>可以在同步前，先查看当前salt-key信息</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">[root@localhost vimiix]# salt-key -L</div><div class="line">Accepted Keys:</div><div class="line">  local-minion</div><div class="line">Denied Keys:</div><div class="line">Unaccepted Keys:</div><div class="line">Rejected Keys:</div></pre></td></tr></table></figure>
+<p>同步所有主机</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">salt-key -A</div></pre></td></tr></table></figure>
+<h2 id="step-5：-测试"><a href="#step-5：-测试" class="headerlink" title="step 5： 测试"></a>step 5： 测试</h2><p><strong>测试被控主机是否连通</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">[root@localhost vimiix]# salt &quot;*&quot; test.ping</div><div class="line">local-minion:</div><div class="line">    True</div></pre></td></tr></table></figure>
+<p><code>local-minon</code>    就是刚刚我设置的客户端主机在服务器端的名称，连接正确，配置完成。</p>
+<p><strong>远程命令测试</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">[root@localhost vimiix]# salt &quot;*&quot; cmd.run &quot;uptime&quot;</div><div class="line">   local-minion:</div><div class="line">    19:51:04 up  4:23,  2 users,  load average: 0.08, 0.06, 0.41</div></pre></td></tr></table></figure>
+<h1 id="SaltStack执行命令的格式和Python-API"><a href="#SaltStack执行命令的格式和Python-API" class="headerlink" title="SaltStack执行命令的格式和Python API"></a>SaltStack执行命令的格式和Python API</h1><h2 id="命令格式"><a href="#命令格式" class="headerlink" title="命令格式"></a>命令格式</h2><blockquote>
+<p>salt [argv] object command [argument]</p>
+</blockquote>
+<p>分为以下几个部分：</p>
+<ul>
+<li><code>salt</code>  saltstack的“发动机” </li>
+<li><code>argv</code>  命令参数</li>
+<li><code>object</code>  要执行命令的对象</li>
+<li><code>command</code>  要执行的命令</li>
+<li><code>argument</code>  要执行的命令的参数</li>
+</ul>
+<p><strong>argv:</strong></p>
+<p><code>-E</code> 指定选择要执行命令的对象时用正则来匹配对象    </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">[root@localhost vimiix]# salt -E &quot;^local+&quot; test.ping</div><div class="line">local-minion:</div><div class="line">    True</div></pre></td></tr></table></figure>
+<p><code>-L</code> 指定选择要执行命令的对象时采用列表的方式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">#我本机只连接了创建了一个主机，下面的‘*’可以替换为每个主机名，以“，”分隔每个主机名</div><div class="line">[root@localhost vimiix]# salt -L &quot;local-minion,*&quot; test.ping</div><div class="line">local-minion:</div><div class="line">    True</div></pre></td></tr></table></figure>
+<p><strong>command:</strong></p>
+<p><code>test.ping</code> 测试客户端是否连通</p>
+<p><code>cmd.run</code> 执行linux命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">[root@localhost vimiix]# salt &apos;*&apos; cmd.run &apos;free -m&apos;</div><div class="line">local-minion:</div><div class="line">                total      used       free      shared  buff/cache   available</div><div class="line">    Mem:          976       660        102           4         214         106</div><div class="line">    Swap:        2047        78       1969</div></pre></td></tr></table></figure>
+<h2 id="python-API"><a href="#python-API" class="headerlink" title="python API"></a>python API</h2><p>在部署saltstack的同时本地python会具有一个salt的模块</p>
+<p>示例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#!/usr/bin/python</span></div><div class="line"><span class="comment">#coding:utf-8</span></div><div class="line"></div><div class="line"><span class="keyword">import</span> salt.client</div><div class="line"></div><div class="line">client = salt.client.LocalClient()</div><div class="line">ret = client.cmd(<span class="string">"*"</span>,<span class="string">"test.ping"</span>)</div><div class="line">print(ret)</div></pre></td></tr></table></figure>
         
         </div>
         <footer class="article-footer">
@@ -414,7 +409,7 @@ gpgcheck=0                    #为1，使用公钥检验rpm的正确性
 
             
     
-        <a href="http://www.vimiix.com/2017/03/13/Linux-软件包管理（rpm，yum）.html#comments" class="article-comment-link">评论</a>
+        <a href="http://www.vimiix.com/2017/06/27/SaltStack-Note-1-setup-and-simple-cmds.html#comments" class="article-comment-link">评论</a>
     
 
         </footer>
@@ -423,19 +418,10 @@ gpgcheck=0                    #为1，使用公钥检验rpm的正确性
         
 <nav id="article-nav">
     
-        <a href="/2017/03/15/Python-SyntaxError-Non-ASCII-character-e8-in.html" id="article-nav-newer" class="article-nav-link-wrap">
-            <strong class="article-nav-caption">上一篇</strong>
-            <div class="article-nav-title">
-                
-                    Python-SyntaxError:Non-ASCII character &#39;\e8&#39; in....
-                
-            </div>
-        </a>
     
-    
-        <a href="/2017/03/08/Linux-rhel7-2操作系统安装.html" id="article-nav-older" class="article-nav-link-wrap">
+        <a href="/2017/06/22/web-cookie-and-session.html" id="article-nav-older" class="article-nav-link-wrap">
             <strong class="article-nav-caption">下一篇</strong>
-            <div class="article-nav-title">Linux-rhel7.2操作系统安装</div>
+            <div class="article-nav-title">Web||关于cookie和session一点知识</div>
         </a>
     
 </nav>
