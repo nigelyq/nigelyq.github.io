@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://www.vimiix.com/about/index.html</loc>
+    
+    <lastmod>2017-07-04T09:56:30.881Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://www.vimiix.com/2017/06/27/SaltStack-Note-1-setup-and-simple-cmds.html</loc>
     
     <lastmod>2017-06-27T12:22:35.448Z</lastmod>
@@ -166,13 +173,6 @@
     <loc>http://www.vimiix.com/categories/index.html</loc>
     
     <lastmod>2017-03-07T11:08:27.865Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.vimiix.com/about/index.html</loc>
-    
-    <lastmod>2017-03-07T11:08:27.864Z</lastmod>
     
   </url>
   
