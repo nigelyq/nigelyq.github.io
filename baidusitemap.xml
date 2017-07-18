@@ -4,6 +4,27 @@
 
     
   <url>
+    <loc>http://www.vimiix.com/2017/07/18/vmx-manager-A-cmdb-system-base-on-django.html</loc>
+    <lastmod>2017-07-18T15:21:14.861Z</lastmod>
+    <data>
+        <display>
+        <title>vmx-manager--基于django框架开发的cmdb系统</title>
+        <pubTime>2017-07-18T14:58:21.000Z</pubTime>
+        
+        <tag>django</tag>
+         
+        <tag>python</tag>
+         
+        <tag>cmdb</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://www.vimiix.com/2017/07/10/Python-Introduce-getattr-function.html</loc>
     <lastmod>2017-07-10T04:57:24.652Z</lastmod>
     <data>
@@ -24,6 +45,7 @@
     </data>
     </url>
 
+    
     
     
   <url>

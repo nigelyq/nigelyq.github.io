@@ -3,20 +3,20 @@
 <head>
     <meta charset="utf-8">
     
-    <title>Python-运算符和流程控制 | Vimiix</title>
+    <title>vmx-manager--基于django框架开发的cmdb系统 | Vimiix</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="随手笔记，本篇介绍了python中的各种运算符以及2种流程控制语句。">
+    <meta name="description" content="系统介绍VMX-Manager是一个基于Django框架开发的一款CMDB管理系统，目前处于beta版本，功能主要包含: 管理系统管理的客户主机列表， 动态显示客户机状态信息，远程指令操作指定客户机以及主机与客户机之间的文件传输。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Python-运算符和流程控制">
-<meta property="og:url" content="http://www.vimiix.com/2017/04/01/Python-operators-and-flow-control.html">
+<meta property="og:title" content="vmx-manager--基于django框架开发的cmdb系统">
+<meta property="og:url" content="http://www.vimiix.com/2017/07/18/vmx-manager-A-cmdb-system-base-on-django.html">
 <meta property="og:site_name" content="Vimiix">
-<meta property="og:description" content="随手笔记，本篇介绍了python中的各种运算符以及2种流程控制语句。">
-<meta property="og:image" content="http://omfis13un.bkt.clouddn.com/operator-flow-control.jpg">
-<meta property="og:updated_time" content="2017-04-09T09:42:27.602Z">
+<meta property="og:description" content="系统介绍VMX-Manager是一个基于Django框架开发的一款CMDB管理系统，目前处于beta版本，功能主要包含: 管理系统管理的客户主机列表， 动态显示客户机状态信息，远程指令操作指定客户机以及主机与客户机之间的文件传输。">
+<meta property="og:image" content="http://omfis13un.bkt.clouddn.com/vmx-manager-logo.png">
+<meta property="og:updated_time" content="2017-07-18T15:21:14.861Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Python-运算符和流程控制">
-<meta name="twitter:description" content="随手笔记，本篇介绍了python中的各种运算符以及2种流程控制语句。">
-<meta name="twitter:image" content="http://omfis13un.bkt.clouddn.com/operator-flow-control.jpg">
+<meta name="twitter:title" content="vmx-manager--基于django框架开发的cmdb系统">
+<meta name="twitter:description" content="系统介绍VMX-Manager是一个基于Django框架开发的一款CMDB管理系统，目前处于beta版本，功能主要包含: 管理系统管理的客户主机列表， 动态显示客户机状态信息，远程指令操作指定客户机以及主机与客户机之间的文件传输。">
+<meta name="twitter:image" content="http://omfis13un.bkt.clouddn.com/vmx-manager-logo.png">
     
 
     
@@ -231,15 +231,23 @@ var _hmt = _hmt || [];
 </aside>
 
             
-            <section id="main"><article id="post-Python-operators-and-flow-control" class="article article-type-post" itemscope itemprop="blogPost">
+            <section id="main"><article id="post-vmx-manager-A-cmdb-system-base-on-django" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
+        
+            
+	
+		<img src="http://omfis13un.bkt.clouddn.com/vmx-manager-logo.png" class="article-banner" />
+	
+
+
+
         
         
             <header class="article-header">
                 
     
         <h1 class="article-title" itemprop="name">
-            Python-运算符和流程控制
+            vmx-manager--基于django框架开发的cmdb系统
         </h1>
     
 
@@ -248,22 +256,17 @@ var _hmt = _hmt || [];
                         
     <div class="article-date">
         <i class="fa fa-calendar"></i>
-        <a href="/2017/04/01/Python-operators-and-flow-control.html">
-            <time datetime="2017-04-01T06:34:20.000Z" itemprop="datePublished">2017-04-01</time>
+        <a href="/2017/07/18/vmx-manager-A-cmdb-system-base-on-django.html">
+            <time datetime="2017-07-18T14:58:21.000Z" itemprop="datePublished">2017-07-18</time>
         </a>
     </div>
 
 
                         
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/Python/">Python</a>
-    </div>
-
                         
     <div class="article-tag">
         <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/Python/">Python</a>, <a class="tag-link" href="/tags/flow-control/">flow control</a>, <a class="tag-link" href="/tags/operators/">operators</a>
+        <a class="tag-link" href="/tags/cmdb/">cmdb</a>, <a class="tag-link" href="/tags/django/">django</a>, <a class="tag-link" href="/tags/python/">python</a>
     </div>
 
                     </div>
@@ -274,308 +277,75 @@ var _hmt = _hmt || [];
         <div class="article-entry" itemprop="articleBody">
         
             
-            <p><img src="http://omfis13un.bkt.clouddn.com/operator-flow-control.jpg" alt=""></p>
-<p>随手笔记，本篇介绍了python中的各种运算符以及2种流程控制语句。</p>
-<a id="more"></a>
-<h2 id="Python中的运算符"><a href="#Python中的运算符" class="headerlink" title="Python中的运算符"></a>Python中的运算符</h2><h3 id="算术运算符"><a href="#算术运算符" class="headerlink" title="算术运算符"></a>算术运算符</h3><table>
-<thead>
-<tr>
-<th style="text-align:center">运算符</th>
-<th style="text-align:center">描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">+</td>
-<td style="text-align:center">加</td>
-</tr>
-<tr>
-<td style="text-align:center">-</td>
-<td style="text-align:center">减</td>
-</tr>
-<tr>
-<td style="text-align:center">*</td>
-<td style="text-align:center">乘</td>
-</tr>
-<tr>
-<td style="text-align:center">/</td>
-<td style="text-align:center">除-Py2中9/2输出4,Py3中9/2输出4.5</td>
-</tr>
-<tr>
-<td style="text-align:center">%</td>
-<td style="text-align:center">取余（或者叫取模），返回除法的余数</td>
-</tr>
-<tr>
-<td style="text-align:center">**</td>
-<td style="text-align:center">幂-x**y，x的y次幂</td>
-</tr>
-<tr>
-<td style="text-align:center">//</td>
-<td style="text-align:center">取整（地板除）-返回商的整数部分，<br><font color="red">注意负数的取整，向左取整</font></td>
-</tr>
-</tbody>
-</table>
-<h3 id="比较（关系）运算符，运算结果为布尔值"><a href="#比较（关系）运算符，运算结果为布尔值" class="headerlink" title="比较（关系）运算符，运算结果为布尔值"></a>比较（关系）运算符，运算结果为布尔值</h3><table>
-<thead>
-<tr>
-<th style="text-align:center">运算符</th>
-<th style="text-align:center">描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">==</td>
-<td style="text-align:center">等于-比较对象是否相等</td>
-</tr>
-<tr>
-<td style="text-align:center">!=</td>
-<td style="text-align:center">不等于</td>
-</tr>
-<tr>
-<td style="text-align:center">&gt;</td>
-<td style="text-align:center">大于</td>
-</tr>
-<tr>
-<td style="text-align:center">&lt;</td>
-<td style="text-align:center">小于</td>
-</tr>
-<tr>
-<td style="text-align:center">&gt;=</td>
-<td style="text-align:center">大于等于</td>
-</tr>
-<tr>
-<td style="text-align:center">&lt;=</td>
-<td style="text-align:center">小于等于</td>
-</tr>
-</tbody>
-</table>
-<h3 id="赋值运算符"><a href="#赋值运算符" class="headerlink" title="赋值运算符"></a>赋值运算符</h3><table>
-<thead>
-<tr>
-<th style="text-align:center">运算符</th>
-<th style="text-align:center">描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">=</td>
-<td style="text-align:center">赋值</td>
-</tr>
-<tr>
-<td style="text-align:center">+=</td>
-<td style="text-align:center">a+=b 等效于 a=a+b</td>
-</tr>
-<tr>
-<td style="text-align:center">-=</td>
-<td style="text-align:center">a-=b 等效于 a=a-b</td>
-</tr>
-<tr>
-<td style="text-align:center">*=</td>
-<td style="text-align:center">a<em>=b 等效于 a=a</em>b</td>
-</tr>
-<tr>
-<td style="text-align:center">/=</td>
-<td style="text-align:center">a/=b 等效于 a=a/b</td>
-</tr>
-<tr>
-<td style="text-align:center">%=</td>
-<td style="text-align:center">a%=b 等效于 a=a%b</td>
-</tr>
-<tr>
-<td style="text-align:center">&#42;&#42;=</td>
-<td style="text-align:center">a&#42;&#42;=b 等效于 a=a&#42;&#42;b</td>
-</tr>
-<tr>
-<td style="text-align:center">//=</td>
-<td style="text-align:center">a//=b 等效于 a=a//b</td>
-</tr>
-</tbody>
-</table>
-<h3 id="逻辑运算符"><a href="#逻辑运算符" class="headerlink" title="逻辑运算符"></a>逻辑运算符</h3><table>
-<thead>
-<tr>
-<th style="text-align:center">运算符</th>
-<th style="text-align:center">描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">and</td>
-<td style="text-align:center">逻辑与（同真为真，输出后值，有假即假，输出第一个假值）</td>
-</tr>
-<tr>
-<td style="text-align:center">or</td>
-<td style="text-align:center">逻辑或（同假为假，输出前值，有真即真，输出第一个真值）</td>
-</tr>
-<tr>
-<td style="text-align:center">not</td>
-<td style="text-align:center">逻辑非，取反</td>
-</tr>
-</tbody>
-</table>
-<h3 id="位运算符"><a href="#位运算符" class="headerlink" title="位运算符"></a>位运算符</h3><table>
-<thead>
-<tr>
-<th style="text-align:center">运算符</th>
-<th style="text-align:center">描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">&amp;</td>
-<td style="text-align:center">按位与</td>
-</tr>
-</tbody>
-</table>
-<p>说明：参与预算的两个值，转换为二进制，如果两个相应位都为1，则该位结果为1，否则为0</p>
-<p>栗子：计算 60 &amp; 13</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">十进制</th>
-<th style="text-align:center">二进制</th>
-<th style="text-align:center">十进制结果</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">60</td>
-<td style="text-align:center">111100</td>
-<td style="text-align:center"></td>
-</tr>
-<tr>
-<td style="text-align:center">13</td>
-<td style="text-align:center">001101</td>
-<td style="text-align:center"></td>
-</tr>
-<tr>
-<td style="text-align:center"></td>
-<td style="text-align:center">001100</td>
-<td style="text-align:center">12</td>
-</tr>
-</tbody>
-</table>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">运算符</th>
-<th style="text-align:center">描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">&#124;</td>
-<td style="text-align:center">按位或</td>
-</tr>
-</tbody>
-</table>
-<p>说明：转换为二进制，只要对应的两个位有一个1，则该位结果为1，否则为0</p>
-<p>栗子：计算 60 | 13</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">十进制</th>
-<th style="text-align:center">二进制</th>
-<th style="text-align:center">十进制结果</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">60</td>
-<td style="text-align:center">111100</td>
-<td style="text-align:center"></td>
-</tr>
-<tr>
-<td style="text-align:center">13</td>
-<td style="text-align:center">001101</td>
-<td style="text-align:center"></td>
-</tr>
-<tr>
-<td style="text-align:center"></td>
-<td style="text-align:center">111101</td>
-<td style="text-align:center">61</td>
-</tr>
-</tbody>
-</table>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">运算符</th>
-<th style="text-align:center">描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">^</td>
-<td style="text-align:center">按位异或：位相异结果为1</td>
-</tr>
-<tr>
-<td style="text-align:center">~</td>
-<td style="text-align:center">按位取反</td>
-</tr>
-<tr>
-<td style="text-align:center">&lt;&lt;</td>
-<td style="text-align:center">按位左移</td>
-</tr>
-<tr>
-<td style="text-align:center">&gt;&gt;</td>
-<td style="text-align:center">按位右移</td>
-</tr>
-</tbody>
-</table>
-<h3 id="成员运算符"><a href="#成员运算符" class="headerlink" title="成员运算符"></a>成员运算符</h3><table>
-<thead>
-<tr>
-<th style="text-align:center">运算符</th>
-<th style="text-align:center">描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">in</td>
-<td style="text-align:center">如果在in后面的对象中找的到in前面的对象返回True,否则返回False</td>
-</tr>
-<tr>
-<td style="text-align:center">not in</td>
-<td style="text-align:center">找不到该成员返回True，否则返回False</td>
-</tr>
-</tbody>
-</table>
-<h3 id="身份运算符"><a href="#身份运算符" class="headerlink" title="身份运算符"></a>身份运算符</h3><table>
-<thead>
-<tr>
-<th style="text-align:center">运算符</th>
-<th style="text-align:center">描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">is</td>
-<td style="text-align:center">is是判断两个标识符是不是引用自同一个对象（<font color="blue">理解：是否标记在同一块内存地址</font>）</td>
-</tr>
-<tr>
-<td style="text-align:center">is not</td>
-<td style="text-align:center">和is相反</td>
-</tr>
-</tbody>
-</table>
-<h5 id="python内存管理机制，对于创建变量的时候，是否重新malloc内存的临界点为-5-256-看下面的栗子："><a href="#python内存管理机制，对于创建变量的时候，是否重新malloc内存的临界点为-5-256-看下面的栗子：" class="headerlink" title="python内存管理机制，对于创建变量的时候，是否重新malloc内存的临界点为 -5~256 看下面的栗子："></a>python内存管理机制，对于创建变量的时候，是否重新malloc内存的临界点为 -5~256 看下面的栗子：</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>a=<span class="number">256</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>b=<span class="number">256</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>a <span class="keyword">is</span> b</div><div class="line"><span class="keyword">True</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>a=<span class="number">257</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>b=<span class="number">257</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>a <span class="keyword">is</span> b</div><div class="line"><span class="keyword">False</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>a=<span class="number">-5</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>b=<span class="number">-5</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>a <span class="keyword">is</span> b</div><div class="line"><span class="keyword">True</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>a = <span class="number">-6</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>b= <span class="number">-6</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>a <span class="keyword">is</span> b</div><div class="line"><span class="keyword">False</span></div></pre></td></tr></table></figure>
-<hr>
+            <h2 id="系统介绍"><a href="#系统介绍" class="headerlink" title="系统介绍"></a>系统介绍</h2><p>VMX-Manager是一个基于Django框架开发的一款CMDB管理系统，目前处于beta版本，功能主要包含: 管理系统管理的客户主机列表， 动态显示客户机状态信息，远程指令操作指定客户机以及主机与客户机之间的文件传输。<br><a id="more"></a></p>
+<h6 id="注：VMX取自作者昵称Vimiix缩写"><a href="#注：VMX取自作者昵称Vimiix缩写" class="headerlink" title="注：VMX取自作者昵称Vimiix缩写"></a>注：VMX取自作者昵称<code>Vimiix</code>缩写</h6><h2 id="功能描述："><a href="#功能描述：" class="headerlink" title="功能描述："></a>功能描述：</h2><ol>
+<li>云主机的信息统计</li>
+<li>数据的动态展示</li>
+<li>远程指令控制</li>
+<li>文件传输</li>
+</ol>
+<h2 id="开发环境"><a href="#开发环境" class="headerlink" title="开发环境"></a>开发环境</h2><ul>
+<li>win10</li>
+<li>python2.7</li>
+<li>Django1.11.1</li>
+<li>paramiko2.2.1</li>
+<li>Sqlite3</li>
+</ul>
+<h2 id="整体架构"><a href="#整体架构" class="headerlink" title="整体架构"></a>整体架构</h2><p><img src="http://omfis13un.bkt.clouddn.com/flow.png" alt=""></p>
+<h2 id="使用说明及展示"><a href="#使用说明及展示" class="headerlink" title="使用说明及展示"></a>使用说明及展示</h2><h6 id="注：本次使用说明基于在本地IP端口，直接访问http-127-0-0-1-8000即可"><a href="#注：本次使用说明基于在本地IP端口，直接访问http-127-0-0-1-8000即可" class="headerlink" title="注：本次使用说明基于在本地IP端口，直接访问http://127.0.0.1:8000即可"></a><em>注：本次使用说明基于在本地IP端口，直接访问<code>http://127.0.0.1:8000</code>即可</em></h6><h3 id="开启系统"><a href="#开启系统" class="headerlink" title="开启系统"></a>开启系统</h3><p>第一种方法：</p>
+<ul>
+<li>命令行切换到项目的根目录（<code>/vmx_manager</code>）下,执行命令<code>python manager.py runserver 0.0.0.0:8000</code> ，这里让系统启动并设置IP为<code>0.0.0.0</code>目的是可以让客户端主机访问。</li>
+</ul>
+<p>第二种方法：</p>
+<ul>
+<li>直接将本项目导入pycharm,运行启动项目即可。</li>
+</ul>
+<h3 id="管理员注册"><a href="#管理员注册" class="headerlink" title="管理员注册"></a>管理员注册</h3><p>新人访问系统，需首先注册一个管理员账号，注册地址:<code>http://127.0.0.1:8000/manager/register/</code></p>
+<p><img src="http://omfis13un.bkt.clouddn.com/register.png" alt=""></p>
+<h3 id="登录"><a href="#登录" class="headerlink" title="登录"></a>登录</h3><p>注册成功以后，会自动跳转至登录页面，用刚才注册的账号登录即可。</p>
+<p>若不想注册，直接使用此账号登陆：</p>
+<ul>
+<li>账号：<code>admin</code></li>
+<li>密码：<code>123456</code></li>
+</ul>
+<p><img src="http://omfis13un.bkt.clouddn.com/vmx-manager-login.png" alt=""></p>
+<p>进入首页，可以看到本系统的基本介绍和功能选择界面</p>
+<p><img src="http://omfis13un.bkt.clouddn.com/index.png" alt=""></p>
+<p>自登录进来以后，会自动保存管理员信息在本地cookie中，有效期是1小时，也就是说1小时以后，系统会要求管理员重新登录，否则自动退出。</p>
+<p>下面就依次介绍每个功能</p>
+<h3 id="主机列表"><a href="#主机列表" class="headerlink" title="主机列表"></a>主机列表</h3><p>在这个页面，展示了目前已经在管理的客户主机信息,其中包含<code>主机的IP</code>，<code>自定义名称</code>，<code>操作系统</code>，<code>CPU型号</code>，以及<code>最近的一次重启时间</code>。</p>
+<p><img src="http://omfis13un.bkt.clouddn.com/host.png" alt=""></p>
+<p>在这个页面，管理员可以直接操作删除目前管理的客户主机，将不再对其监控。也可以添加一个新的主机进来，点击<code>新增</code>按钮，跳转至添加页面，将要添加的主机IP，可以管理员信息填写进去，系统会自动去读取要管理的主机相关信息，并保存到数据库，添加成功弹窗提示，点击<code>确定</code>返回到主机列表，此时会看到新添加成功的主机。</p>
+<p><img src="http://omfis13un.bkt.clouddn.com/add_host.png" alt=""></p>
+<h3 id="动态信息"><a href="#动态信息" class="headerlink" title="动态信息"></a>动态信息</h3><p>这个页面作了一个信息动态的展示，因为要想显示更多的信息，只是在脚本中，去多读取一些信息，发送回来，分图表去展示，这里目前只收集到一个客户机发送上来的CPU信息用来做例子展示。</p>
+<p><img src="http://omfis13un.bkt.clouddn.com/cpu.png" alt=""></p>
+<blockquote>
+<font color="red">这个页面想要看到数据的动态变化，需要讲本项目根目录下的<code>sendData.py</code>文件打开，配置好服务器的IP(比如我win10的IP是<code>192.168.1.109</code>)，并使用一会儿要说到的第四个文件分发功能将这个文件，下发到客户机上去运行起来。这样就会在这个页面看到对应客户主机的动态信息。</font>
 
-<h2 id="流程控制"><a href="#流程控制" class="headerlink" title="流程控制"></a>流程控制</h2><h3 id="理解"><a href="#理解" class="headerlink" title="理解"></a>理解</h3><p>if判断语句：什么条件下干什么事</p>
-<p>for,while循环语句:在什么条件下，一直做某事</p>
-<h3 id="if流程语句"><a href="#if流程语句" class="headerlink" title="if流程语句"></a>if流程语句</h3><h5 id="语法："><a href="#语法：" class="headerlink" title="语法："></a>语法：</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> 条件语句：</div><div class="line">	执行代码<span class="number">1</span></div><div class="line"><span class="keyword">else</span>:</div><div class="line">	执行代码<span class="number">2</span></div></pre></td></tr></table></figure>
-<p>条件语句：必须是一个可以用bool值判断的</p>
-<h5 id="流程图："><a href="#流程图：" class="headerlink" title="流程图："></a>流程图：</h5><p><img src="http://omfis13un.bkt.clouddn.com/if-else.png" alt=""></p>
-<h5 id="用户登录实例："><a href="#用户登录实例：" class="headerlink" title="用户登录实例："></a>用户登录实例：</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#coding=utf-8</span></div><div class="line">username = <span class="string">'admin'</span> <span class="comment">#设置默认用户名</span></div><div class="line">password = <span class="string">'123'</span> <span class="comment">#设置默认密码</span></div><div class="line">user_input = raw_input(<span class="string">'Please input your name:'</span>) <span class="comment">#提示用户输入用户名</span></div><div class="line">passwd_input = raw_input(<span class="string">'Please input your password:'</span>) <span class="comment">#提示用户输入密码</span></div><div class="line"><span class="keyword">if</span> user_input == username <span class="keyword">and</span> passwd_input ==password: <span class="comment">#验证用户名和密码是否和默认值相同</span></div><div class="line">	<span class="keyword">print</span> <span class="string">'welcome %s login.'</span>%user_input</div><div class="line"><span class="keyword">else</span>:</div><div class="line">	<span class="keyword">print</span> <span class="string">'your name or password is wrong!'</span></div></pre></td></tr></table></figure>
-<h5 id="改进："><a href="#改进：" class="headerlink" title="改进："></a>改进：</h5><p>现在需要实现访客输入‘guest’后不需要输入密码，直接就可以登录进去；正常输入用户名的情况下还需要输入密码才能输入</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#coding=utf-8</span></div><div class="line">username = <span class="string">'admin'</span> <span class="comment">#设置默认用户名</span></div><div class="line">password = <span class="string">'123'</span> <span class="comment">#设置默认密码</span></div><div class="line">guest_name = <span class="string">'guest'</span></div><div class="line">user_input = raw_input(<span class="string">'Please input your name:'</span>) <span class="comment">#提示用户输入用户名</span></div><div class="line"><span class="keyword">if</span> user_input == guest_name:</div><div class="line">      <span class="keyword">print</span> <span class="string">'welcome %s login.'</span>%guest_name</div><div class="line"><span class="keyword">elif</span> user_input == username:</div><div class="line">      passwd_input = raw_input(<span class="string">'Please input your password:'</span>) <span class="comment">#提示用户输入密码</span></div><div class="line">      <span class="keyword">if</span> passwd_input ==password: <span class="comment">#验证用户名和密码是否和默认值相同</span></div><div class="line">            <span class="keyword">print</span> <span class="string">'welcome %s login.'</span>%user_input</div><div class="line"><span class="keyword">else</span>:</div><div class="line">      <span class="keyword">print</span> <span class="string">'your name or password is wrong!'</span></div></pre></td></tr></table></figure>
-<p>运行结果：<br><img src="http://omfis13un.bkt.clouddn.com/login.png" alt=""></p>
-<h3 id="while循环"><a href="#while循环" class="headerlink" title="while循环"></a>while循环</h3><h5 id="语法：-1"><a href="#语法：-1" class="headerlink" title="语法："></a>语法：</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">while</span> 判断条件：</div><div class="line">	循环语句</div></pre></td></tr></table></figure>
-<h5 id="实例1：计算1到100的和"><a href="#实例1：计算1到100的和" class="headerlink" title="实例1：计算1到100的和"></a>实例1：计算1到100的和</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#coding=utf-8</span></div><div class="line">i = <span class="number">1</span></div><div class="line">sum = <span class="number">0</span></div><div class="line"><span class="keyword">while</span> i&lt;=<span class="number">100</span>:</div><div class="line">	sum += i</div><div class="line">	i+=<span class="number">1</span></div><div class="line"><span class="keyword">print</span> sum</div></pre></td></tr></table></figure>
-<h5 id="实例2：打印九九乘法表（while实现）"><a href="#实例2：打印九九乘法表（while实现）" class="headerlink" title="实例2：打印九九乘法表（while实现）"></a>实例2：打印九九乘法表（while实现）</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#coding=utf-8</span></div><div class="line">i = <span class="number">1</span></div><div class="line">j = <span class="number">1</span></div><div class="line"><span class="keyword">while</span> i &lt; <span class="number">10</span>:</div><div class="line">      <span class="keyword">while</span> j &lt;= i:</div><div class="line">            <span class="keyword">if</span>( j == i):</div><div class="line">                  <span class="keyword">print</span> i,<span class="string">'x'</span>,j,<span class="string">'='</span>,i*j</div><div class="line">            <span class="keyword">else</span>:</div><div class="line">                  <span class="keyword">print</span> i,<span class="string">'x'</span>,j,<span class="string">'='</span>,i*j,<span class="string">' '</span>,</div><div class="line">            j += <span class="number">1</span></div><div class="line">      i += <span class="number">1</span></div><div class="line">      j = <span class="number">1</span></div></pre></td></tr></table></figure>
-<p>运行结果：</p>
-<p><img src="http://omfis13un.bkt.clouddn.com/9x9.png" alt=""></p>
+</blockquote>
+<h3 id="远程指令"><a href="#远程指令" class="headerlink" title="远程指令"></a>远程指令</h3><p>在这个页面有两个功能：</p>
+<ol>
+<li>给指定远程主机发生指令，并获取执行结果</li>
+<li>查看最近执行成功的8条指令</li>
+</ol>
+<h5 id="发送指令"><a href="#发送指令" class="headerlink" title="发送指令"></a>发送指令</h5><p>下面的例子中，我向我的AWS云主机发送了一条指令<code>ls /home/ec2-user</code>，查看我的用户目录下的文件信息,右边的黑色框中回显了收到的信息。若链接主机失败，会在右侧的显示框，提示链接不成功。<br><img src="http://omfis13un.bkt.clouddn.com/remote.png" alt=""></p>
+<h4 id="发送指令历史"><a href="#发送指令历史" class="headerlink" title="发送指令历史"></a>发送指令历史</h4><p>点击<code>发送历史</code>按钮，会在右侧框中显示历史纪录，格式为：<code>发送时间&gt;&gt;发送指令&gt;&gt;远程主机IP</code></p>
+<p><img src="http://omfis13un.bkt.clouddn.com/history.png" alt=""></p>
+<h3 id="文件传输"><a href="#文件传输" class="headerlink" title="文件传输"></a>文件传输</h3><p>这个页面同样也是有两个功能：：</p>
+<ol>
+<li>向服务器上传文件</li>
+<li>向指定IP的远程主机，分发文件</li>
+</ol>
+<p>成功则在本页面提示发送成功，失败提示发送失败</p>
+<p>具体使用请参考下面的图片：</p>
+<h5 id="上传文件"><a href="#上传文件" class="headerlink" title="上传文件"></a>上传文件</h5><p>上传成功以后，会保存在项目根目录下的<code>upload</code>中。</p>
+<p><img src="http://omfis13un.bkt.clouddn.com/upload.png" alt=""></p>
+<h5 id="分发文件"><a href="#分发文件" class="headerlink" title="分发文件"></a>分发文件</h5><p><img src="http://omfis13un.bkt.clouddn.com/put.png" alt=""></p>
+<p>我们到<code>192.168.59.129</code>这个IP的主机中去看一下，文件是否发送成功？</p>
+<p><img src="http://omfis13un.bkt.clouddn.com/verify.png" alt=""></p>
+<p>从上图可以看出，主机IP<code>192.168.59.129</code>成功接收到了我们刚刚从win10发送的<code>requirements.txt</code>的文件。</p>
+<h3 id="写在最后"><a href="#写在最后" class="headerlink" title="写在最后"></a>写在最后</h3><p>这个系统不能算成熟的产品，因为其中很多功能其实可以用更好的方式去优化实现。但是，这是一次很有收获的经历。在写专注的写代码的三天中，从前端到后端到数据库，遇到了不计其数的坑，但都通过自己不断的google,思考，优化，一步一步的都解决了。希望自己一如既往的保持一颗求知的心，去不断的探索新的知识，大胆的尝试，勇敢的试错，跨过去一道坎的心情是难以在黎明前去阐述的，小小感慨，聊以自勉。</p>
+<h3 id="End"><a href="#End" class="headerlink" title="End"></a>End</h3><p>See project at <a href="https://github.com/vimiix/vmx_manager" target="_blank" rel="external">https://github.com/vimiix/vmx_manager</a></p>
 
         
         </div>
@@ -639,7 +409,7 @@ var _hmt = _hmt || [];
 
             
     
-        <a href="http://www.vimiix.com/2017/04/01/Python-operators-and-flow-control.html#comments" class="article-comment-link">评论</a>
+        <a href="http://www.vimiix.com/2017/07/18/vmx-manager-A-cmdb-system-base-on-django.html#comments" class="article-comment-link">评论</a>
     
 
         </footer>
@@ -648,19 +418,10 @@ var _hmt = _hmt || [];
         
 <nav id="article-nav">
     
-        <a href="/2017/04/05/Python-Self-service-shopping-machine.html" id="article-nav-newer" class="article-nav-link-wrap">
-            <strong class="article-nav-caption">上一篇</strong>
-            <div class="article-nav-title">
-                
-                    自助购物机交易源码
-                
-            </div>
-        </a>
     
-    
-        <a href="/2017/03/31/Python-Introduction-of-tuple-and-dict.html" id="article-nav-older" class="article-nav-link-wrap">
+        <a href="/2017/07/10/Python-Introduce-getattr-function.html" id="article-nav-older" class="article-nav-link-wrap">
             <strong class="article-nav-caption">下一篇</strong>
-            <div class="article-nav-title">Python-对于元祖和字典的认识</div>
+            <div class="article-nav-title">[Python]内建函数getattr()函数详解</div>
         </a>
     
 </nav>
