@@ -4,6 +4,48 @@
 
     
   <url>
+    <loc>http://www.vimiix.com/2017/08/01/algorithms-cover-board-game.html</loc>
+    <lastmod>2017-08-01T12:55:14.884Z</lastmod>
+    <data>
+        <display>
+        <title>算法日记|使用L形砖拼接国际象棋棋盘</title>
+        <pubTime>2017-08-01T11:54:21.000Z</pubTime>
+        
+        <tag>algorithms</tag>
+         
+        <tag>python</tag>
+         
+        <tag>算法日记</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.vimiix.com/2017/07/31/algorithms-gnomesort.html</loc>
+    <lastmod>2017-08-01T11:47:23.774Z</lastmod>
+    <data>
+        <display>
+        <title>算法日记|侏儒排序算法实现和复杂度分析</title>
+        <pubTime>2017-07-31T07:58:21.000Z</pubTime>
+        
+        <tag>algorithms</tag>
+         
+        <tag>python</tag>
+         
+        <tag>算法日记</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://www.vimiix.com/2017/07/18/vmx-manager-A-cmdb-system-base-on-django.html</loc>
     <lastmod>2017-07-18T15:21:14.861Z</lastmod>
     <data>
@@ -11,9 +53,9 @@
         <title>vmx-manager--基于django框架开发的cmdb系统</title>
         <pubTime>2017-07-18T14:58:21.000Z</pubTime>
         
-        <tag>django</tag>
-         
         <tag>python</tag>
+         
+        <tag>django</tag>
          
         <tag>cmdb</tag>
          
@@ -371,9 +413,9 @@
         <title>Python-关于Python中闭包的一些理解</title>
         <pubTime>2017-04-09T09:07:34.000Z</pubTime>
         
-        <tag>closure</tag>
-         
         <tag>Python</tag>
+         
+        <tag>closure</tag>
          
          
            
