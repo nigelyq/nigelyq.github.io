@@ -4,29 +4,8 @@
 
     
   <url>
-    <loc>http://www.vimiix.com/2017/08/01/algorithms-cover-board-game.html</loc>
-    <lastmod>2017-08-01T12:55:14.884Z</lastmod>
-    <data>
-        <display>
-        <title>算法日记|使用L形砖拼接国际象棋棋盘</title>
-        <pubTime>2017-08-01T11:54:21.000Z</pubTime>
-        
-        <tag>algorithms</tag>
-         
-        <tag>python</tag>
-         
-        <tag>算法日记</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://www.vimiix.com/2017/07/31/algorithms-gnomesort.html</loc>
-    <lastmod>2017-08-01T11:47:23.774Z</lastmod>
+    <lastmod>2017-08-01T13:02:54.983Z</lastmod>
     <data>
         <display>
         <title>算法日记|侏儒排序算法实现和复杂度分析</title>
@@ -40,6 +19,33 @@
          
          
            
+             
+              <breadCrumb title="算法" url="http://www.vimiix.com/categories/%E7%AE%97%E6%B3%95/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.vimiix.com/2017/08/01/algorithms-cover-board-game.html</loc>
+    <lastmod>2017-08-01T13:02:39.764Z</lastmod>
+    <data>
+        <display>
+        <title>算法日记|使用L形砖拼接国际象棋棋盘</title>
+        <pubTime>2017-08-01T11:54:21.000Z</pubTime>
+        
+        <tag>algorithms</tag>
+         
+        <tag>python</tag>
+         
+        <tag>算法日记</tag>
+         
+         
+           
+             
+              <breadCrumb title="算法" url="http://www.vimiix.com/categories/%E7%AE%97%E6%B3%95/"/>
+          
         </display>
     </data>
     </url>
@@ -387,13 +393,13 @@
         <title>Python-文件操作</title>
         <pubTime>2017-04-13T07:50:34.000Z</pubTime>
         
-        <tag>Python</tag>
-         
         <tag>file</tag>
          
         <tag>open</tag>
          
         <tag>close</tag>
+         
+        <tag>Python</tag>
          
          
            
