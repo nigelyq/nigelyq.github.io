@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://www.vimiix.com/about/index.html</loc>
+    
+    <lastmod>2017-08-02T10:22:56.123Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.vimiix.com/2017/08/02/algorithms-insert-sort-and-select-sort.html</loc>
+    
+    <lastmod>2017-08-02T10:18:06.567Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://www.vimiix.com/2017/07/31/algorithms-gnomesort.html</loc>
     
     <lastmod>2017-08-01T13:02:54.983Z</lastmod>
@@ -26,13 +40,6 @@
     <loc>http://www.vimiix.com/2017/07/10/Python-Introduce-getattr-function.html</loc>
     
     <lastmod>2017-07-10T04:57:24.652Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.vimiix.com/about/index.html</loc>
-    
-    <lastmod>2017-07-04T09:56:30.881Z</lastmod>
     
   </url>
   

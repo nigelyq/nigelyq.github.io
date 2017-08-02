@@ -3,14 +3,36 @@
 <head>
     <meta charset="utf-8">
     
-    <title>标签: 随笔 | Vimiix</title>
+    <title>算法日记|用递归和迭代的思想分别实现插入排序和选择排序 | Vimiix</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta property="og:type" content="website">
-<meta property="og:title" content="Vimiix">
-<meta property="og:url" content="http://www.vimiix.com/tags/随笔/index.html">
+    <meta name="description" content="思路
+
+插入排序（insert sort）
+先归纳性的假设前n-1个元素已经完成排序了，现在要将第n个元素向前插入到正确的位置上。这种方式称之为插入排序法
+
+选择排序（selection sort）
+先找到整个序列中最大的元素，并将其向后放在n（待排序的序列末尾）的位置上，然后继续递归排序剩下的元素。这种方式称之为选择排序法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="算法日记|用递归和迭代的思想分别实现插入排序和选择排序">
+<meta property="og:url" content="http://www.vimiix.com/2017/08/02/algorithms-insert-sort-and-select-sort.html">
 <meta property="og:site_name" content="Vimiix">
+<meta property="og:description" content="思路
+
+插入排序（insert sort）
+先归纳性的假设前n-1个元素已经完成排序了，现在要将第n个元素向前插入到正确的位置上。这种方式称之为插入排序法
+
+选择排序（selection sort）
+先找到整个序列中最大的元素，并将其向后放在n（待排序的序列末尾）的位置上，然后继续递归排序剩下的元素。这种方式称之为选择排序法">
+<meta property="og:updated_time" content="2017-08-02T10:18:06.567Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Vimiix">
+<meta name="twitter:title" content="算法日记|用递归和迭代的思想分别实现插入排序和选择排序">
+<meta name="twitter:description" content="思路
+
+插入排序（insert sort）
+先归纳性的假设前n-1个元素已经完成排序了，现在要将第n个元素向前插入到正确的位置上。这种方式称之为插入排序法
+
+选择排序（selection sort）
+先找到整个序列中最大的元素，并将其向后放在n（待排序的序列末尾）的位置上，然后继续递归排序剩下的元素。这种方式称之为选择排序法">
     
 
     
@@ -221,50 +243,160 @@ var _hmt = _hmt || [];
 </aside>
 
             
-            <section id="main">
-<div class="timeline timeline-wrap">
-    <div class="timeline-row timeline-row-major">
-        <span class="node"><i class="fa fa-tag"></i></span>
-        <h1 class="title">#随笔</h1>
-    </div>
-    
-        <div class="timeline-row">
-            <span class="node"></span>
-            <div class="content">
+            <section id="main"><article id="post-algorithms-insert-sort-and-select-sort" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
                 
     
-        <h1 itemprop="name">
-            <a class="timeline-article-title" href="/2017/04/26/Better-than-yesterday.html">【随笔】做一个比昨天的自己更优秀的人</a>
+        <h1 class="article-title" itemprop="name">
+            算法日记|用递归和迭代的思想分别实现插入排序和选择排序
         </h1>
     
 
-                <div class="article-meta">
-                    
+                
+                    <div class="article-meta">
+                        
     <div class="article-date">
         <i class="fa fa-calendar"></i>
-        <a href="/2017/04/26/Better-than-yesterday.html">
-            <time datetime="2017-04-26T02:17:49.000Z" itemprop="datePublished">2017-04-26</time>
+        <a href="/2017/08/02/algorithms-insert-sort-and-select-sort.html">
+            <time datetime="2017-08-02T09:17:25.000Z" itemprop="datePublished">2017-08-02</time>
         </a>
     </div>
 
 
-                    
+                        
     <div class="article-category">
     	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/随笔/">随笔</a>
+        <a class="article-category-link" href="/categories/算法/">算法</a>
     </div>
 
-                    
+                        
     <div class="article-tag">
         <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/随笔/">随笔</a>
+        <a class="tag-link" href="/tags/algorithms/">algorithms</a>, <a class="tag-link" href="/tags/python/">python</a>, <a class="tag-link" href="/tags/算法日记/">算法日记</a>
     </div>
 
-                </div>
-            </div>
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><hr>
+
+<h3 id="插入排序（insert-sort）"><a href="#插入排序（insert-sort）" class="headerlink" title="插入排序（insert sort）"></a>插入排序（insert sort）</h3><blockquote>
+<p>先归纳性的假设前n-1个元素已经完成排序了，现在要将第n个元素<font color="red">向前插入</font>到正确的位置上。这种方式称之为<strong>插入排序法</strong></p>
+</blockquote>
+<h3 id="选择排序（selection-sort）"><a href="#选择排序（selection-sort）" class="headerlink" title="选择排序（selection sort）"></a>选择排序（selection sort）</h3><blockquote>
+<p>先找到整个序列中最大的元素，并将其<font color="red">向后放</font>在n（待排序的序列末尾）的位置上，然后继续递归排序剩下的元素。这种方式称之为<strong>选择排序法</strong><br><a id="more"></a></p>
+</blockquote>
+<h1 id="Python代码实现"><a href="#Python代码实现" class="headerlink" title="Python代码实现"></a>Python代码实现</h1><hr>
+
+<h3 id="递归版插入排序"><a href="#递归版插入排序" class="headerlink" title="递归版插入排序"></a>递归版插入排序</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">ins_sort_rec</span><span class="params">(seq, i)</span>:</span></div><div class="line">  <span class="keyword">if</span> i == <span class="number">0</span>:                                  <span class="comment">#单元素情况，直接返回</span></div><div class="line">    <span class="keyword">return</span></div><div class="line">  ins_sort_rec(seq, i<span class="number">-1</span>)                      <span class="comment">#递归排序0~(i-1)的元素，排好后，后面会将i的元素向前插入</span></div><div class="line">  j = i</div><div class="line">  <span class="keyword">while</span> j &gt; <span class="number">0</span> <span class="keyword">and</span> seq[j<span class="number">-1</span>] &gt; seq[j]:          <span class="comment">#寻找合适的位置，直到找到比seq[j]小的元素时，停止循环</span></div><div class="line">    seq[j<span class="number">-1</span>], seq[j] = seq[j], seq[j<span class="number">-1</span>]       <span class="comment">#交换位置</span></div><div class="line">    j -= <span class="number">1</span>                                    <span class="comment">#递减索引值</span></div></pre></td></tr></table></figure>
+<p>这段代码概括了该算法的思路：如果想要对目标序列中的第i个元素进行排序，首先要对i-1个元素进行递归性排序，并通过交换方式将<code>seq[i]</code>放到其已排序元素中的正确位置上，。尽管这种实现形式可以让我们在递归调用中很好的概括其归纳前提，但在具体实践中会受到限制（<em>例如：它只能在一定的序列长度下正常工作</em>）。</p>
+<h3 id="迭代版插入排序"><a href="#迭代版插入排序" class="headerlink" title="迭代版插入排序"></a>迭代版插入排序</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">ins_sort</span><span class="params">(seq)</span>:</span></div><div class="line">  <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,len(seq)):                  <span class="comment">#从0到(i-1)排序</span></div><div class="line">    j = i                                      <span class="comment">#j作为扫描索引从后向前扫描，i为每一次的要插入的序列长度</span></div><div class="line">    <span class="keyword">while</span> j &gt; <span class="number">0</span> <span class="keyword">and</span> seq[j<span class="number">-1</span>] &gt; seq[j]:         <span class="comment">#寻找合适位置</span></div><div class="line">      seq[j<span class="number">-1</span>], seq[j] = seq[j], seq[j<span class="number">-1</span>]      <span class="comment">#依次交换位置</span></div><div class="line">      j -= <span class="number">1</span>                                   <span class="comment">#递减索引值扫描</span></div></pre></td></tr></table></figure>
+<p>上面这段代码所展示的则是更为人们所熟知的迭代版插入排序。它将原先的后退式递归调用改成了从第一个元素开始的前进式迭代操作。但仔细推敲一下，就会发现递归也是这样做的。尽管看起来递归似乎是从序列尾端开始的，但是while循环被执行之前，这些递归调用得要先完全回退到第一个元素上。然后在该递归调用开始返回之后，while循环才能开始处理第二个元素，并以此类推下去。所以，以上两个版本的行为其实是相同的。</p>
+<h3 id="递归版选择排序"><a href="#递归版选择排序" class="headerlink" title="递归版选择排序"></a>递归版选择排序</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">sel_sort_rec</span><span class="params">(seq, i)</span>:</span></div><div class="line">  <span class="keyword">if</span> i == <span class="number">0</span>:                                   <span class="comment">#单元素直接返回</span></div><div class="line">    <span class="keyword">return</span></div><div class="line">  max_j = i                                    <span class="comment">#初始化一个max_j作为要找的最大元素的索引值，先假设目前序列的最后一个为最大值</span></div><div class="line">  <span class="keyword">for</span> j <span class="keyword">in</span> range(i):                           <span class="comment">#寻找最大元素</span></div><div class="line">    <span class="keyword">if</span> seq[j] &gt; seq[max_j]:</div><div class="line">      max_j = j                                <span class="comment">#找到一个比seq[i]大的就更新max_j的值</span></div><div class="line">  seq[i], seq[max_j] = seq[max_j], seq[i]      <span class="comment">#将最大的元素放到末尾</span></div><div class="line">  sel_sort_rec(seq, i<span class="number">-1</span>)                       <span class="comment">#继续排列前i-1个元素</span></div></pre></td></tr></table></figure>
+<h3 id="迭代版选择排序"><a href="#迭代版选择排序" class="headerlink" title="迭代版选择排序"></a>迭代版选择排序</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">sel_sort</span><span class="params">(seq)</span>:</span></div><div class="line">  <span class="keyword">for</span> i <span class="keyword">in</span> range(len(seq)<span class="number">-1</span>, <span class="number">0</span>, <span class="number">-1</span>):           <span class="comment">#从最长开始依次递减将最大元素放在末尾</span></div><div class="line">    max_j = i                                  <span class="comment">#初始化max_j的索引值</span></div><div class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> range(i):                         <span class="comment">#寻找最大值</span></div><div class="line">	  <span class="keyword">if</span> seq[j] &gt; seq[max_j]:</div><div class="line">        max_j = j                              <span class="comment">#更新最大元素的索引值</span></div><div class="line">    seq[i], seq[max_j] = seq[max_j], seq[i]    <span class="comment">#奖最大元素后放</span></div></pre></td></tr></table></figure>
+<p>这两段代码和上面一样，递归版实现明确表示了其归纳前提，而迭代版则明确说明了其反复迭代执行的归纳步骤。两者都是先找出最大元素，并将其交换到当前所关注序列的尾端。</p>
+
+        
         </div>
-    
+        <footer class="article-footer">
+            <div class="share-container">
+
+    <div class="jiathis_style">
+    <span class="jiathis_txt">分享到：</span>
+    <!--a class="jiathis_button_qzone">QQ空间</a-->
+    <a class="jiathis_button_tsina">新浪微博</a>
+    <!--a class="jiathis_button_tqq">腾讯微博</a-->
+    <a class="jiathis_button_weixin">微信</a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+    <a class="jiathis_counter_style"></a>
 </div>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<style>
+    .jiathis_style div:first-child:not(.jiadiv_01) {
+        width: auto !important;
+        border: none !important;
+    }
+    .jiathis_style .jiadiv_01 {
+        margin: 10px 0;
+        border-radius: 4px;
+        border: #e1e1e1 solid 1px;
+    }
+    .jiathis_style .jiadiv_01 div:first-child {
+        display: none;
+    }
+    .jiathis_style .jiadiv_02 {
+        padding: 7px 0 !important;
+    }
+    .jiathis_style .jiadiv_02 .jiatitle {
+        width: 85px;
+        border: none;
+        height: auto;
+        margin: 3px 10px;
+        padding: 6px 10px;
+        border-radius: 4px;
+    }
+    .jiathis_style .jiadiv_02 .jiatitle:hover {
+        border: none;
+    }
+    .jiathis_style .jiadiv_02 .jiatitle:nth-child(even) {
+        margin-left: 0;
+    }
+    .jiathis_style .jtico:hover {
+        opacity: 1;
+    }
+    .jiathis_style .ckepopBottom,
+    .jiathis_style .centerBottom {
+        width: auto !important;
+        padding: 5px;
+        background: #f7f7f7;
+    }
+</style>
+
+
+
+</div>
+
+            
+    
+        <a href="http://www.vimiix.com/2017/08/02/algorithms-insert-sort-and-select-sort.html#comments" class="article-comment-link">评论</a>
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/2017/08/01/algorithms-cover-board-game.html" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">下一篇</strong>
+            <div class="article-nav-title">算法日记|使用L形砖拼接国际象棋棋盘</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    <section id="comments">
+    
+        
+	<div id="commentContainer"></div>
+
+    
+    </section>
+
 </section>
             
                 <aside id="sidebar">
