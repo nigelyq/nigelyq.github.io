@@ -3,6 +3,30 @@
 
 
     
+  <url>
+    <loc>http://www.vimiix.com/2017/08/05/Python-tuple-unpacking.html</loc>
+    <lastmod>2017-08-05T10:36:50.650Z</lastmod>
+    <data>
+        <display>
+        <title>Python|元组拆包和具名元组解析</title>
+        <pubTime>2017-08-05T09:02:29.000Z</pubTime>
+        
+        <tag>Python</tag>
+         
+        <tag>tuple</tag>
+         
+        <tag>namedtuple</tag>
+         
+         
+           
+             
+              <breadCrumb title="Python" url="http://www.vimiix.com/categories/Python/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
     
   <url>
     <loc>http://www.vimiix.com/2017/08/02/algorithms-insert-sort-and-select-sort.html</loc>
@@ -417,13 +441,13 @@
         <title>Python-文件操作</title>
         <pubTime>2017-04-13T07:50:34.000Z</pubTime>
         
+        <tag>Python</tag>
+         
         <tag>file</tag>
          
         <tag>open</tag>
          
         <tag>close</tag>
-         
-        <tag>Python</tag>
          
          
            
@@ -443,9 +467,9 @@
         <title>Python-关于Python中闭包的一些理解</title>
         <pubTime>2017-04-09T09:07:34.000Z</pubTime>
         
-        <tag>Python</tag>
-         
         <tag>closure</tag>
+         
+        <tag>Python</tag>
          
          
            
