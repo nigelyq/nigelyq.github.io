@@ -4,6 +4,54 @@
 
     
   <url>
+    <loc>http://www.vimiix.com/2017/08/27/Linux-pip-setup-and-solve-problems.html</loc>
+    <lastmod>2017-08-27T06:25:20.538Z</lastmod>
+    <data>
+        <display>
+        <title>Linux|CentOS系统yum安装pip及遇到的问题解决方法</title>
+        <pubTime>2017-08-27T06:16:25.000Z</pubTime>
+        
+        <tag>CentOS</tag>
+         
+        <tag>python</tag>
+         
+        <tag>pip</tag>
+         
+         
+           
+             
+              <breadCrumb title="Linux" url="http://www.vimiix.com/categories/Linux/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.vimiix.com/2017/06/27/SaltStack-Note-1-setup-and-simple-cmds.html</loc>
+    <lastmod>2017-08-27T06:19:43.280Z</lastmod>
+    <data>
+        <display>
+        <title>DevOps|SaltStack的部署和基本指令</title>
+        <pubTime>2017-06-27T12:08:03.000Z</pubTime>
+        
+        <tag>Python</tag>
+         
+        <tag>SaltStack</tag>
+         
+        <tag>DevOps</tag>
+         
+         
+           
+             
+              <breadCrumb title="DevOps" url="http://www.vimiix.com/categories/DevOps/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://www.vimiix.com/2017/08/05/Python-tuple-unpacking.html</loc>
     <lastmod>2017-08-05T10:36:50.650Z</lastmod>
     <data>
@@ -36,11 +84,11 @@
         <title>算法日记|用递归和迭代的思想分别实现插入排序和选择排序</title>
         <pubTime>2017-08-02T09:17:25.000Z</pubTime>
         
-        <tag>algorithms</tag>
-         
         <tag>python</tag>
          
         <tag>算法日记</tag>
+         
+        <tag>algorithms</tag>
          
          
            
@@ -60,11 +108,11 @@
         <title>算法日记|侏儒排序算法实现和复杂度分析</title>
         <pubTime>2017-07-31T07:58:21.000Z</pubTime>
         
-        <tag>algorithms</tag>
-         
         <tag>python</tag>
          
         <tag>算法日记</tag>
+         
+        <tag>algorithms</tag>
          
          
            
@@ -84,11 +132,11 @@
         <title>算法日记|使用L形砖拼接国际象棋棋盘</title>
         <pubTime>2017-08-01T11:54:21.000Z</pubTime>
         
-        <tag>algorithms</tag>
-         
         <tag>python</tag>
          
         <tag>算法日记</tag>
+         
+        <tag>algorithms</tag>
          
          
            
@@ -143,28 +191,6 @@
     </url>
 
     
-    
-  <url>
-    <loc>http://www.vimiix.com/2017/06/27/SaltStack-Note-1-setup-and-simple-cmds.html</loc>
-    <lastmod>2017-06-27T12:22:35.448Z</lastmod>
-    <data>
-        <display>
-        <title>[SaltStack]SaltStack的部署和基本指令</title>
-        <pubTime>2017-06-27T12:08:03.000Z</pubTime>
-        
-        <tag>Python</tag>
-         
-        <tag>SaltStack</tag>
-         
-         
-           
-             
-              <breadCrumb title="SaltStack" url="http://www.vimiix.com/categories/SaltStack/"/>
-          
-        </display>
-    </data>
-    </url>
-
     
   <url>
     <loc>http://www.vimiix.com/2017/06/22/web-cookie-and-session.html</loc>
@@ -467,9 +493,9 @@
         <title>Python-关于Python中闭包的一些理解</title>
         <pubTime>2017-04-09T09:07:34.000Z</pubTime>
         
-        <tag>closure</tag>
-         
         <tag>Python</tag>
+         
+        <tag>closure</tag>
          
          
            

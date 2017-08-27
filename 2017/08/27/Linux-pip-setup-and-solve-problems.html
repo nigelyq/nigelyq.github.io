@@ -3,14 +3,20 @@
 <head>
     <meta charset="utf-8">
     
-    <title>标签: 算法日记 | Vimiix</title>
+    <title>Linux|CentOS系统yum安装pip及遇到的问题解决方法 | Vimiix</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta property="og:type" content="website">
-<meta property="og:title" content="Vimiix">
-<meta property="og:url" content="http://www.vimiix.com/tags/算法日记/index.html">
+    <meta name="description" content="pip是一个以Python计算机程序语言写成的软件包管理系统，他可以安装和管理软件包，另外不少的软件包也可以在“Python软件包索引”（英语：Python Package Index，简称PyPI）中找到。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux|CentOS系统yum安装pip及遇到的问题解决方法">
+<meta property="og:url" content="http://www.vimiix.com/2017/08/27/Linux-pip-setup-and-solve-problems.html">
 <meta property="og:site_name" content="Vimiix">
+<meta property="og:description" content="pip是一个以Python计算机程序语言写成的软件包管理系统，他可以安装和管理软件包，另外不少的软件包也可以在“Python软件包索引”（英语：Python Package Index，简称PyPI）中找到。">
+<meta property="og:image" content="http://omfis13un.bkt.clouddn.com/maxresdefault.jpg">
+<meta property="og:updated_time" content="2017-08-27T06:25:20.538Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Vimiix">
+<meta name="twitter:title" content="Linux|CentOS系统yum安装pip及遇到的问题解决方法">
+<meta name="twitter:description" content="pip是一个以Python计算机程序语言写成的软件包管理系统，他可以安装和管理软件包，另外不少的软件包也可以在“Python软件包索引”（英语：Python Package Index，简称PyPI）中找到。">
+<meta name="twitter:image" content="http://omfis13un.bkt.clouddn.com/maxresdefault.jpg">
     
 
     
@@ -221,122 +227,173 @@ var _hmt = _hmt || [];
 </aside>
 
             
-            <section id="main">
-<div class="timeline timeline-wrap">
-    <div class="timeline-row timeline-row-major">
-        <span class="node"><i class="fa fa-tag"></i></span>
-        <h1 class="title">#算法日记</h1>
-    </div>
-    
-        <div class="timeline-row">
-            <span class="node"></span>
-            <div class="content">
+            <section id="main"><article id="post-Linux-pip-setup-and-solve-problems" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            
+	
+		<img src="http://omfis13un.bkt.clouddn.com/maxresdefault.jpg" class="article-banner" />
+	
+
+
+
+        
+        
+            <header class="article-header">
                 
     
-        <h1 itemprop="name">
-            <a class="timeline-article-title" href="/2017/08/02/algorithms-insert-sort-and-select-sort.html">算法日记|用递归和迭代的思想分别实现插入排序和选择排序</a>
+        <h1 class="article-title" itemprop="name">
+            Linux|CentOS系统yum安装pip及遇到的问题解决方法
         </h1>
     
 
-                <div class="article-meta">
-                    
+                
+                    <div class="article-meta">
+                        
     <div class="article-date">
         <i class="fa fa-calendar"></i>
-        <a href="/2017/08/02/algorithms-insert-sort-and-select-sort.html">
-            <time datetime="2017-08-02T09:17:25.000Z" itemprop="datePublished">2017-08-02</time>
+        <a href="/2017/08/27/Linux-pip-setup-and-solve-problems.html">
+            <time datetime="2017-08-27T06:16:25.000Z" itemprop="datePublished">2017-08-27</time>
         </a>
     </div>
 
 
-                    
+                        
     <div class="article-category">
     	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/算法/">算法</a>
+        <a class="article-category-link" href="/categories/Linux/">Linux</a>
     </div>
 
-                    
+                        
     <div class="article-tag">
         <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/algorithms/">algorithms</a>, <a class="tag-link" href="/tags/python/">python</a>, <a class="tag-link" href="/tags/算法日记/">算法日记</a>
+        <a class="tag-link" href="/tags/CentOS/">CentOS</a>, <a class="tag-link" href="/tags/pip/">pip</a>, <a class="tag-link" href="/tags/python/">python</a>
     </div>
 
-                </div>
-            </div>
-        </div>
-    
-        <div class="timeline-row">
-            <span class="node"></span>
-            <div class="content">
+                    </div>
                 
-    
-        <h1 itemprop="name">
-            <a class="timeline-article-title" href="/2017/08/01/algorithms-cover-board-game.html">算法日记|使用L形砖拼接国际象棋棋盘</a>
-        </h1>
-    
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <p><strong>pip是一个以Python计算机程序语言写成的软件包管理系统，他可以安装和管理软件包，另外不少的软件包也可以在“Python软件包索引”（英语：Python Package Index，简称PyPI）中找到。</strong><br><a id="more"></a></p>
+<h2 id="常规的安装pip方法"><a href="#常规的安装pip方法" class="headerlink" title="常规的安装pip方法"></a>常规的安装pip方法</h2><p>首先安装扩展源EPEL</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo yum -y install epel-release</div></pre></td></tr></table></figure>
+<p>然后再安装pip</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo yum -y install python-pip</div></pre></td></tr></table></figure>
+<h2 id="手动下载编译安装pip"><a href="#手动下载编译安装pip" class="headerlink" title="手动下载编译安装pip"></a>手动下载编译安装pip</h2><p>一般上面的方法就可以安装成功了。今天我在新买的云主机上面也这样做，epel扩展源确认已经安装，但还是一直提示我python-pip这个模块找不到。这种情况，只能自己手动下载源文件编译安装了。</p>
+<p>截至书写本文时间，pip的最新版本为<code>9.0.1</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wget --no-check-certificate https://github.com/pypa/pip/archive/9.0.1.tar.gz</div></pre></td></tr></table></figure>
+<p><em>注意：wget获取https的时候需要加上：<code>--no-check-certificate</code></em></p>
+<p>下载下来以后，解压安装</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">tar zvxf 9.0.1.tar.gz</div><div class="line"><span class="built_in">cd</span> pip-9.0.1/</div><div class="line">python setup.py install</div></pre></td></tr></table></figure>
+<h4 id="缺少setiptools模块"><a href="#缺少setiptools模块" class="headerlink" title="缺少setiptools模块"></a>缺少<code>setiptools模块</code></h4><p>此时在安装pip的过程执行<code>python setup.py install</code>时报错，提示：<code>ImportError No module named setuptools</code>字面意思就是本地缺少setuptools这个模块。</p>
+<h4 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">wget http://pypi.python.org/packages/<span class="built_in">source</span>/s/setuptools/setuptools-0.6c11.tar.gz</div><div class="line">tar zxvf setuptools-0.6c11.tar.gz</div><div class="line"><span class="built_in">cd</span> setuptools-0.6c11</div><div class="line">python setup.py install</div></pre></td></tr></table></figure>
+<p><code>setuptools</code>安装成功以后，再返回去pip的解压目录执行<code>python setup.py install</code>，此时没有报错，且安装成功。</p>
+<h2 id="pip升级"><a href="#pip升级" class="headerlink" title="pip升级"></a>pip升级</h2><p>pip安装成功以后，我喜欢把软件都更新到最新版，更新pip执行</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pip install --upgrade pip</div></pre></td></tr></table></figure>
+<p>至此，pip就安装完整的安装成功了。</p>
+<h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a><em>参考资料</em></h3><ol>
+<li><a href="https://zh.wikipedia.org/wiki/Pip_(%E8%BB%9F%E4%BB%B6%E5%8C%85%E7%AE%A1%E7%90%86%E7%B3%BB%E7%B5%B1" target="_blank" rel="external">pip（软件包管理系统）-维基百科</a>)</li>
+<li><a href="http://blog.csdn.net/yangbodong22011/article/details/52456581" target="_blank" rel="external"> pip 安装使用 ImportError: No module named setuptools 解决方法</a></li>
+<li><a href="http://www.jincon.com/archives/159/" target="_blank" rel="external">包子博客</a></li>
+</ol>
 
-                <div class="article-meta">
-                    
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2017/08/01/algorithms-cover-board-game.html">
-            <time datetime="2017-08-01T11:54:21.000Z" itemprop="datePublished">2017-08-01</time>
-        </a>
-    </div>
-
-
-                    
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/算法/">算法</a>
-    </div>
-
-                    
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/algorithms/">algorithms</a>, <a class="tag-link" href="/tags/python/">python</a>, <a class="tag-link" href="/tags/算法日记/">算法日记</a>
-    </div>
-
-                </div>
-            </div>
+        
         </div>
-    
-        <div class="timeline-row">
-            <span class="node"></span>
-            <div class="content">
-                
-    
-        <h1 itemprop="name">
-            <a class="timeline-article-title" href="/2017/07/31/algorithms-gnomesort.html">算法日记|侏儒排序算法实现和复杂度分析</a>
-        </h1>
-    
+        <footer class="article-footer">
+            <div class="share-container">
 
-                <div class="article-meta">
-                    
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2017/07/31/algorithms-gnomesort.html">
-            <time datetime="2017-07-31T07:58:21.000Z" itemprop="datePublished">2017-07-31</time>
-        </a>
-    </div>
-
-
-                    
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/算法/">算法</a>
-    </div>
-
-                    
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/algorithms/">algorithms</a>, <a class="tag-link" href="/tags/python/">python</a>, <a class="tag-link" href="/tags/算法日记/">算法日记</a>
-    </div>
-
-                </div>
-            </div>
-        </div>
-    
+    <div class="jiathis_style">
+    <span class="jiathis_txt">分享到：</span>
+    <!--a class="jiathis_button_qzone">QQ空间</a-->
+    <a class="jiathis_button_tsina">新浪微博</a>
+    <!--a class="jiathis_button_tqq">腾讯微博</a-->
+    <a class="jiathis_button_weixin">微信</a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+    <a class="jiathis_counter_style"></a>
 </div>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<style>
+    .jiathis_style div:first-child:not(.jiadiv_01) {
+        width: auto !important;
+        border: none !important;
+    }
+    .jiathis_style .jiadiv_01 {
+        margin: 10px 0;
+        border-radius: 4px;
+        border: #e1e1e1 solid 1px;
+    }
+    .jiathis_style .jiadiv_01 div:first-child {
+        display: none;
+    }
+    .jiathis_style .jiadiv_02 {
+        padding: 7px 0 !important;
+    }
+    .jiathis_style .jiadiv_02 .jiatitle {
+        width: 85px;
+        border: none;
+        height: auto;
+        margin: 3px 10px;
+        padding: 6px 10px;
+        border-radius: 4px;
+    }
+    .jiathis_style .jiadiv_02 .jiatitle:hover {
+        border: none;
+    }
+    .jiathis_style .jiadiv_02 .jiatitle:nth-child(even) {
+        margin-left: 0;
+    }
+    .jiathis_style .jtico:hover {
+        opacity: 1;
+    }
+    .jiathis_style .ckepopBottom,
+    .jiathis_style .centerBottom {
+        width: auto !important;
+        padding: 5px;
+        background: #f7f7f7;
+    }
+</style>
+
+
+
+</div>
+
+            
+    
+        <a href="http://www.vimiix.com/2017/08/27/Linux-pip-setup-and-solve-problems.html#comments" class="article-comment-link">评论</a>
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/2017/08/05/Python-tuple-unpacking.html" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">下一篇</strong>
+            <div class="article-nav-title">Python|元组拆包和具名元组解析</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    <section id="comments">
+    
+        
+	<div id="commentContainer"></div>
+
+    
+    </section>
+
 </section>
             
                 <aside id="sidebar">
