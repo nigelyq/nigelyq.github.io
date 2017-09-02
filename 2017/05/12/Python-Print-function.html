@@ -10,7 +10,7 @@
 123from __future__ import print_functionprint(&apos;good&apos;)  #可以通过执行print &apos;bad&apos;    #语法错误">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Python-from __future__ import print_function">
-<meta property="og:url" content="http://www.vimiix.com/2017/05/12/Python-Print-function.html">
+<meta property="og:url" content="/2017/05/12/Python-Print-function.html">
 <meta property="og:site_name" content="Vimiix">
 <meta property="og:description" content="Python提供了__future__模块，把下一个新版本的特性导入到当前版本，于是我们就可以在当前版本中测试一些新版本的特性
 在python2.x的环境是使用下面语句，则第二句语法检查通过，第三句语法检查失败
@@ -352,7 +352,7 @@ var _hmt = _hmt || [];
 
             
     
-        <a href="http://www.vimiix.com/2017/05/12/Python-Print-function.html#comments" class="article-comment-link">评论</a>
+        <a href="/2017/05/12/Python-Print-function.html#comments" class="article-comment-link disqus-comment-count" data-disqus-url="/2017/05/12/Python-Print-function.html">评论</a>
     
 
         </footer>
@@ -387,7 +387,9 @@ var _hmt = _hmt || [];
     <section id="comments">
     
         
-	<div id="commentContainer"></div>
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
 
     
     </section>
@@ -566,20 +568,21 @@ var _hmt = _hmt || [];
 </footer>
         
     
-	<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
-	<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
-	<script>
-		var gitment = new Gitment({
-			owner: 'vimiix',
-			repo: 'vimiix.github.io',
-			oauth: {
-				client_id: 'abd8e4f14a1823b2146f',
-				client_secret: '4ffc7b300f732364340dd9fd141938147d8a73e5',
-			},
-		})
-		gitment.render('commentContainer')
-	</script>
-	
+    <script>
+    var disqus_config = function () {
+        
+            this.page.url = '/2017/05/12/Python-Print-function.html';
+        
+        this.page.identifier = 'Python-Print-function';
+    };
+    (function() { 
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'vimiix' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
 
 
     

@@ -8,7 +8,7 @@
     <meta name="description" content="据说，每个做 Python 开发的都被字符编码的问题搞晕过，最常见的错误就是UnicodeEncodeError、UnicodeDecodeError，你好像知道怎么解决，遗憾的是，错误又出现在其它地方，问题总是重蹈覆辙，str 到 unicode 之间的转换用哪 decode 还是 encode 方法还特不好记，老是混淆，问题究竟出在哪里？">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Python-py2中字符与字节之间的编解码[转载]">
-<meta property="og:url" content="http://www.vimiix.com/2017/03/28/Python-py2中字符与字节之间的编解码.html">
+<meta property="og:url" content="/2017/03/28/Python-py2中字符与字节之间的编解码.html">
 <meta property="og:site_name" content="Vimiix">
 <meta property="og:description" content="据说，每个做 Python 开发的都被字符编码的问题搞晕过，最常见的错误就是UnicodeEncodeError、UnicodeDecodeError，你好像知道怎么解决，遗憾的是，错误又出现在其它地方，问题总是重蹈覆辙，str 到 unicode 之间的转换用哪 decode 还是 encode 方法还特不好记，老是混淆，问题究竟出在哪里？">
 <meta property="og:image" content="http://omfis13un.bkt.clouddn.com/f3c4c96.jpg">
@@ -383,7 +383,7 @@ var _hmt = _hmt || [];
 
             
     
-        <a href="http://www.vimiix.com/2017/03/28/Python-py2中字符与字节之间的编解码.html#comments" class="article-comment-link">评论</a>
+        <a href="/2017/03/28/Python-py2中字符与字节之间的编解码.html#comments" class="article-comment-link disqus-comment-count" data-disqus-url="/2017/03/28/Python-py2中字符与字节之间的编解码.html">评论</a>
     
 
         </footer>
@@ -418,7 +418,9 @@ var _hmt = _hmt || [];
     <section id="comments">
     
         
-	<div id="commentContainer"></div>
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
 
     
     </section>
@@ -597,20 +599,21 @@ var _hmt = _hmt || [];
 </footer>
         
     
-	<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
-	<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
-	<script>
-		var gitment = new Gitment({
-			owner: 'vimiix',
-			repo: 'vimiix.github.io',
-			oauth: {
-				client_id: 'abd8e4f14a1823b2146f',
-				client_secret: '4ffc7b300f732364340dd9fd141938147d8a73e5',
-			},
-		})
-		gitment.render('commentContainer')
-	</script>
-	
+    <script>
+    var disqus_config = function () {
+        
+            this.page.url = '/2017/03/28/Python-py2中字符与字节之间的编解码.html';
+        
+        this.page.identifier = 'Python-py2中字符与字节之间的编解码';
+    };
+    (function() { 
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'vimiix' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
 
 
     

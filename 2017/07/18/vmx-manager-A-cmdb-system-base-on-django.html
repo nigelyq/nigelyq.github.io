@@ -8,7 +8,7 @@
     <meta name="description" content="系统介绍VMX-Manager是一个基于Django框架开发的一款CMDB管理系统，目前处于beta版本，功能主要包含: 管理系统管理的客户主机列表， 动态显示客户机状态信息，远程指令操作指定客户机以及主机与客户机之间的文件传输。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="vmx-manager--基于django框架开发的cmdb系统">
-<meta property="og:url" content="http://www.vimiix.com/2017/07/18/vmx-manager-A-cmdb-system-base-on-django.html">
+<meta property="og:url" content="/2017/07/18/vmx-manager-A-cmdb-system-base-on-django.html">
 <meta property="og:site_name" content="Vimiix">
 <meta property="og:description" content="系统介绍VMX-Manager是一个基于Django框架开发的一款CMDB管理系统，目前处于beta版本，功能主要包含: 管理系统管理的客户主机列表， 动态显示客户机状态信息，远程指令操作指定客户机以及主机与客户机之间的文件传输。">
 <meta property="og:image" content="http://omfis13un.bkt.clouddn.com/vmx-manager-logo.png">
@@ -405,7 +405,7 @@ var _hmt = _hmt || [];
 
             
     
-        <a href="http://www.vimiix.com/2017/07/18/vmx-manager-A-cmdb-system-base-on-django.html#comments" class="article-comment-link">评论</a>
+        <a href="/2017/07/18/vmx-manager-A-cmdb-system-base-on-django.html#comments" class="article-comment-link disqus-comment-count" data-disqus-url="/2017/07/18/vmx-manager-A-cmdb-system-base-on-django.html">评论</a>
     
 
         </footer>
@@ -440,7 +440,9 @@ var _hmt = _hmt || [];
     <section id="comments">
     
         
-	<div id="commentContainer"></div>
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
 
     
     </section>
@@ -619,20 +621,21 @@ var _hmt = _hmt || [];
 </footer>
         
     
-	<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
-	<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
-	<script>
-		var gitment = new Gitment({
-			owner: 'vimiix',
-			repo: 'vimiix.github.io',
-			oauth: {
-				client_id: 'abd8e4f14a1823b2146f',
-				client_secret: '4ffc7b300f732364340dd9fd141938147d8a73e5',
-			},
-		})
-		gitment.render('commentContainer')
-	</script>
-	
+    <script>
+    var disqus_config = function () {
+        
+            this.page.url = '/2017/07/18/vmx-manager-A-cmdb-system-base-on-django.html';
+        
+        this.page.identifier = 'vmx-manager-A-cmdb-system-base-on-django';
+    };
+    (function() { 
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'vimiix' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
 
 
     

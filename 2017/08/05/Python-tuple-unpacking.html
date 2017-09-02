@@ -8,7 +8,7 @@
     <meta name="description" content="前言在Python中元组是一个相较于其他语言比较特别的一个内置序列类型。有些python入门教程把元组成为“不可变的列表”，这种说法是不完备的，其并没有完整的概括元组的特点。除了用作不可变的列表，它还可以用于没有字段名的数据记录。下面的内容就围绕元组作为数据记录属性展开，并介绍带字段名的具名元组函数namedtuple，列表属性不再本文中叙述。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Python|元组拆包和具名元组解析">
-<meta property="og:url" content="http://www.vimiix.com/2017/08/05/Python-tuple-unpacking.html">
+<meta property="og:url" content="/2017/08/05/Python-tuple-unpacking.html">
 <meta property="og:site_name" content="Vimiix">
 <meta property="og:description" content="前言在Python中元组是一个相较于其他语言比较特别的一个内置序列类型。有些python入门教程把元组成为“不可变的列表”，这种说法是不完备的，其并没有完整的概括元组的特点。除了用作不可变的列表，它还可以用于没有字段名的数据记录。下面的内容就围绕元组作为数据记录属性展开，并介绍带字段名的具名元组函数namedtuple，列表属性不再本文中叙述。">
 <meta property="og:updated_time" content="2017-08-05T10:36:50.650Z">
@@ -364,7 +364,7 @@ var _hmt = _hmt || [];
 
             
     
-        <a href="http://www.vimiix.com/2017/08/05/Python-tuple-unpacking.html#comments" class="article-comment-link">评论</a>
+        <a href="/2017/08/05/Python-tuple-unpacking.html#comments" class="article-comment-link disqus-comment-count" data-disqus-url="/2017/08/05/Python-tuple-unpacking.html">评论</a>
     
 
         </footer>
@@ -399,7 +399,9 @@ var _hmt = _hmt || [];
     <section id="comments">
     
         
-	<div id="commentContainer"></div>
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
 
     
     </section>
@@ -578,20 +580,21 @@ var _hmt = _hmt || [];
 </footer>
         
     
-	<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
-	<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
-	<script>
-		var gitment = new Gitment({
-			owner: 'vimiix',
-			repo: 'vimiix.github.io',
-			oauth: {
-				client_id: 'abd8e4f14a1823b2146f',
-				client_secret: '4ffc7b300f732364340dd9fd141938147d8a73e5',
-			},
-		})
-		gitment.render('commentContainer')
-	</script>
-	
+    <script>
+    var disqus_config = function () {
+        
+            this.page.url = '/2017/08/05/Python-tuple-unpacking.html';
+        
+        this.page.identifier = 'Python-tuple-unpacking';
+    };
+    (function() { 
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'vimiix' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
 
 
     

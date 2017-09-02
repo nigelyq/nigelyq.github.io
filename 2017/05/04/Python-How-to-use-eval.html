@@ -9,7 +9,7 @@
 原文出处：WooYun - 隐形人真忙">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【转】Python中eval的强大与潜在风险">
-<meta property="og:url" content="http://www.vimiix.com/2017/05/04/Python-How-to-use-eval.html">
+<meta property="og:url" content="/2017/05/04/Python-How-to-use-eval.html">
 <meta property="og:site_name" content="Vimiix">
 <meta property="og:description" content="这两天在做项目的过程中，遇到eval这个方法，不是很会用，经过一番搜索学习，特此收藏一篇乌云网深度好文，以备以后回顾。
 原文出处：WooYun - 隐形人真忙">
@@ -398,7 +398,7 @@ var _hmt = _hmt || [];
 
             
     
-        <a href="http://www.vimiix.com/2017/05/04/Python-How-to-use-eval.html#comments" class="article-comment-link">评论</a>
+        <a href="/2017/05/04/Python-How-to-use-eval.html#comments" class="article-comment-link disqus-comment-count" data-disqus-url="/2017/05/04/Python-How-to-use-eval.html">评论</a>
     
 
         </footer>
@@ -433,7 +433,9 @@ var _hmt = _hmt || [];
     <section id="comments">
     
         
-	<div id="commentContainer"></div>
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
 
     
     </section>
@@ -612,20 +614,21 @@ var _hmt = _hmt || [];
 </footer>
         
     
-	<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
-	<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
-	<script>
-		var gitment = new Gitment({
-			owner: 'vimiix',
-			repo: 'vimiix.github.io',
-			oauth: {
-				client_id: 'abd8e4f14a1823b2146f',
-				client_secret: '4ffc7b300f732364340dd9fd141938147d8a73e5',
-			},
-		})
-		gitment.render('commentContainer')
-	</script>
-	
+    <script>
+    var disqus_config = function () {
+        
+            this.page.url = '/2017/05/04/Python-How-to-use-eval.html';
+        
+        this.page.identifier = 'Python-How-to-use-eval';
+    };
+    (function() { 
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'vimiix' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
 
 
     

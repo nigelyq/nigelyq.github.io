@@ -8,7 +8,7 @@
     <meta name="description" content="前言昨天在Hackerrank上面练习Python题目的时候，题目要求从终端输入命令和参数，然后脚本获取到以后执行相应的操作（查看原题），作为初级程序员，我第一思路想到的解法就是枚举（因为题目上面限制了就3条命令）。通过if ... elif...elif...的分支语句就解决了。Hackerrank有一个好处就是，每一个题目都有一个讨论区，在讨论区中往往会有超出本人能力范围的巧妙高级解法发表在里">
 <meta property="og:type" content="article">
 <meta property="og:title" content="[Python]内建函数getattr()函数详解">
-<meta property="og:url" content="http://www.vimiix.com/2017/07/10/Python-Introduce-getattr-function.html">
+<meta property="og:url" content="/2017/07/10/Python-Introduce-getattr-function.html">
 <meta property="og:site_name" content="Vimiix">
 <meta property="og:description" content="前言昨天在Hackerrank上面练习Python题目的时候，题目要求从终端输入命令和参数，然后脚本获取到以后执行相应的操作（查看原题），作为初级程序员，我第一思路想到的解法就是枚举（因为题目上面限制了就3条命令）。通过if ... elif...elif...的分支语句就解决了。Hackerrank有一个好处就是，每一个题目都有一个讨论区，在讨论区中往往会有超出本人能力范围的巧妙高级解法发表在里">
 <meta property="og:updated_time" content="2017-07-10T04:57:24.652Z">
@@ -355,7 +355,7 @@ var _hmt = _hmt || [];
 
             
     
-        <a href="http://www.vimiix.com/2017/07/10/Python-Introduce-getattr-function.html#comments" class="article-comment-link">评论</a>
+        <a href="/2017/07/10/Python-Introduce-getattr-function.html#comments" class="article-comment-link disqus-comment-count" data-disqus-url="/2017/07/10/Python-Introduce-getattr-function.html">评论</a>
     
 
         </footer>
@@ -390,7 +390,9 @@ var _hmt = _hmt || [];
     <section id="comments">
     
         
-	<div id="commentContainer"></div>
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
 
     
     </section>
@@ -569,20 +571,21 @@ var _hmt = _hmt || [];
 </footer>
         
     
-	<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
-	<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
-	<script>
-		var gitment = new Gitment({
-			owner: 'vimiix',
-			repo: 'vimiix.github.io',
-			oauth: {
-				client_id: 'abd8e4f14a1823b2146f',
-				client_secret: '4ffc7b300f732364340dd9fd141938147d8a73e5',
-			},
-		})
-		gitment.render('commentContainer')
-	</script>
-	
+    <script>
+    var disqus_config = function () {
+        
+            this.page.url = '/2017/07/10/Python-Introduce-getattr-function.html';
+        
+        this.page.identifier = 'Python-Introduce-getattr-function';
+    };
+    (function() { 
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'vimiix' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
 
 
     
