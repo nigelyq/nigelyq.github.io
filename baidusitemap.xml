@@ -3,6 +3,7 @@
 
 
     
+    
   <url>
     <loc>http://blog.vimiix.com/2017/08/27/Linux-pip-setup-and-solve-problems.html</loc>
     <lastmod>2017-08-27T06:25:20.538Z</lastmod>
@@ -467,13 +468,13 @@
         <title>Python-文件操作</title>
         <pubTime>2017-04-13T07:50:34.000Z</pubTime>
         
-        <tag>Python</tag>
-         
         <tag>file</tag>
          
         <tag>open</tag>
          
         <tag>close</tag>
+         
+        <tag>Python</tag>
          
          
            
@@ -493,9 +494,9 @@
         <title>Python-关于Python中闭包的一些理解</title>
         <pubTime>2017-04-09T09:07:34.000Z</pubTime>
         
-        <tag>closure</tag>
-         
         <tag>Python</tag>
+         
+        <tag>closure</tag>
          
          
            
@@ -624,7 +625,6 @@
     </data>
     </url>
 
-    
     
     
 </urlset>
