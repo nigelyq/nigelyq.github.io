@@ -3,15 +3,20 @@
 <head>
     <meta charset="utf-8">
     
-    <title>归档: 2017/5 | Vimiix</title>
+    <title>Python|寻找最大最小的N个元素几种方法 | Vimiix</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta property="og:type" content="website">
-<meta property="og:title" content="Vimiix">
-<meta property="og:url" content="http://blog.vimiix.com/archives/2017/05/index.html">
+    <meta name="description" content="实际的生产中，常常会需要处理一个序列，找出其中的N个最大或者最小的元素，这里提供几种思路，不同的情况，使用不同的搜索方式，可以更好提高我们代码的运行效率。">
+<meta name="keywords" content="python,sort">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python|寻找最大最小的N个元素几种方法">
+<meta property="og:url" content="http://blog.vimiix.com/2017/09/15/Python-find-largest-or-smallest-number.html">
 <meta property="og:site_name" content="Vimiix">
+<meta property="og:description" content="实际的生产中，常常会需要处理一个序列，找出其中的N个最大或者最小的元素，这里提供几种思路，不同的情况，使用不同的搜索方式，可以更好提高我们代码的运行效率。">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2017-09-15T02:38:20.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Vimiix">
+<meta name="twitter:title" content="Python|寻找最大最小的N个元素几种方法">
+<meta name="twitter:description" content="实际的生产中，常常会需要处理一个序列，找出其中的N个最大或者最小的元素，这里提供几种思路，不同的情况，使用不同的搜索方式，可以更好提高我们代码的运行效率。">
     
 
     
@@ -222,148 +227,165 @@ var _hmt = _hmt || [];
 </aside>
 
             
-            <section id="main"><div class="timeline timeline-wrap">
-    
-            <div class="timeline-row timeline-row-major">
-                <span class="node"><i class="fa fa-calendar"></i></span>
-                <h1 class="title">2017</h1>
-            </div>
+            <section id="main"><article id="post-Python-find-largest-or-smallest-number" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
         
-        <div class="timeline-row">
-            <span class="node"></span>
-            <div class="content">
+        
+            <header class="article-header">
                 
     
-        <h1 itemprop="name">
-            <a class="timeline-article-title" href="/2017/05/25/Python-pyCon2017-keynotes.html">[福利]PyCon2017全部演讲视频汇总</a>
+        <h1 class="article-title" itemprop="name">
+            Python|寻找最大最小的N个元素几种方法
         </h1>
     
 
-                <div class="article-meta">
-                    
+                
+                    <div class="article-meta">
+                        
     <div class="article-date">
         <i class="fa fa-calendar"></i>
-        <a href="/2017/05/25/Python-pyCon2017-keynotes.html">
-            <time datetime="2017-05-25T15:56:55.000Z" itemprop="datePublished">2017-05-25</time>
+        <a href="/2017/09/15/Python-find-largest-or-smallest-number.html">
+            <time datetime="2017-09-15T01:48:44.000Z" itemprop="datePublished">2017-09-15</time>
         </a>
     </div>
 
 
-                    
+                        
     <div class="article-category">
     	<i class="fa fa-folder"></i>
         <a class="article-category-link" href="/categories/Python/">Python</a>
     </div>
 
-                    
+                        
     <div class="article-tag">
         <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/PyCon2017/">PyCon2017</a>
+        <a class="tag-link" href="/tags/python/">python</a>, <a class="tag-link" href="/tags/sort/">sort</a>
     </div>
 
-                </div>
-            </div>
-        </div>
-    
-        <div class="timeline-row">
-            <span class="node"></span>
-            <div class="content">
+                    </div>
                 
-    
-        <h1 itemprop="name">
-            <a class="timeline-article-title" href="/2017/05/12/Python-Print-function.html">Python-from __future__ import print_function</a>
-        </h1>
-    
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <p>实际的生产中，常常会需要处理一个序列，找出其中的N个最大或者最小的元素，这里提供几种思路，不同的情况，使用不同的搜索方式，可以更好提高我们代码的运行效率。<br><a id="more"></a></p>
+<h6 id="“这里先假设目标序列的元素总数为S-”"><a href="#“这里先假设目标序列的元素总数为S-”" class="headerlink" title="“这里先假设目标序列的元素总数为S ”"></a>“这里先假设目标序列的元素总数为S ”</h6><h2 id="N如果是1"><a href="#N如果是1" class="headerlink" title="N如果是1"></a>N如果是1</h2><p>如果只是简单地想找到最小或最大的元素，那么<code>min()</code>和<code>max()</code>是最合适的选择。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">min([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]) <span class="comment">#1</span></div><div class="line">max([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]) <span class="comment">#3</span></div></pre></td></tr></table></figure>
+<h2 id="N如果想对S比较小"><a href="#N如果想对S比较小" class="headerlink" title="N如果想对S比较小"></a>N如果想对S比较小</h2><p>这种情况最高效的方式是使用函数<code>nlargest()</code>和<code>nsmallest()</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> heapq</div><div class="line">heapq.nlargest(N, nums) <span class="comment">#最大的N个元素组成的列表</span></div><div class="line">heapq.nsmallest(N, nums) <span class="comment">#最小的N个元素</span></div></pre></td></tr></table></figure>
+<p>对于N较小的情况，还有一种高效的方式是下面这样：</p>
+<p>heapq的方式，这种方式首先会在底层将数据转为成列表，且元素会以堆得顺序排列。</p>
+ <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">nums = [<span class="number">2</span>,<span class="number">4</span>,<span class="number">52</span>,<span class="number">6</span>,<span class="number">90</span>,<span class="number">1</span>]</div><div class="line"><span class="keyword">import</span> heapq</div><div class="line">heap = list(nums)</div><div class="line">heapq.heapify(heap)</div><div class="line">heap</div><div class="line">[out]:[<span class="number">1</span>, <span class="number">4</span>, <span class="number">2</span>, <span class="number">6</span>, <span class="number">90</span>, <span class="number">52</span>]</div></pre></td></tr></table></figure>
+<p>堆最重要的特性就是 <code>heap[0]</code>永远是最小的那个元素。接下来的元素，可以依次通过<code>heapq.heappop()</code>方法找到，这个方法会将第一个元素，也就是最小的元素弹出，然后以第二小的元素代替。这种操作的复杂度为<code>O(logN)</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">heapq.heappop(heap)</div><div class="line">[out]:<span class="number">1</span></div><div class="line">heapq.heappop(heap)</div><div class="line">[out]:<span class="number">2</span></div></pre></td></tr></table></figure>
+<h2 id="如果N和S相近"><a href="#如果N和S相近" class="headerlink" title="如果N和S相近"></a>如果N和S相近</h2><p>这种情况下，通常更快的方法是先对集合排序，然后做切片操作。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sorted(nums)[:N]</div><div class="line"><span class="comment">#或者</span></div><div class="line">sorted(nums)[-N:]</div></pre></td></tr></table></figure>
+<hr>
+<blockquote>
+<ul>
+<li>版权声明：欢迎转载，请注明出处</li>
+<li>发表日期：2017-09-15 </li>
+<li>博客地址：blog.vimiix.com</li>
+</ul>
+</blockquote>
 
-                <div class="article-meta">
-                    
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2017/05/12/Python-Print-function.html">
-            <time datetime="2017-05-12T06:55:03.000Z" itemprop="datePublished">2017-05-12</time>
-        </a>
-    </div>
-
-
-                    
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/Python/">Python</a>
-    </div>
-
-                    
-                </div>
-            </div>
+        
         </div>
-    
-        <div class="timeline-row">
-            <span class="node"></span>
-            <div class="content">
-                
-    
-        <h1 itemprop="name">
-            <a class="timeline-article-title" href="/2017/05/11/Product-pyCSDNDailySpider.html">Product-一个小爬虫pyCSDNDailySpider</a>
-        </h1>
-    
+        <footer class="article-footer">
+            <div class="share-container">
 
-                <div class="article-meta">
-                    
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2017/05/11/Product-pyCSDNDailySpider.html">
-            <time datetime="2017-05-10T16:11:03.000Z" itemprop="datePublished">2017-05-11</time>
-        </a>
-    </div>
-
-
-                    
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/Product/">Product</a>
-    </div>
-
-                    
-                </div>
-            </div>
-        </div>
-    
-        <div class="timeline-row">
-            <span class="node"></span>
-            <div class="content">
-                
-    
-        <h1 itemprop="name">
-            <a class="timeline-article-title" href="/2017/05/04/Python-How-to-use-eval.html">【转】Python中eval的强大与潜在风险</a>
-        </h1>
-    
-
-                <div class="article-meta">
-                    
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2017/05/04/Python-How-to-use-eval.html">
-            <time datetime="2017-05-04T15:57:34.000Z" itemprop="datePublished">2017-05-04</time>
-        </a>
-    </div>
-
-
-                    
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/Python/">Python</a>
-    </div>
-
-                    
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/Python/">Python</a>, <a class="tag-link" href="/tags/eval/">eval</a>
-    </div>
-
-                </div>
-            </div>
-        </div>
-    
+    <div class="jiathis_style">
+    <span class="jiathis_txt">分享到：</span>
+    <!--a class="jiathis_button_qzone">QQ空间</a-->
+    <a class="jiathis_button_tsina">新浪微博</a>
+    <!--a class="jiathis_button_tqq">腾讯微博</a-->
+    <a class="jiathis_button_weixin">微信</a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+    <a class="jiathis_counter_style"></a>
 </div>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<style>
+    .jiathis_style div:first-child:not(.jiadiv_01) {
+        width: auto !important;
+        border: none !important;
+    }
+    .jiathis_style .jiadiv_01 {
+        margin: 10px 0;
+        border-radius: 4px;
+        border: #e1e1e1 solid 1px;
+    }
+    .jiathis_style .jiadiv_01 div:first-child {
+        display: none;
+    }
+    .jiathis_style .jiadiv_02 {
+        padding: 7px 0 !important;
+    }
+    .jiathis_style .jiadiv_02 .jiatitle {
+        width: 85px;
+        border: none;
+        height: auto;
+        margin: 3px 10px;
+        padding: 6px 10px;
+        border-radius: 4px;
+    }
+    .jiathis_style .jiadiv_02 .jiatitle:hover {
+        border: none;
+    }
+    .jiathis_style .jiadiv_02 .jiatitle:nth-child(even) {
+        margin-left: 0;
+    }
+    .jiathis_style .jtico:hover {
+        opacity: 1;
+    }
+    .jiathis_style .ckepopBottom,
+    .jiathis_style .centerBottom {
+        width: auto !important;
+        padding: 5px;
+        background: #f7f7f7;
+    }
+</style>
+
+
+
+</div>
+
+            
+    
+        <a href="http://blog.vimiix.com/2017/09/15/Python-find-largest-or-smallest-number.html#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://blog.vimiix.com/2017/09/15/Python-find-largest-or-smallest-number.html">评论</a>
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/2017/08/27/Linux-pip-setup-and-solve-problems.html" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">下一篇</strong>
+            <div class="article-nav-title">Linux|CentOS系统yum安装pip及遇到的问题解决方法</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+    
+    </section>
+
 </section>
             
                 <aside id="sidebar">
@@ -541,11 +563,13 @@ var _hmt = _hmt || [];
     <script>
     var disqus_config = function () {
         
-        this.page.identifier = 'undefined';
+            this.page.url = 'http://blog.vimiix.com/2017/09/15/Python-find-largest-or-smallest-number.html';
+        
+        this.page.identifier = 'Python-find-largest-or-smallest-number';
     };
     (function() { 
         var d = document, s = d.createElement('script');  
-        s.src = '//' + 'vimiix' + '.disqus.com/count.js';
+        s.src = '//' + 'vimiix' + '.disqus.com/embed.js';
         s.setAttribute('data-timestamp', +new Date());
         (d.head || d.body).appendChild(s);
     })();
